@@ -1,0 +1,36 @@
+
+<p>Click the button to get your coordinates.</p>
+
+<!-- <button onclick='getLocation()'>Try It</button> -->
+<button (click)="getLocation()">Click me!</button>
+<p id="demo"></p>
+
+
+
+
+<h1>{{ title }}</h1>
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+
+
+
+<script>
+  var x = document.getElementById("demo");
+  
+  function getLocation() {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+      } else { 
+          x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+  }
+  
+  function showPosition(position) {
+      x.innerHTML = "Latitude: " + position.coords.latitude + 
+      "<br>Longitude: " + position.coords.longitude;
+  }
+  </script> 

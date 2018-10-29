@@ -1,0 +1,108 @@
+
+
+
+  <!-- <app-survey [message]="message"></app-survey> -->
+<div class="form-bg">
+    <div class="">
+        <div class="">
+            <div class="col-md-offset-3">
+                <form class="form-horizontal" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                    <div class="header">ค้นหา คลินิค</div>
+                    <div class="form-content">
+                        <h4 class="heading"></h4>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label class="control-label" for="exampleInputName2"><i class="fa fa-user"></i></label>
+                               
+                                <input placeholder="ชื่อคลินิก" type="text" class="form-control" name="Clinicname" [(ngModel)]="model.Clinicname" #Clinicname="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Clinicname.invalid }"  />
+                                <div *ngIf="f.submitted && Clinicname.invalid" class="invalid-feedback">
+                                    <div *ngIf="Clinicname.errors.required">Clinic Name is required</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                               
+                                <label class="control-label" for="exampleInputName2"><i class="fa fa-lock"></i></label>
+                                
+                                <input placeholder="ชื่อผู้ประกอบการ" type="text" class="form-control" name="Customername" [(ngModel)]="model.Customername" #Customername="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Customername.invalid }"  />
+                                <div *ngIf="f.submitted && Customername.invalid" class="invalid-feedback">
+                                    <div *ngIf="Customername.errors.required">Customername is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="control-label" for="exampleInputName2"><i class="fa fa-lock"></i></label>
+                               
+                                <input placeholder="ชื่อผู้ดำเนินการ" type="text" class="form-control" name="Operatorname" [(ngModel)]="model.Operatorname" #Operatorname="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Operatorname.invalid }"  />
+                                <div *ngIf="f.submitted && Operatorname.invalid" class="invalid-feedback">
+                                    <div *ngIf="Operatorname.errors.required">Operatorname is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="control-label" for="exampleInputName2"><i class="fa fa-lock"></i></label>
+                                <input placeholder="สถานที่" type="text" class="form-control" name="Address" [(ngModel)]="model.Address" #Address="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Address.invalid }"  />
+                                <div *ngIf="f.submitted && Address.invalid" class="invalid-feedback">
+                                    <div *ngIf="Address.errors.required">Address is required</div>
+                                </div>
+                            </div>
+                            <div class="clearfix"  >
+                                <button type="submit"  class="btn btn-default blue" > ค้นหา</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            
+        <!-- <form name="form-horizontal" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+                <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+                    <div *ngIf="firstName.errors.required">First Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
+                <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+                    <div *ngIf="lastName.errors.required">Last Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
+                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                    <div *ngIf="email.errors.required">Email is required</div>
+                    <div *ngIf="email.errors.email">Email must be a valid email address</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
+                <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                    <div *ngIf="password.errors.required">Password is required</div>
+                    <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary">Register</button>
+            </div>
+        </form>  -->
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+
+  </div>
+<h2>{{Clinicnames}}</h2>
+<!-- <ul>
+    <li *ngFor="let item of searctServiceData">{{item.title}}</li>
+</ul> -->
+
+<!-- <app-survey></app-survey>
+<br>
+<app-googlemap></app-googlemap>
+ -->

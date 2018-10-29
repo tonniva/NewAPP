@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<nav class="navbar navbar-expand-lg navbar-dark grad">
+  <a class="navbar-brand w-50" href="#" >
+    <span class=""><img class="w-25 circle" src="http://164.115.41.179/d756/sites/default/files/styles/event_list/public/events/aopnoPvF.png?itok=l1MnCFC9"/></span> CLINIC TRACKING
+  </a>
+
+  <button class="navbar-toggler" type="button"
+          (click)="toggleNavbar()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  
+  <div class="collapse navbar-collapse"
+       [ngClass]="{ 'show': navbarOpen }">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['googlemap']">รายละเอียด</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">ติดต่อ</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- 
+<div class="container bg-menu">
+    <div class="row">
+      <div class="col-sm">
+          <div class="card p-3 mt-4 shadow-lg p-3 mb-5  rounded bg-success" [routerLink]="['createuser']">
+             <h5 class="text-light mx-auto"><i class="fas fa-plus-square p-3 "></i>สร้างข้อมูลผู้ประกอบการ</h5>
+            </div>
+      </div>
+      <div class="col-sm">
+          <div class="card p-3  mt-4 shadow-lg p-3 mb-5  rounded bg-success"  [routerLink]="['Search']">
+              <h5 class="text-light mx-auto"><i class="fas fa-search p-3"></i>ค้นหาข้อมูล</h5>
+          </div>
+      </div>
+
+      <div class="col-sm">
+          <div class="card p-3  mt-4 shadow-lg p-3 mb-5  rounded bg-success"  [routerLink]="['Contact']">
+              <h5 class="text-light mx-auto"><i class="fas fa-search p-3"></i>ติดต่อ</h5>
+          </div>
+      </div>
+     
+    </div>
+  </div> -->
+
+
+
+  <div class="container p-3">
+      <div class="row">
+          <div class="col-md-4 col-sm-6">
+              <div class="box">
+                  <img src="https://www.acibademcityclinic.bg/public/files/home-page/city-clinic-vl-8905.jpg" alt="">
+                  <div class="box-content"  >
+                      <h3 class="title" >สร้างข้อมูลผู้ประกอบการ</h3>
+                      <span class="post" [routerLink]="['createuser']">เริ่ม Click!</span>
+                      <ul class="icon">
+                          <li><a href="#" class="fa fa-search"></a></li>
+                          <li><a href="#" class="fa fa-link"></a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+              <div class="box">
+                  <img src="http://skincancer.blob.core.windows.net/assets/uploads/img/general%20content/clinic.jpg" alt="">
+                  <div class="box-content" >
+                      <h3 class="title">ค้นหาข้อมูล</h3>
+                      <span class="post" [routerLink]="['Search']">เริ่ม Click!</span>
+                      <ul class="icon">
+                          <li><a href="#" class="fa fa-search"></a></li>
+                          <li><a href="#" class="fa fa-link"></a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+              <div class="box">
+                  <img src="http://newsofthesouth.com/wp-content/uploads/2017/10/clinic.jpg" alt="">
+                  <div class="box-content" >
+                      <h3 class="title">ติดต่อ</h3>
+                      <span class="post" [routerLink]="['Contact']">เริ่ม Click!</span>
+                      <ul class="icon">
+                          <li><a href="#" class="fa fa-search"></a></li>
+                          <li><a href="#" class="fa fa-link"></a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
