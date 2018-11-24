@@ -1,5 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark grad">
+    <a class="navbar-brand w-50" href="#">
+        <span class=""><img class="w-25 circle" src="http://164.115.41.179/d756/sites/default/files/styles/event_list/public/events/aopnoPvF.png?itok=l1MnCFC9"/></span> CLINIC TRACKING
+    </a>
+
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+
+    <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['googlemap']">รายละเอียด</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">ติดต่อ</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 <div class="container">
-        <!-- <h2>Hi {{ResultSearch}}</h2> -->
+    <!-- <h2>Hi {{ResultSearch}}</h2> -->
+
     <div class="row">
         <div class="col-md-12">
             <div class="main-timeline">
@@ -7,22 +32,24 @@
                     <a href="#" class="timeline-content">
                         <span class="icon"><img class="w-100 circle" src="http://164.115.41.179/d756/sites/default/files/styles/event_list/public/events/aopnoPvF.png?itok=l1MnCFC9"/></span>
                         <div class="inner-content">
-                       
+
                             <h1 class="title text font-weight-bold text-warning">ประวัติการตรวจ</h1>
 
-                     
-                            <div *ngFor="let item of ResultSearch | keyvalue">
-                                    <b>{{item.key}}</b> : 
-                                    <ng-container *ngIf="item.key ==='Image';else second">
-                                    <img class="w-100 border border-white" src={{item.value}}/>
-                          </ng-container> 
-                             <ng-template #second>{{item.value}}
-                        </ng-template>
 
-                                </div>
-                                
-                      
-                          
+                            <div *ngFor="let item of ResultSearch | keyvalue">
+                                <div class="oneline"><b>{{item.key}}</b> :<b>{{item.value}}</b></div>
+                                <!-- <ng-container *ngIf="item.key ==='Image';else second">
+                                    <img class="w-100 border border-white" src={{item.value}}/>
+                                </ng-container>
+                                <ng-template #second>{{item}}
+                                </ng-template> -->
+
+                            </div>
+
+
+
+
+
                         </div>
                     </a>
                 </div>

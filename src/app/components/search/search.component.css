@@ -1,30 +1,34 @@
-.form-bg{
+.form-bg {
     background: #e4e6e6;
 }
 
-form{
+form {
     font-family: 'Kanit', sans-serif !important;
 }
-.form-horizontal .header{
+
+.form-horizontal .header {
     background: #3f9cb5;
-    padding: 13px  25px;
+    padding: 13px 25px;
     font-size: 30px;
     color: #fff;
     text-align: center;
     text-transform: uppercase;
     border-radius: 3px 3px 0 0;
 }
-.form-horizontal .heading{
+
+.form-horizontal .heading {
     font-size: 16px;
     color: #3f9cb5;
     margin: 10px 0 20px 0;
     text-transform: capitalize;
 }
-.form-horizontal .form-content{
+
+.form-horizontal .form-content {
     padding: 25px;
     background: #fff;
 }
-.form-horizontal .form-control{
+
+.form-horizontal .form-control {
     padding: 12px 16px 12px 39px;
     height: 50px;
     font-size: 14px;
@@ -35,11 +39,13 @@ form{
     box-shadow: none;
     margin-bottom: 15px;
 }
-.form-horizontal .form-control:focus{
+
+.form-horizontal .form-control:focus {
     border-color: #3f9cb5;
     box-shadow: none;
 }
-.form-horizontal .control-label{
+
+.form-horizontal .control-label {
     font-size: 17px;
     color: #ccc;
     position: absolute;
@@ -47,11 +53,13 @@ form{
     /* left: 27px; */
     text-align: center;
 }
-.form-horizontal textarea.form-control{
+
+.form-horizontal textarea.form-control {
     resize: vertical;
     height: 130px;
 }
-.form-horizontal .btn{
+
+.form-horizontal .btn {
     font-size: 18px;
     color: #4e4e4e;
     float: right;
@@ -61,23 +69,25 @@ form{
     padding: 10px 25px;
     transition: all 0.5s ease 0s;
 }
-.form-horizontal .btn:hover{
+
+.form-horizontal .btn:hover {
     background: #fff;
     border-color: #3f9cb5;
 }
 
-
-
-
-.btn{
+.btn {
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #fe6d6d;
     border-radius: 0;
     position: relative;
 }
-.btn:hover{ color: #fe6d6d; }
-.btn:after{
+
+.btn:hover {
+    color: #fe6d6d;
+}
+
+.btn:after {
     content: "";
     width: 100%;
     height: 100%;
@@ -87,22 +97,63 @@ form{
     left: 0;
     transition: width 0.2s ease 0s, height 0.2s ease 0.1s, border-top-width 0.1s ease 0.2s, margin 0.2s ease 0s;
 }
-.btn:hover:after{
+
+.btn:hover:after {
     width: 60%;
     height: 0;
     border-width: 0 2px 2px;
     margin: 0 20%;
     transition: width 0.2s ease 0.2s, height 0.2s ease 0.1s, border-top-width 0.1s ease 0s, margin 0.2s ease 0.2s;
 }
+
 .btn.blue,
-.btn.blue:hover{ color: #22ace3; }
-.btn.blue:after{ border-color: #22ace3; }
+.btn.blue:hover {
+    color: #22ace3;
+}
+
+.btn.blue:after {
+    border-color: #22ace3;
+}
+
 .btn.orange,
-.btn.orange:hover{ color: #f56f17; }
-.btn.orange:after{ border-color: #f56f17; }
+.btn.orange:hover {
+    color: #f56f17;
+}
+
+.btn.orange:after {
+    border-color: #f56f17;
+}
+
 .btn.green,
-.btn.green:hover{ color: #47cf77; }
-.btn.green:after{ border-color: #47cf77; }
-@media only screen and (max-width: 767px){
-    .btn{ margin-bottom: 20px; }
+.btn.green:hover {
+    color: #47cf77;
+}
+
+.btn.green:after {
+    border-color: #47cf77;
+}
+
+@media only screen and (max-width: 767px) {
+    .btn {
+        margin-bottom: 20px;
+    }
+}
+
+
+/* nav bar */
+
+.circle {
+    /* ชื่อคลาสต้องตรงกับ <img class="circle"... */
+    height: auto;
+    /* ความสูงปรับให้เป็นออโต้ */
+    width: auto;
+    /* ความสูงปรับให้เป็นออโต้ */
+    border-radius: 50%;
+    /* ปรับเป็น 50% คือความโค้งของเส้นขอบ*/
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    /* เงาของรูป */
+}
+
+.grad {
+    background-image: linear-gradient(to bottom right, #217d96, #217d96);
 }

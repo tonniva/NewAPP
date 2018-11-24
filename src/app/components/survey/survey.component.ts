@@ -11,11 +11,11 @@ export class SurveyComponent implements OnInit {
 
 
 public ResultSearch:ClsResponseAPI;
-
+ 
   constructor(private DataService:DataService) { }
 
   ngOnInit() {
-
+    let goodResponse = [];
   //   $(document).ready(function(){
 
       
@@ -23,13 +23,13 @@ public ResultSearch:ClsResponseAPI;
 
 
     setTimeout(() => {
-      
-       this.ResultSearch =  this.DataService.searchDetail;
-       console.log(this.ResultSearch);
 
-       
-        
-    }, 1000);
+  
+
+      this.ResultSearch =  this.DataService.searchDetail;
+      //  console.log(goodResponse);
+
+    }, 5000);
   }
 
 

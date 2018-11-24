@@ -22,7 +22,7 @@ export class GooglemapComponent implements OnInit {
             position => {
                 this.geolocationPosition = position,
   
-                    console.log(position)
+                     console.log(position)
                     // this.lat = position.coords.latitude
                     // this.lng = position.coords.longitude
 

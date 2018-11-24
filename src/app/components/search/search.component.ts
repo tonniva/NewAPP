@@ -48,6 +48,7 @@ private ResponseResult:ClsResponseAPI;
       // this.ResponseResult = Response;
    
      this.DataService.searchDetail = Response; 
+     console.log(Response);
     })
 
 
