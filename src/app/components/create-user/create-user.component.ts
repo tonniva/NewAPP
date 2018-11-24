@@ -42,10 +42,13 @@ export class CreateUserComponent implements OnInit {
 
   }
 
+
+
+
   onSubmit() {
 
     setTimeout(() => {
-      //  alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
+        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
       $.ajax({
         type: "POST",
         dataType: 'json',
@@ -53,7 +56,7 @@ export class CreateUserComponent implements OnInit {
         data: this.model,
         success: function(data) { alert('data: ' + data); }
       });
-    }, 3000);
+    }, 2000);
 
 
 

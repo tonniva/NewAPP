@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-googlemap',
   templateUrl: './googlemap.component.html',
@@ -13,6 +12,9 @@ export class GooglemapComponent implements OnInit {
   lng: number = 0; 
   constructor() { }
 
+
+
+ 
   ngOnInit() {
 
 
@@ -25,7 +27,8 @@ export class GooglemapComponent implements OnInit {
                      console.log(position)
                     // this.lat = position.coords.latitude
                     // this.lng = position.coords.longitude
-
+                   
+                 
                     this.lat = 14.598382
                     this.lng = 100.447521
             },
@@ -54,7 +57,7 @@ export class GooglemapComponent implements OnInit {
       window.navigator.geolocation.getCurrentPosition(
           position => {
               this.geolocationPosition = position,
-
+            
                   console.log(position)
                   this.lat = position.coords.latitude
                   this.lng = position.coords.longitude
