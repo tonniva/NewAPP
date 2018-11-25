@@ -2,7 +2,7 @@
     background: #e4e6e6;
 }
 
-form {
+.form-bg {
     font-family: 'Kanit', sans-serif !important;
 }
 
@@ -75,7 +75,8 @@ form {
     border-color: #3f9cb5;
 }
 
-.btn {
+
+/* .btn {
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #fe6d6d;
@@ -131,7 +132,7 @@ form {
 
 .btn.green:after {
     border-color: #47cf77;
-}
+} */
 
 @media only screen and (max-width: 767px) {
     .btn {
@@ -236,4 +237,72 @@ form {
     height: 8px;
     border-radius: 50%;
     background: white;
+}
+
+
+/* uploadfile  */
+
+::-webkit-file-upload-button {
+    background-color: #217d96;
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    font-size: 20px;
+    margin: 2px 0px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+::-webkit-file-upload-button:hover {
+    opacity: 1
+}
+
+
+/* button */
+
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #217d96;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    width: 100%;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
 }

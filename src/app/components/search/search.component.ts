@@ -45,49 +45,27 @@ private ResponseResult:ClsResponseAPI;
 
     this.ApiService.getSearch(this.model.Clinicname).subscribe((Response) => {
 
-      // this.ResponseResult = Response;
-   
-     this.DataService.searchDetail = Response; 
-     console.log(Response);
+      // this.ResponseResult = Response; 
+      this.DataService.searchDetail = Response; 
+      setTimeout(() => {
+     localStorage.setItem("Latitude",this.DataService.searchDetail.Latitude);
+     localStorage.setItem("Longitude",this.DataService.searchDetail.Longitude);
+    }, 5000);
+
     })
 
 
-    //  this.DataService.searchDetail = this.model; 
+    
   
       this.router.navigate(['/Survey']);
     
-    // this.router.navigate(['/Survey']);
+
   }
   
-  // get currentBook() { return JSON.stringify(this.model); }
-
-  // onSubmit(){
-  //  console.log(this);
-  //  this.router.navigate(['/Survey']);
-  // }
-  
-
-  // btnClick= function () {
-  //   this.router.navigate(['/Survey']);
-  //     }
 
       
 }
 
-// interface ClsResponseAPI {
-//   Clinicname: string;
-//   Customername: string;
-//   Operatorname: string;
-//   Address: string;
-// }
-
-
-// interface ClsResponseAPI {
-//   userId: number;
-//   id: number;
-//   title: string;
-//   body: string;
-// }
 
 
 
@@ -99,23 +77,9 @@ interface ClsResponseAPI {
   Address: string;
   Status: string;
   Image: string;
+  Latitude: string;
+  Longitude: string;
 }
 
 
 
-
-
-// interface Datum {
-//   id: number;
-//   first_name: string;
-//   last_name: string;
-//   avatar: string;
-// }
-
-// interface ClsResponseAPI {
-//   page: number;
-//   per_page: number;
-//   total: number;
-//   total_pages: number;
-//   data: Datum[];
-// }

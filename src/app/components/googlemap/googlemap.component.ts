@@ -18,7 +18,7 @@ export class GooglemapComponent implements OnInit {
   ngOnInit() {
 
 
-    
+    setTimeout(() => { 
     if (window.navigator && window.navigator.geolocation) {
         window.navigator.geolocation.getCurrentPosition(
             position => {
@@ -27,10 +27,13 @@ export class GooglemapComponent implements OnInit {
                      console.log(position)
                     // this.lat = position.coords.latitude
                     // this.lng = position.coords.longitude
-                   
-                 
-                    this.lat = 14.598382
-                    this.lng = 100.447521
+              
+                    var Latitude = localStorage.getItem("Latitude");
+                    var Longitude = localStorage.getItem("Longitude");
+
+                    console.log("Latitude:"+Latitude +"Longitude:"+Longitude)
+                    this.lat = Number(Latitude)
+                    this.lng = Number(Longitude)
             },
             error => {
                 switch (error.code) {
@@ -48,7 +51,7 @@ export class GooglemapComponent implements OnInit {
         );
     };
   
-    
+}, 10000);
     
   }
   getLocation(){

@@ -1,21 +1,16 @@
+/* * {
+    font-family: 'Kanit', sans-serif !important;
+} */
 
-
-  * {
-    font-family: 'Kanit', sans-serif;
-   }
-   .fs-1{
-       font-size: 0.8em;
-   }
-
-  
+.fs-1 {
+    font-size: 0.8em;
+}
 
 .bg-menu {
     /* The image used */
     background-image: url("http://www.getwellmedical.ca/asset/img/clinic-slider02.jpg");
-
     /* Full height */
-    height: 50%; 
-
+    height: 50%;
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -23,26 +18,20 @@
 }
 
 
-
-
-
-
-
-
-
-
 /* ล่าง */
 
-.box{
+.box {
     overflow: hidden;
-    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
     position: relative;
 }
-.box img{
+
+.box img {
     width: 100%;
     height: auto;
 }
-.box .box-content{
+
+.box .box-content {
     padding: 25% 10px;
     text-align: center;
     position: absolute;
@@ -54,14 +43,16 @@
     z-index: 1;
     transition: all 0.5s ease 0s;
 }
-.box:hover .box-content{
+
+.box:hover .box-content {
     opacity: 1;
     transition-delay: 0.2s;
 }
+
 .box:before,
 .box:after,
 .box .box-content:before,
-.box .box-content:after{
+.box .box-content:after {
     content: "";
     width: 50%;
     height: 50%;
@@ -73,37 +64,42 @@
     transform: scale(0.05);
     transition: all 0.3s ease 0s;
 }
-.box:after{
+
+.box:after {
     left: auto;
     right: 0;
     transition-delay: 0.1s;
 }
+
 .box .box-content:before,
-.box .box-content:after{
+.box .box-content:after {
     top: auto;
     bottom: 0;
     z-index: -1;
     transition-delay: 0.2s;
 }
-.box .box-content:after{
+
+.box .box-content:after {
     left: auto;
     right: 0;
     transition-delay: 0.3s;
 }
+
 .box:hover:before,
 .box:hover:after,
 .box:hover .box-content:before,
-.box:hover .box-content:after{
+.box:hover .box-content:after {
     opacity: 1;
     transform: scale(1);
 }
-.box .title{
+
+.box .title {
     font-size: 30px;
     color: #f5bc24;
     margin: 0 0 10px 0;
 }
- 
-.box .post{
+
+.box .post {
     display: block;
     font-size: 14px;
     color: #fff;
@@ -111,16 +107,19 @@
     font-style: italic;
     margin: 0 0 10px 0;
 }
-.box .icon{
+
+.box .icon {
     padding: 0;
     margin: 0;
     list-style: none;
 }
-.box .icon li{
+
+.box .icon li {
     display: inline-block;
     margin: 0 5px 0 0;
 }
-.box .icon li a{
+
+.box .icon li a {
     display: block;
     width: 30px;
     height: 30px;
@@ -130,28 +129,37 @@
     border: 1px solid #f5bc24;
     transition: all 0.3s ease 0s;
 }
-.box .icon li a:hover{
+
+.box .icon li a:hover {
     text-decoration: none;
     border-radius: 50%;
     background: #f5bc24;
     color: #fff;
 }
-@media only screen and (max-width:990px){
-    .box{ margin-bottom: 30px; }
+
+@media only screen and (max-width:990px) {
+    .box {
+        margin-bottom: 30px;
+    }
 }
 
 .grad {
     background-image: linear-gradient(to bottom right, #217d96, #217d96);
-  }
-
-
-  .circle{ /* ชื่อคลาสต้องตรงกับ <img class="circle"... */
-    height: auto;  /* ความสูงปรับให้เป็นออโต้ */
-    width: auto;  /* ความสูงปรับให้เป็นออโต้ */
-    border-radius: 50%; /* ปรับเป็น 50% คือความโค้งของเส้นขอบ*/
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* เงาของรูป */
 }
-.icon{
+
+.circle {
+    /* ชื่อคลาสต้องตรงกับ <img class="circle"... */
+    height: auto;
+    /* ความสูงปรับให้เป็นออโต้ */
+    width: auto;
+    /* ความสูงปรับให้เป็นออโต้ */
+    border-radius: 50%;
+    /* ปรับเป็น 50% คือความโค้งของเส้นขอบ*/
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    /* เงาของรูป */
+}
+
+.icon {
     display: inline-block;
     width: 100px;
     height: 100px;

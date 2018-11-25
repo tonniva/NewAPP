@@ -28,4 +28,6 @@ interface ClsResponseAPI {
   Address: string;
   Status: string;
   Image: string;
+  Latitude: string;
+  Longitude: string;
 }

@@ -1,10 +1,11 @@
 agm-map {
     height: 300px;
-  }
+}
 
-  *{
+* {
     font-family: 'Kanit', sans-serif !important;
 }
-.ct{
-  text-align: -webkit-center;
+
+.ct {
+    text-align: -webkit-center;
 }

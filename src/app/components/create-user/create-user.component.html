@@ -15,7 +15,7 @@
 
                     <!-- <div class="header">ข้อมูลคลินิก</div> -->
                     <div class="form-content">
-                        <h4 class="heading">รายละเอียด</h4>
+                        <h4 class="heading font-weight-bold">รายละเอียด</h4>
                         <div class="form-group">
                             <div class="col-sm-6">
                                 <label class="control-label" for="exampleInputName2"><i class="fa fa-user"></i></label>
@@ -63,26 +63,26 @@
                                 <div class="radio">
                                     <label class="container">  
                                                 <input type="radio" checked="checked"  name="Status" [(ngModel)]="model.Status"  value="Pass" [checked]='true' > 
-                                                 <span class="checkmark" ></span> ผ่าน  
+                                                 <span class="checkmark" ></span> <h6 class="font text-success font-weight-bold">ผ่าน</h6>  
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label class="container">  
                                                 <input type="radio"  name="Status"   [(ngModel)]="model.Status" value="Pending"  ngModel>  
-                                                <span class="checkmark"></span> รอดำเนินการ  
+                                                <span class="checkmark"></span> <h6 class="text-warning font-weight-bold"> รอดำเนินการ  </h6> 
                                                 
                                             </label>
                                 </div>
                                 <div class="radio">
                                     <label class="container">  
                                                     <input type="radio" name="Status"  [(ngModel)]="model.Status" value="NotPass" ngModel>  
-                                                    <span class="checkmark"></span> ไม่ผ่าน  
+                                                    <span class="checkmark"></span> <h6 class="text-danger font-weight-bold">ไม่ผ่าน</h6>
                                      </label>
                                 </div>
                                 <div class="radio">
                                     <label class="container">  
                                                     <input type="radio" checked="checked"  name="Status" [(ngModel)]="model.Status"   > 
-                                                    <span class="checkmark" ></span> ยกเลิก  
+                                                    <span class="checkmark" ></span> <h6 class="text-primary"> ยังไม่ระบุ</h6>  
                                         </label>
                                 </div>
 
@@ -93,15 +93,18 @@
                             </div>
                         </div>
 
-
-
-
-
-
-
+                        <!-- <label for="file-upload" class="custom-file-upload">
+                              อัพโหลดภาพ
+                            </label> -->
+                        <input type="file" accept="image/*" (change)="changeListener($event)" style="width: 100%">
+                        <br>
+                        <br>
+                        <!-- 
                         <div class="clearfix">
                             <button onclick="return confirm('ต้องการสร้างรายการใช่หรือไม่');" type="submit" class="btn btn-default blue">สร้างรายการ</button>
-                        </div>
+                        </div> -->
+                        <button onclick="return confirm('ต้องการสร้างรายการใช่หรือไม่');" type="submit" class="button" style="vertical-align:middle"><span>สร้างรายการ </span></button>
+
                     </div>
                 </form>
             </div>

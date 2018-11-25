@@ -12,7 +12,7 @@
     content: "";
     width: 3px;
     height: 100%;
-    background: #fae1e4;
+    /* background: #fae1e4; */
     position: absolute;
     top: 0;
     left: 50%;
@@ -57,7 +57,7 @@
 
 .main-timeline .timeline-content {
     display: block;
-    padding: 25px 150px 25px 25px;
+    padding: 25px 0px 25px 25px;
     border-radius: 0 70px 70px 0;
     background: #3c1525;
     color: #fff;
@@ -84,7 +84,7 @@
     height: 100px;
     line-height: 100px;
     border-radius: 50%;
-    background: #fff;
+    /* background: #fff; */
     text-align: center;
     margin: auto;
     font-size: 30px;
@@ -167,7 +167,7 @@
         padding: 50px 50px 10px 0;
     }
     .main-timeline .timeline-content {
-        padding: 25px 130px 25px 25px;
+        padding: 25px 0px 25px 25px
     }
     .main-timeline .timeline:nth-child(2n) .timeline-content {
         padding: 25px 25px 25px 130px;
@@ -180,10 +180,11 @@
         padding-top: 20px;
     }
     .main-timeline .icon {
-        right: 15px;
+        right: 0px;
     }
     .main-timeline .timeline:nth-child(2n) .icon {
         left: 15px;
+        /* margin-top: -241px; */
     }
 }
 

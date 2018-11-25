@@ -10,8 +10,9 @@ export class CreateUserComponent implements OnInit {
 
   constructor() { }
   model: any = {};
+  private image:ArrayBuffer;
   ngOnInit() {
-        
+  
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
           position => {
@@ -43,12 +44,27 @@ export class CreateUserComponent implements OnInit {
   }
 
 
+  changeListener($event) : void {
+    this.readThis($event.target);
+  }
+  
+  readThis(inputValue: any): void {
+    var file:File = inputValue.files[0];
+    var myReader:FileReader = new FileReader();
+  
+    myReader.onloadend = (e) => {
+      this.model.Image = myReader.result;
+     console.log(this.model.image);
+    }
+    myReader.readAsDataURL(file);
+  }
+
 
 
   onSubmit() {
-
+    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
     setTimeout(() => {
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
+       
       $.ajax({
         type: "POST",
         dataType: 'json',
