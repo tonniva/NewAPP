@@ -29,7 +29,7 @@ public ResultSearch:ClsResponseAPI;
       this.ResultSearch =  this.DataService.searchDetail;
       //  console.log(goodResponse);
 
-    }, 5000);
+    }, 10000);
   }
 
 
@@ -43,6 +43,7 @@ interface ClsResponseAPI {
   Operatorname: string;
   Address: string;
   Status: string;
+  ImageUrl: string;
   Image: string;
 }
 

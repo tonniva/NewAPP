@@ -20,12 +20,21 @@
                                     <div class="inner-content">
                                         <h1 class="title text font-weight-bold text-warning">ประวัติการตรวจ</h1>
                                         <div *ngFor="let item of ResultSearch | keyvalue">
-                                            <div class="oneline"><b>{{item.key}}</b> :<b>{{item.value}}</b></div>
-                                            <ng-container *ngIf="item.key ==='Image';else second">
-                                                <img class="w-100 border border-white" src={{item.value}}/>
+
+                                            <ng-container *ngIf="item.key ==='ImageUrl';else second">
+                                                <b><img class="w-100 border border-white" src={{item.value}}/></b>
                                             </ng-container>
-                                            <!-- <ng-template #second>{{item}}
-                                                        </ng-template> -->
+                                            <ng-template #second>
+                                                <div class="oneline">
+                                                    <span *ngIf="item.key ==='Address'">ที่อยู่ :</span>
+                                                    <span *ngIf="item.key ==='Clinicname'">สถานที่ตั้ง  :</span>
+                                                    <span *ngIf="item.key ==='Customername'">ชื่อผู้ประกอบการ  :</span>
+                                                    <span *ngIf="item.key ==='Operatorname'">ผู้ปฏิบัติงาน  :</span>
+                                                    <span *ngIf="item.key ==='Status'">สถานะ  :</span>
+
+                                                    <!-- <b>{{item.key}}</b> : -->
+                                                    <b *ngIf="!(item.key === 'Id' || item.key === 'Latitude' || item.key === 'Longitude')">{{item.value}}</b></div>
+                                            </ng-template>
                                         </div>
                                     </div>
                                 </div>

@@ -60,7 +60,7 @@ import { LoginComponent } from './components/login/login.component';
     HttpModule,
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
-      apiKey: ''
+      apiKey: 'AIzaSyC6OQeA3GhBE-juQnaLUYepQ-ZTbALTFfM'
     })
   ],
   providers: [ApiService],

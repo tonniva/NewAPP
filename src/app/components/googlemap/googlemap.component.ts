@@ -51,7 +51,7 @@ export class GooglemapComponent implements OnInit {
         );
     };
   
-}, 10000);
+}, 12000);
     
   }
   getLocation(){

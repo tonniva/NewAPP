@@ -19,8 +19,8 @@ export class CreateUserComponent implements OnInit {
               // this.geolocationPosition = position,
 
                  
-                  this.model.Longitude = position.coords.latitude,
-                  this.model.Latitude = position.coords.longitude,
+                  this.model.Longitude =position.coords.longitude,
+                  this.model.Latitude =  position.coords.latitude,
                   console.log(position)
                   // this.lat = 14.598382
                   // this.lng = 100.447521
@@ -51,9 +51,12 @@ export class CreateUserComponent implements OnInit {
   readThis(inputValue: any): void {
     var file:File = inputValue.files[0];
     var myReader:FileReader = new FileReader();
+    
   
     myReader.onloadend = (e) => {
-      this.model.Image = myReader.result;
+     this.model.Image = myReader.result;
+     this.model.FileType = file.type;
+     this.model.FileName = file.name;
      console.log(this.model.image);
     }
     myReader.readAsDataURL(file);

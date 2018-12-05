@@ -50,7 +50,8 @@ private ResponseResult:ClsResponseAPI;
       setTimeout(() => {
      localStorage.setItem("Latitude",this.DataService.searchDetail.Latitude);
      localStorage.setItem("Longitude",this.DataService.searchDetail.Longitude);
-    }, 5000);
+
+    }, 10000);
 
     })
 
