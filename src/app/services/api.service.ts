@@ -21,7 +21,7 @@ export class ApiService {
    //use ใช้ได้
     // return this.http.get(" https://reqres.in/api/users?page="+Clinicname).map((res)=>res.json());
     //test
-    return this.http.get("https://apissj-api.azurewebsites.net/books/"+Clinicname).map((res)=>res.json().user[0]);
+    return this.http.get("http://localhost:1337/books/"+Clinicname).map((res)=>res.json().user[0]);
    
     
 

@@ -71,7 +71,7 @@ export class CreateUserComponent implements OnInit {
       $.ajax({
         type: "POST",
         dataType: 'json',
-        url: 'https://apissj-api.azurewebsites.net/books',
+        url: 'http://localhost:1337/books',
         data: this.model,
         success: function(data) { alert('data: ' + data); }
       });
