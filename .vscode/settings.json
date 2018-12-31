@@ -10,5 +10,9 @@
   },
   "debug.internalConsoleOptions": "neverOpen",
   "appService.deploySubpath": "src",
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "appService.zipIgnorePattern": [
+    "node_modules{,/**}"
+  ],
+  "appService.defaultWebAppToDeploy": "/subscriptions/7ae35de1-f5d3-4bb4-8ae6-dca4c0974ec6/resourceGroups/appsvc_rg_linux_centralus/providers/Microsoft.Web/sites/healthtrackerapp"
 }

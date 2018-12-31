@@ -29,7 +29,7 @@ public ResultSearch:ClsResponseAPI;
       this.ResultSearch =  this.DataService.searchDetail;
       //  console.log(goodResponse);
 
-    }, 10000);
+    }, 5000);
   }
 
 

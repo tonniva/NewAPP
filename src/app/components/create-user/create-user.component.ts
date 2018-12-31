@@ -71,7 +71,7 @@ export class CreateUserComponent implements OnInit {
       $.ajax({
         type: "POST",
         dataType: 'json',
-        url: 'http://localhost:1337/books',
+        url: 'https://toniva.azurewebsites.net/books',
         data: this.model,
         success: function(data) { alert('data: ' + data); }
       });
