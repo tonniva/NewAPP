@@ -51,11 +51,18 @@ export class GooglemapComponent implements OnInit {
         );
     };
   
-}, 12000);
+}, 1200);
     
   }
+
+  
   getLocation(){
 
+    
+
+
+
+    
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
           position => {
@@ -65,6 +72,8 @@ export class GooglemapComponent implements OnInit {
                   this.lat = position.coords.latitude
                   this.lng = position.coords.longitude
 
+
+                  
           },
           error => {
               switch (error.code) {

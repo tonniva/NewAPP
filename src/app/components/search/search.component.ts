@@ -51,7 +51,7 @@ private ResponseResult:ClsResponseAPI;
      localStorage.setItem("Latitude",this.DataService.searchDetail.Latitude);
      localStorage.setItem("Longitude",this.DataService.searchDetail.Longitude);
 
-    }, 10000);
+    }, 1000);
 
     })
 
