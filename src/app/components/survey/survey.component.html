@@ -13,11 +13,41 @@
         <div class="col-md-12">
             <div class="main-timeline">
                 <div class="timeline" data-heading="2019">
-                    <a href="#" class="timeline-content">
+                    <a class="timeline-content">
                         <div class="container">
                             <div class="row">
                                 <div class="col-9">
                                     <div class="inner-content">
+
+                                        <ul *ngFor="let item of searchedItems; let i = index">
+                                            <li>
+                                                ติดต่อ :
+                                                <a href="tel:+0{{item.tel}}" class="Blondie">
+                                                    0{{item.tel}}
+                                                </a>
+                                            </li>
+                                            <li>
+                                                คุณ : {{item.firstname}} นามสุกล {{item.lastname}}
+                                            </li>
+                                            <li>
+                                                Clinicname : {{item.clinicname}}
+                                            </li>
+                                            <li>
+                                                ที่อยู่ : {{item.address}}
+                                            </li>
+                                            <li>
+                                                สถานะ : {{item.status}}
+                                            </li>
+                                            <li>
+                                                ผู้ปฏิบัติงาน : {{item.operatorname}}
+                                            </li>
+                                            <li>
+                                                สถานที่ Link Map :
+                                                <a href="{{item.linkmap}}">Click</a>
+                                            </li>
+
+
+                                        </ul>
                                         <h1 class="title text font-weight-bold text-warning">ประวัติการตรวจ</h1>
                                         <div *ngFor="let item of ResultSearch | keyvalue">
 
@@ -44,26 +74,12 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
                     </a>
                 </div>
-                <!-- <div class="timeline" data-heading="2017">
-                    <a href="#" class="timeline-content">
-                        <span class="icon"><img class="w-50 circle" src="http://164.115.41.179/d756/sites/default/files/styles/event_list/public/events/aopnoPvF.png?itok=l1MnCFC9"/></span>
-                        <div class="inner-content">
-                            <h3 class="title">ตรวจครั้งที่ 1</h3>
-                            <strong><h4 class=" text-danger">
-                                ไม่ผ่านการ 
-                            </h4></strong>
-                        </div>
-                    </a>
-                </div> -->
+
             </div>
         </div>
     </div>
 </div>
 <br>
-<app-googlemap></app-googlemap>
+<!-- <app-googlemap></app-googlemap> -->

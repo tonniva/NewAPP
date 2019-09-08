@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService} from '../../services/api.service';
+import {ApiService,GoogleDriveProvider} from '../../services/api.service';
 import {DataService} from '../../services/DataService';
 import { SearchDetail } from './Search-Detail';
 import { Router } from "@angular/router";
@@ -9,13 +9,20 @@ import { Router } from "@angular/router";
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
+  providers: [ GoogleDriveProvider ]
 })
 
 
 export class SearchComponent implements OnInit {
- 
+  persons: Array<any>;
+   dataId: string;
   message="test"
+
+  private searchedItems: Array<any> = [];
+  private key: string;
+  private prop: string;
+  private childrenPropName: string;
 
   // private searctServiceData:searctService[];
 
@@ -28,7 +35,17 @@ public Clinicnames:string;
 private ResponseResult:ClsResponseAPI;
 
 
-  constructor(private ApiService:ApiService,private router: Router,private DataService:DataService) { }
+  constructor(private ApiService:ApiService,private gDrive:GoogleDriveProvider,private router: Router,private DataService:DataService) { 
+
+    this.dataId = '1-sN8-XQ1tY6w-3BhaoC5G8fsMmcCq9vxGZpWINKBnxI';
+    gDrive.load( this.dataId )
+      .then( ( data ) => {
+        console.log( data );
+        this.persons = data;
+      }, (error) => {
+        console.log( error );
+      });
+  }
 
   ngOnInit() {
     
@@ -41,29 +58,36 @@ private ResponseResult:ClsResponseAPI;
 
 
   onSubmit() {
+    localStorage.setItem("Clinicname",this.model.Clinicname);
+    localStorage.setItem("Customername",this.model.Customername);
+    localStorage.setItem("Operatorname",this.model.Clinicname);
+    localStorage.setItem("Address",this.model.address);
+    
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
 
-    this.ApiService.getSearch(this.model.Clinicname).subscribe((Response) => {
+    // this.ApiService.getSearch(this.model.Clinicname).subscribe((Response) => {
+ 
+    //   this.DataService.searchDetail = Response; 
+    //   setTimeout(() => {
+    //  localStorage.setItem("Latitude",this.DataService.searchDetail.Latitude);
+    //  localStorage.setItem("Longitude",this.DataService.searchDetail.Longitude);
 
-      // this.ResponseResult = Response; 
-      this.DataService.searchDetail = Response; 
-      setTimeout(() => {
-     localStorage.setItem("Latitude",this.DataService.searchDetail.Latitude);
-     localStorage.setItem("Longitude",this.DataService.searchDetail.Longitude);
+    // }, 1000);
 
-    }, 1000);
-
-    })
-
-
-    
+    // }) 
   
-      this.router.navigate(['/Survey']);
-    
+    // this.searchRecursive(this.model.Clinicname);
+    this.router.navigate(['/Survey']);
 
   }
   
-
+  searchRecursive(value) { 
+    for(var i = 0; i < this.persons.length; i++) { 
+      if(value == this.persons[i].clinicname) {
+        this.searchedItems.push(this.persons[i]);
+      } 
+    } 
+  }
       
 }
 

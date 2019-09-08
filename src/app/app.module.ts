@@ -18,9 +18,15 @@ import { RouterModule,Routes } from '@angular/router';
 import { SurveyComponent } from './components/survey/survey.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { SearchComponent } from './components/search/search.component';
-import {ApiService} from './services/api.service';
+import {ApiService,GoogleDriveProvider} from './services/api.service'; 
+
 import {HttpModule} from '@angular/http';
 import { LoginComponent } from './components/login/login.component';
+
+ 
+// import {Injectable} from '@angular/core';
+// import {Http} from '@angular/http';
+// import 'rxjs/add/operator/map';
 
  const appRoutes:Routes  =[
    {path:"",component:PageMenuComponent},
@@ -58,12 +64,14 @@ import { LoginComponent } from './components/login/login.component';
     CommonModule,
     FormsModule,
     HttpModule,
+    // Injectable,
+    // Http,
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC6OQeA3GhBE-juQnaLUYepQ-ZTbALTFfM'
     })
   ],
-  providers: [ApiService],
+  providers: [ApiService,GoogleDriveProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

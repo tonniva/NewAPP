@@ -1,6 +1,6 @@
-import 'rxjs/add/operator/map';
 import { Injectable} from '@angular/core';
 import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
 
@@ -12,51 +12,59 @@ export class ApiService {
   
   constructor(private http:Http) { }
 
-  getSearch(Clinicname){
-    // API จริง
-    // this json plea
-    //return this.http.get("https://jsonplaceholder.typicode.com/posts/"+Clinicname).map((res)=>res.json());
-   
-   //this reqres.in
-   //use ใช้ได้
-    // return this.http.get(" https://reqres.in/api/users?page="+Clinicname).map((res)=>res.json());
-    //test
-    return this.http.get("https://toniva.azurewebsites.net/books/"+Clinicname).map((res)=>res.json().user[0]);
-   
-    
-
-    
-    //  console.log(Clinicname)  
-   //API localhost สำหรับเทส
-    //return this.http.get("http://localhost:3000/books"+Clinicname).map((res)=>res.json());
-  
-  }
-
-  // getSearch(id): Observable<any> {
-  //       return this.http
-  //           .get('https://jsonplaceholder.typicode.com/posts')
-  //           .map(response => { return response.json(); });
-  //   }
-
+  getSearch(Clinicname){ 
+    return this.http.get("https://toniva.azurewebsites.net/books/"+Clinicname).map((res)=>res.json().user[0]); 
+ 
+  } 
  
 }
 
+@Injectable()
 
-// import { Injectable} from '@angular/core';
-// import { Http } from '@angular/http';
-// import { Observable } from 'rxjs/Observable';
+export class GoogleDriveProvider {
+ 
+  data: any = null;
 
-// @Injectable()
+  constructor(public http: Http) {}
 
-// export class HostelService {
+  load( id ) {
+    if (this.data) {
+      // already loaded data
+      return Promise.resolve(this.data);
+    }
 
-//     constructor( private _http: Http) { }            
+    var url = 'https://spreadsheets.google.com/feeds/list/' + id + '/od6/public/values?alt=json'; 
+    // don't have the data yet
+    return new Promise(resolve => {
+      // We're using Angular Http provider to request the data,
+      // then on the response it'll map the JSON data to a parsed JS object.
+      // Next we process the data and resolve the promise with the new data.
+      this.http.get(url)
+        .map(res => res.json() )
+        .subscribe( data => {
+          console.log( 'Raw Data', data );
+          this.data = data.feed.entry;
+          
+          let returnArray: Array<any> = [];
+          if( this.data && this.data.length > 0 ) {
+            this.data.forEach( ( entry, index ) => {
+              var obj = {};
+              for( let x in entry ) {
+                if( x.includes('gsx$') && entry[x].$t ){
+                  obj[x.split('$')[1]] = entry[x]['$t'];
+                  // console.log( x.split('$')[1] + ': ' + entry[x]['$t'] );
+                }
+              }
+              returnArray.push( obj );
+            });
+          }
+          resolve(returnArray);
+        });
+    });
+  } 
+}
 
-//     getHostel(id): Observable<any> {
-//         return this._http
-//             .get('http://localhost/api/hostel/' + id)
-//             .map(response => { return response.json(); });
-//     }
-// }
 
+
+ 
 
