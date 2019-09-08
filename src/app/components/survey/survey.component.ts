@@ -50,7 +50,7 @@ dataId: string;
     console.log(value)
     for(var i = 0; i < this.persons.length; i++) {
       console.log(value) 
-      if(value == this.persons[i].Customername) {
+      if(value == this.persons[i].customername) {
         this.searchedItems.push(this.persons[i]);
       } 
     } 
@@ -59,7 +59,7 @@ dataId: string;
     console.log(value)
     for(var i = 0; i < this.persons.length; i++) {
       console.log(value) 
-      if(value == this.persons[i].Operatorname) {
+      if(value == this.persons[i].operatorname) {
         this.searchedItems.push(this.persons[i]);
       } 
     } 
@@ -70,7 +70,7 @@ dataId: string;
     console.log(value)
     for(var i = 0; i < this.persons.length; i++) {
       console.log(value) 
-      if(value == this.persons[i].Address) {
+      if(value == this.persons[i].address) {
         this.searchedItems.push(this.persons[i]);
       } 
     } 
@@ -89,21 +89,17 @@ dataId: string;
 
     setTimeout(() => {
 
-      this.fsearchRecursive(this.Clinicname) 
-      if(this.searchedItems == null)  
+      this.fsearchRecursive(this.Clinicname)   
+      if(this.Clinicname )  
       {
         this.fCustomername(this.Customername) 
-      }  
-      if(this.searchedItems == null)  
-      {
-      this.fCustomername(this.Customername) 
-      }
-
-      if(this.searchedItems == null)  
-      {
+      }   
+      if(this.Customername)  
+      { 
       this.fOperatorname(this.Operatorname) 
       }
-      if(this.searchedItems == null)  
+
+      if(!this.Operatorname)  
       {
       this.fAddress(this.Address) 
       }

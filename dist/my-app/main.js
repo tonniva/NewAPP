@@ -700,9 +700,9 @@ var SearchComponent = /** @class */ (function () {
     };
     SearchComponent.prototype.onSubmit = function () {
         localStorage.setItem("Clinicname", this.model.Clinicname);
-        localStorage.setItem("firstname", this.model.Customername);
-        localStorage.setItem("lastname", this.model.Clinicname);
-        localStorage.setItem("address", this.model.address);
+        localStorage.setItem("Customername", this.model.Customername);
+        localStorage.setItem("Operatorname", this.model.Operatorname);
+        localStorage.setItem("Address", this.model.address);
         // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
         // this.ApiService.getSearch(this.model.Clinicname).subscribe((Response) => {
         //   this.DataService.searchDetail = Response; 
@@ -817,7 +817,7 @@ var SurveyComponent = /** @class */ (function () {
         console.log(value);
         for (var i = 0; i < this.persons.length; i++) {
             console.log(value);
-            if (value == this.persons[i].Customername) {
+            if (value == this.persons[i].customername) {
                 this.searchedItems.push(this.persons[i]);
             }
         }
@@ -826,7 +826,7 @@ var SurveyComponent = /** @class */ (function () {
         console.log(value);
         for (var i = 0; i < this.persons.length; i++) {
             console.log(value);
-            if (value == this.persons[i].Operatorname) {
+            if (value == this.persons[i].operatorname) {
                 this.searchedItems.push(this.persons[i]);
             }
         }
@@ -835,7 +835,7 @@ var SurveyComponent = /** @class */ (function () {
         console.log(value);
         for (var i = 0; i < this.persons.length; i++) {
             console.log(value);
-            if (value == this.persons[i].Address) {
+            if (value == this.persons[i].address) {
                 this.searchedItems.push(this.persons[i]);
             }
         }
@@ -847,16 +847,13 @@ var SurveyComponent = /** @class */ (function () {
         // });
         setTimeout(function () {
             _this.fsearchRecursive(_this.Clinicname);
-            if (_this.searchedItems == null) {
+            if (_this.Clinicname) {
                 _this.fCustomername(_this.Customername);
             }
-            if (_this.searchedItems == null) {
-                _this.fCustomername(_this.Customername);
-            }
-            if (_this.searchedItems == null) {
+            if (_this.Customername) {
                 _this.fOperatorname(_this.Operatorname);
             }
-            if (_this.searchedItems == null) {
+            if (!_this.Operatorname) {
                 _this.fAddress(_this.Address);
             }
             // this.ResultSearch =  this.DataService.searchDetail;

@@ -60,7 +60,7 @@ private ResponseResult:ClsResponseAPI;
   onSubmit() {
     localStorage.setItem("Clinicname",this.model.Clinicname);
     localStorage.setItem("Customername",this.model.Customername);
-    localStorage.setItem("Operatorname",this.model.Clinicname);
+    localStorage.setItem("Operatorname",this.model.Operatorname);
     localStorage.setItem("Address",this.model.address);
     
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
