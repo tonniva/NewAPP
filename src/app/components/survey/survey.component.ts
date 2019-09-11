@@ -36,32 +36,43 @@ dataId: string;
   }
 
   
-  fsearchRecursive(value) {
-    console.log(value)
-    for(var i = 0; i < this.persons.length; i++) {
-      console.log(value) 
-      if(value == this.persons[i].clinicname) {
-        this.searchedItems.push(this.persons[i]);
-      } 
+  fsearchRecursive(value) { 
+ 
+    for(var i = 0; i < this.persons.length; i++) { 
+    var re = value; 
+    var str = this.persons[i].clinicname;
+        if (str.search(re) == -1 ) { 
+          console.log("Does not contain clinicname "+re ); 
+        } else { 
+          this.searchedItems.push(this.persons[i]);
+        }  
     } 
   }
    
   fCustomername(value) {
     console.log(value)
     for(var i = 0; i < this.persons.length; i++) {
-      console.log(value) 
-      if(value == this.persons[i].customername) {
-        this.searchedItems.push(this.persons[i]);
-      } 
+      var re = value; 
+      var str = this.persons[i].customername;
+          if (str.search(re) == -1 ) { 
+            console.log("Does not contain customername "+re ); 
+          } else { 
+            this.searchedItems.push(this.persons[i]);
+          }   
     } 
   }
   fOperatorname(value) {
     console.log(value)
     for(var i = 0; i < this.persons.length; i++) {
-      console.log(value) 
-      if(value == this.persons[i].operatorname) {
-        this.searchedItems.push(this.persons[i]);
-      } 
+
+      var re = value; 
+      var str = this.persons[i].operatorname;
+          if (str.search(re) == -1 ) { 
+            console.log("Does not contain operatorname "+re ); 
+          } else { 
+            this.searchedItems.push(this.persons[i]);
+          }   
+ 
     } 
   }
 
@@ -69,10 +80,14 @@ dataId: string;
   fAddress(value) {
     console.log(value)
     for(var i = 0; i < this.persons.length; i++) {
-      console.log(value) 
-      if(value == this.persons[i].address) {
-        this.searchedItems.push(this.persons[i]);
-      } 
+
+      var re = value; 
+      var str = this.persons[i].address;
+          if (str.search(re) == -1 ) { 
+            console.log("Does not contain  address"+re ); 
+          } else { 
+            this.searchedItems.push(this.persons[i]);
+          }   
     } 
   }
 
@@ -87,19 +102,26 @@ dataId: string;
   // });
 
 
-    setTimeout(() => {
-
-      this.fsearchRecursive(this.Clinicname)   
-      if(this.Clinicname )  
+    setTimeout(() => { 
+      console.log("this.Clinicname ="+this.Clinicname);
+      console.log("this.Customername ="+this.Customername);
+      console.log("this.Operatorname ="+this.Operatorname);
+      console.log("this.Address ="+this.Address);
+      if(this.Clinicname != 'undefined')  
+      {
+        this.fsearchRecursive(this.Clinicname)   
+      }   
+      
+      if(this.Customername != 'undefined')  
       {
         this.fCustomername(this.Customername) 
       }   
-      if(this.Customername)  
+      if(this.Operatorname != 'undefined')  
       { 
       this.fOperatorname(this.Operatorname) 
       }
 
-      if(!this.Operatorname)  
+      if(this.Address != 'undefined')  
       {
       this.fAddress(this.Address) 
       }
