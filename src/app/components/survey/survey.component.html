@@ -1,9 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark grad">
-    <a class="navbar-brand w-50" href="#">
-        <span class=""><img class="w-25 circle" src="http://164.115.41.179/d756/sites/default/files/styles/event_list/public/events/aopnoPvF.png?itok=l1MnCFC9" /></span> CLINIC TRACKING
+    <a class="navbar-brand w-50" href="/SearchSummary">
+        <span class="">
+                    <img  class="mr-3" src="../assets/icon/iconback.png" />
+                    <img class="w-25 circle" src="../assets/icon/logo.png" />
+            </span> CLINIC TRACKING
     </a>
-
-
 </nav>
 
 <div class="container">
@@ -12,70 +13,79 @@
     <div class="row">
         <div class="col-md-12">
             <div class="main-timeline">
-                <div class="timeline" data-heading="2019">
-                    <a class="timeline-content">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-9">
-                                    <div class="inner-content">
-
-                                        <ul *ngFor="let item of searchedItems; let i = index">
-                                            <li>
-                                                ติดต่อ :
-                                                <a href="tel:+0{{item.tel}}" class="Blondie">
+                <div class="year">รายละเอียดข้อมูลคลินิก</div>
+                <a class="timeline-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="inner-content">
+                                    <!-- {{ResultSearch}} -->
+                                    <h1 class="title text font-weight-bold text-warning">รายละเอียด</h1>
+                                    <ul *ngFor="let item of searchedItems; let i = index" class="wrapper-ul">
+                                        <li>
+                                            ชื่อคลินิค : <span class="text-warning">{{item.clinicname}}</span>
+                                        </li>
+                                        <li>
+                                            เลขที่ใบอนุญาติ :<span class="text-warning">{{item.licensenumber}}</span>
+                                        </li>
+                                        <li>
+                                            ประเภทคลินิก : <span class="text-warning">{{item.clinictypename}}</span>
+                                        </li>
+                                        <li>
+                                            ผู้ประกอบกิจการ : <span class="text-warning">{{item.firstname}} {{item.lastname}}</span>
+                                        </li>
+                                        <li>
+                                            ผู้ดำเนินการ : <span class="text-warning">{{item.operatorname}}</span>
+                                        </li>
+                                        <li>
+                                            ที่อยู่ : <span class="text-warning">{{item.address}}</span>
+                                        </li>
+                                        <li>
+                                            อำเภอ : <span class="text-warning">{{item.districtname}}</span>
+                                        </li>
+                                        <li>
+                                            เบอร์โทรติดต่อ :
+                                            <a href="tel:+0{{item.tel}}" class="Blondie">
                                                     {{item.tel}}
                                                 </a>
-                                            </li>
-                                            <li>
-                                                คุณ : {{item.firstname}} {{item.lastname}}
-                                            </li>
-                                            <li>
-                                                สถานพยาบาล : {{item.clinicname}}
-                                            </li>
-                                            <li>
-                                                ที่อยู่ : {{item.address}}
-                                            </li>
-                                            <li>
-                                                สถานะ : {{item.status}}
-                                            </li>
-                                            <li>
-                                                ผู้ปฏิบัติงาน : {{item.operatorname}}
-                                            </li>
-                                            <li>
-                                                สถานที่ Link Map :
-                                                <a href="{{item.linkmap}}">Click</a>
-                                            </li>
+                                        </li>
+                                        <li>
+                                            เลขที่ใบประกอบวิชาชีพ : <span class="text-warning">{{item.professionallicensenumber}}</span>
+                                        </li>
+                                        <li>
+                                            ปีที่ได้รับใบอนุญาติ : <span class="text-warning">{{item.year}}</span>
+                                        </li>
+                                        <li>
+                                            แผนที่ (Link Map) :
+                                            <a href="{{item.linkmap}}">Click</a>
+                                        </li>
 
+                                    </ul>
 
-                                        </ul>
-                                        <h1 class="title text font-weight-bold text-warning">ประวัติการตรวจ</h1>
-                                        <div *ngFor="let item of ResultSearch | keyvalue">
-
-                                            <ng-container *ngIf="item.key ==='ImageUrl';else second">
-                                                <b><img class="w-100 border border-white" src={{item.value}}/></b>
-                                            </ng-container>
-                                            <ng-template #second>
-                                                <div class="oneline">
-                                                    <span *ngIf="item.key ==='Clinicname'">ชื่อคลินิค  :</span>
-                                                    <span *ngIf="item.key ==='Customername'">ชื่อผู้ประกอบการ  :</span>
-                                                    <span *ngIf="item.key ==='Address'">ที่อยู่ :</span>
-                                                    <span *ngIf="item.key ==='Operatorname'">ผู้ปฏิบัติงาน  :</span>
-                                                    <span *ngIf="item.key ==='Status'">สถานะ  :</span>
-
-                                                    <!-- <b>{{item.key}}</b> : -->
-                                                    <b *ngIf="!(item.key === 'Id' || item.key === 'Latitude' || item.key === 'Longitude' || item.key ==='FileName'|| item.key ==='FileType' || item.key ==='Image')">{{item.value}}</b></div>
-                                            </ng-template>
-                                        </div>
+                                    <div *ngFor="let item of ResultSearch | keyvalue">
+                                        <!-- <ng-container *ngIf="item.key ==='ImageUrl';else second">
+                                            <b><img class="w-100 border border-white" src={{item.value}}/></b>
+                                        </ng-container>
+                                        <ng-template #second>
+                                            <div class="oneline">
+                                                <span *ngIf="item.key ==='Clinicname'">ชื่อคลินิค  :</span>
+                                                <span *ngIf="item.key ==='Customername'">ชื่อผู้ประกอบการ  :</span>
+                                                <span *ngIf="item.key ==='Address'">ที่อยู่ :</span>
+                                                <span *ngIf="item.key ==='Operatorname'">ผู้ปฏิบัติงาน  :</span>
+                                                <span *ngIf="item.key ==='Status'">สถานะ  :</span>
+ 
+                                                <b *ngIf="!(item.key === 'Id' || item.key === 'Latitude' || item.key === 'Longitude' || item.key ==='FileName'|| item.key ==='FileType' || item.key ==='Image')">{{item.value}}</b></div>
+                                        </ng-template>   -->
                                     </div>
                                 </div>
-                                <div class="col-3">
-                                    <span class="icon"><img class="w-50 circle" src="http://164.115.41.179/d756/sites/default/files/styles/event_list/public/events/aopnoPvF.png?itok=l1MnCFC9"/></span>
+                            </div>
+                            <div class="col-3">
+                                <span class="icon"><img class="w-50 circle" src="../assets/icon/logo.png"/></span>
 
-                                </div>
                             </div>
                         </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
 
             </div>
         </div>

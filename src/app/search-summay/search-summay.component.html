@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark grad">
+    <a class="navbar-brand w-50" href="/Search">
+        <span class="">
+            <img class="mr-3" src="../assets/icon/iconback.png" />
+            <img class="w-25 circle" src="../assets/icon/logo.png" />
+        </span> CLINIC TRACKING
+    </a>
+
+
+</nav>
+
+<div class="container">
+    <!-- <h2>Hi {{ResultSearch}}</h2> -->
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-timeline">
+                <div class="year">รวมทั้งหมด {{searchedItems.length}} แห่ง</div>
+                <a class="timeline-content wrapper-item" (click)="goto(item)" *ngFor="let item of searchedItems; index as i">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="inner-content">
+                                    <h1 class="title text font-weight-bold">{{i+1}} . ชื่อสถานพยาบาล</h1>
+
+                                    <div>
+                                        <div>
+                                            <span class="text-warning">{{item.clinicname}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <span class="icon"><img class="w-50 circle" src="../assets/icon/logo.png"/></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<!-- <app-googlemap></app-googlemap> -->

@@ -65,17 +65,36 @@ export class CreateUserComponent implements OnInit {
 
 
   onSubmit() {
+    //old code
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
-    setTimeout(() => {
+    // setTimeout(() => {
        
-      $.ajax({
-        type: "POST",
-        dataType: 'json',
-        url: 'https://toniva.azurewebsites.net/books',
-        data: this.model,
-        success: function(data) { alert('data: ' + data); }
-      });
-    }, 2000);
+    //   $.ajax({
+    //     type: "POST",
+    //     dataType: 'json',
+    //     url: 'https://toniva.azurewebsites.net/books',
+    //     data: this.model,
+    //     success: function(data) { alert('data: ' + data); }
+    //   });
+    // }, 2000);
+ 
+      var script_url = "https://script.google.com/macros/s/AKfycby_i3B6wRdFqETOtB9ifv1YfM9hB4dzvjJ6VWF55NVXGcSKLwU/exec";
+  
+      var url = script_url + "?callback=ctrlq&name="+this.model.Clinicname+"&id="+this.model.Clinicname+"&action=insert";
+  
+      // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
+      setTimeout(() => {
+         
+        $.ajax({
+        crossDomain: true,
+        mode: 'no-cors',
+        cache: 'no-cache',
+        url: url,
+        method: "GET",
+        dataType: "json",
+          success: function(data) { alert('data: ' + data); }
+        });
+      }, 2000);  
 
 
 

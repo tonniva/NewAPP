@@ -16,7 +16,7 @@ import { Router } from "@angular/router";
 
 export class SearchComponent implements OnInit {
   persons: Array<any>;
-   dataId: string;
+  dataId: string;
   message="test"
 
   private searchedItems: Array<any> = [];
@@ -25,6 +25,30 @@ export class SearchComponent implements OnInit {
   private childrenPropName: string;
 
   // private searctServiceData:searctService[];
+
+  //select ประเภทคลินิก
+  ClinicType: string = '';
+  selectClinicTypeChangeHandler (event: any) {
+    //update the ui
+    this.ClinicType = event.target.value;
+  }
+  //select
+//select เลือกอำเภอ
+District: string = ''; 
+selectDistrictChangeHandler (event: any) {
+    //update the ui
+    this.District = event.target.value;
+  }
+   //select
+
+//select เลือกปี
+Year: string = ''; 
+selectYearChangeHandler (event: any) {
+    //update the ui
+    this.Year = event.target.value;
+  }
+   //select
+    
 
 
   private ClinicName : string;  // เราป้อนค่า id = 5 ที่ตัวแปรนี้
@@ -60,24 +84,14 @@ private ResponseResult:ClsResponseAPI;
   onSubmit() {
     localStorage.setItem("Clinicname",this.model.Clinicname);
     localStorage.setItem("Customername",this.model.Customername);
-    localStorage.setItem("Operatorname",this.model.Operatorname);
-    localStorage.setItem("Address",this.model.address);
+    localStorage.setItem("Operatorname",this.model.Operatorname); 
+    localStorage.setItem("ClinicType",this.ClinicType); 
+    localStorage.setItem("District",this.District);  
+    localStorage.setItem("Year",this.Year);  
     
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
 
-    // this.ApiService.getSearch(this.model.Clinicname).subscribe((Response) => {
- 
-    //   this.DataService.searchDetail = Response; 
-    //   setTimeout(() => {
-    //  localStorage.setItem("Latitude",this.DataService.searchDetail.Latitude);
-    //  localStorage.setItem("Longitude",this.DataService.searchDetail.Longitude);
-
-    // }, 1000);
-
-    // }) 
-  
-    // this.searchRecursive(this.model.Clinicname);
-    this.router.navigate(['/Survey']);
+    
+    this.router.navigate(['/SearchSummary']);
 
   }
   

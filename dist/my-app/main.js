@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = " "
 
 /***/ }),
 
@@ -56,23 +56,34 @@ module.exports = "<!-- <app-googlemap></app-googlemap> -->\n<!-- <app-page-menu>
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(location) {
+        this.location = location;
         this.title = 'my-app';
     }
+    AppComponent.prototype.goBack = function () {
+        // window.history.back();
+        this.location.back();
+    };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [_angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -108,12 +119,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_api_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/api.service */ "./src/app/services/api.service.ts");
 /* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
 /* harmony import */ var _components_login_login_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/login/login.component */ "./src/app/components/login/login.component.ts");
+/* harmony import */ var _search_summay_search_summay_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./search-summay/search-summay.component */ "./src/app/search-summay/search-summay.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -141,6 +154,7 @@ var appRoutes = [
     { path: "Survey", component: _components_survey_survey_component__WEBPACK_IMPORTED_MODULE_11__["SurveyComponent"] },
     { path: "Contact", component: _components_contact_contact_component__WEBPACK_IMPORTED_MODULE_12__["ContactComponent"] },
     { path: "user", component: _components_user_user_component__WEBPACK_IMPORTED_MODULE_3__["UserComponent"] },
+    { path: "SearchSummary", component: _search_summay_search_summay_component__WEBPACK_IMPORTED_MODULE_17__["SearchSummayComponent"] },
     { path: "Search", component: _components_search_search_component__WEBPACK_IMPORTED_MODULE_13__["SearchComponent"],
         children: [
             { path: "googlemap", component: _components_googlemap_googlemap_component__WEBPACK_IMPORTED_MODULE_7__["GooglemapComponent"] },
@@ -161,7 +175,8 @@ var AppModule = /** @class */ (function () {
                 _components_survey_survey_component__WEBPACK_IMPORTED_MODULE_11__["SurveyComponent"],
                 _components_contact_contact_component__WEBPACK_IMPORTED_MODULE_12__["ContactComponent"],
                 _components_search_search_component__WEBPACK_IMPORTED_MODULE_13__["SearchComponent"],
-                _components_login_login_component__WEBPACK_IMPORTED_MODULE_16__["LoginComponent"]
+                _components_login_login_component__WEBPACK_IMPORTED_MODULE_16__["LoginComponent"],
+                _search_summay_search_summay_component__WEBPACK_IMPORTED_MODULE_17__["SearchSummayComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -268,7 +283,7 @@ module.exports = ".form-bg {\n    background: #e4e6e6;\n}\n\n.form-bg {\n    fon
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark grad\">\n    <a class=\"navbar-brand w-50\" href=\"#\">\n        <span class=\"\"><img class=\"w-25 circle\" src=\"http://164.115.41.179/d756/sites/default/files/styles/event_list/public/events/aopnoPvF.png?itok=l1MnCFC9\"/></span> CLINIC TRACKING\n    </a>\n \n</nav>\n<div class=\"form-bg\">\n    <div class=\"\">\n        <div class=\"\">\n            <div class=\"col-md-offset-3\">\n                <form class=\"form-horizontal\" (ngSubmit)=\"f.form.valid && onSubmit()\" #f=\"ngForm\" novalidate>\n\n\n                    <!-- <div class=\"header\">ข้อมูลคลินิก</div> -->\n                    <div class=\"form-content\">\n                        <h4 class=\"heading font-weight-bold\">รายละเอียด</h4>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-6\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-user\"></i></label>\n                                <input type=\"text\" class=\"form-control\" name=\"Clinicname\" placeholder=\"ชื่อคลินิค\" [(ngModel)]=\"model.Clinicname\" #Clinicname=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Clinicname.invalid }\" required />\n                            </div>\n                            <div class=\"col-sm-6\">\n\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n\n                                <input type=\"text\" class=\"form-control\" name=\"Customername\" placeholder=\"ชื่อผู้ประกอบการ\" [(ngModel)]=\"model.Customername\" #Customername=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Customername.invalid }\" required />\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n                                <input type=\"text\" class=\"form-control\" name=\"Operatorname\" placeholder=\"ชื่อผู้ดำเนินการ\" [(ngModel)]=\"model.Operatorname\" #Operatorname=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Operatorname.invalid }\" required />\n\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n                                <input type=\"text\" class=\"form-control\" name=\"Address\" placeholder=\"ที่ตั้ง\" [(ngModel)]=\"model.Address\" #Address=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Address.invalid }\" required />\n\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n                                <input type=\"text\" class=\"form-control\" name=\"Latitude\" placeholder=\"Latitude\" [(ngModel)]=\"model.Latitude\" #Latitude=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Latitude.invalid }\" required />\n\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n                                <input type=\"text\" class=\"form-control\" name=\"Longitude\" placeholder=\"Longitude\" [(ngModel)]=\"model.Longitude\" #Longitude=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Longitude.invalid }\" required />\n\n                            </div>\n                        </div>\n\n\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-6\">\n                                <div class=\"radio\">\n                                    <label class=\"container\">  \n                                                <input type=\"radio\" checked=\"checked\"  name=\"Status\" [(ngModel)]=\"model.Status\"  value=\"Pass\" [checked]='true' > \n                                                 <span class=\"checkmark\" ></span> <h6 class=\"font text-success font-weight-bold\">ผ่าน</h6>  \n                                    </label>\n                                </div>\n                                <div class=\"radio\">\n                                    <label class=\"container\">  \n                                                <input type=\"radio\"  name=\"Status\"   [(ngModel)]=\"model.Status\" value=\"Pending\"  ngModel>  \n                                                <span class=\"checkmark\"></span> <h6 class=\"text-warning font-weight-bold\"> รอดำเนินการ  </h6> \n                                                \n                                            </label>\n                                </div>\n                                <div class=\"radio\">\n                                    <label class=\"container\">  \n                                                    <input type=\"radio\" name=\"Status\"  [(ngModel)]=\"model.Status\" value=\"NotPass\" ngModel>  \n                                                    <span class=\"checkmark\"></span> <h6 class=\"text-danger font-weight-bold\">ไม่ผ่าน</h6>\n                                     </label>\n                                </div>\n                                <div class=\"radio\">\n                                    <label class=\"container\">  \n                                                    <input type=\"radio\" checked=\"checked\"  name=\"Status\" [(ngModel)]=\"model.Status\"   > \n                                                    <span class=\"checkmark\" ></span> <h6 class=\"text-primary\"> ยังไม่ระบุ</h6>  \n                                        </label>\n                                </div>\n\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                            </div>\n                        </div>\n\n                        <!-- <label for=\"file-upload\" class=\"custom-file-upload\">\n                              อัพโหลดภาพ\n                            </label> -->\n                        <input type=\"file\" accept=\"image/*\" (change)=\"changeListener($event)\" style=\"width: 100%;padding:7px;\">\n                        <br>\n                        <br>\n                        <!-- \n                        <div class=\" clearfix \">\n                            <button onclick=\"return confirm( 'ต้องการสร้างรายการใช่หรือไม่'); \" type=\"submit \" class=\"btn btn-default blue \">สร้างรายการ</button>\n                        </div> -->\n                        <button onclick=\"return confirm( 'ต้องการสร้างรายการใช่หรือไม่'); \" type=\"submit \" class=\"button \" style=\"vertical-align:middle \"><span>สร้างรายการ </span></button>\n\n                    </div>\n                </form>\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark grad\">\n    <a class=\"navbar-brand w-50\" href=\"#\">\n        <span class=\"\"><img class=\"w-25 circle\" src=\"http://164.115.41.179/d756/sites/default/files/styles/event_list/public/events/aopnoPvF.png?itok=l1MnCFC9\"/></span> CLINIC TRACKING\n    </a>\n\n</nav>\n<div class=\"form-bg\">\n    <div class=\"\">\n        <div class=\"\">\n            <div class=\"col-md-offset-3\">\n                <form class=\"form-horizontal\" (ngSubmit)=\"f.form.valid && onSubmit()\" #f=\"ngForm\" novalidate>\n\n\n                    <!-- <div class=\"header\">ข้อมูลคลินิก</div> -->\n                    <div class=\"form-content\">\n                        <h4 class=\"heading font-weight-bold\">รายละเอียด</h4>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-6\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-user\"></i></label>\n                                <input type=\"text\" class=\"form-control\" name=\"Clinicname\" placeholder=\"ชื่อคลินิค\" [(ngModel)]=\"model.Clinicname\" #Clinicname=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Clinicname.invalid }\" required />\n                            </div>\n                            <div class=\"col-sm-6\">\n\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n\n                                <input type=\"text\" class=\"form-control\" name=\"Customername\" placeholder=\"ชื่อผู้ประกอบการ\" [(ngModel)]=\"model.Customername\" #Customername=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Customername.invalid }\" required />\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n                                <input type=\"text\" class=\"form-control\" name=\"Operatorname\" placeholder=\"ชื่อผู้ดำเนินการ\" [(ngModel)]=\"model.Operatorname\" #Operatorname=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Operatorname.invalid }\" required />\n\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n                                <input type=\"text\" class=\"form-control\" name=\"Address\" placeholder=\"ที่ตั้ง\" [(ngModel)]=\"model.Address\" #Address=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Address.invalid }\" required />\n\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n                                <input type=\"text\" class=\"form-control\" name=\"Latitude\" placeholder=\"Latitude\" [(ngModel)]=\"model.Latitude\" #Latitude=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Latitude.invalid }\" required />\n\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n                                <input type=\"text\" class=\"form-control\" name=\"Longitude\" placeholder=\"Longitude\" [(ngModel)]=\"model.Longitude\" #Longitude=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Longitude.invalid }\" required />\n\n                            </div>\n                        </div>\n\n\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-6\">\n                                <div class=\"radio\">\n                                    <label class=\"container\">  \n                                                <input type=\"radio\" checked=\"checked\"  name=\"Status\" [(ngModel)]=\"model.Status\"  value=\"Pass\" [checked]='true' > \n                                                 <span class=\"checkmark\" ></span> <h6 class=\"font text-success font-weight-bold\">ผ่าน</h6>  \n                                    </label>\n                                </div>\n                                <div class=\"radio\">\n                                    <label class=\"container\">  \n                                                <input type=\"radio\"  name=\"Status\"   [(ngModel)]=\"model.Status\" value=\"Pending\"  ngModel>  \n                                                <span class=\"checkmark\"></span> <h6 class=\"text-warning font-weight-bold\"> รอดำเนินการ  </h6> \n                                                \n                                            </label>\n                                </div>\n                                <div class=\"radio\">\n                                    <label class=\"container\">  \n                                                    <input type=\"radio\" name=\"Status\"  [(ngModel)]=\"model.Status\" value=\"NotPass\" ngModel>  \n                                                    <span class=\"checkmark\"></span> <h6 class=\"text-danger font-weight-bold\">ไม่ผ่าน</h6>\n                                     </label>\n                                </div>\n                                <div class=\"radio\">\n                                    <label class=\"container\">  \n                                                    <input type=\"radio\" checked=\"checked\"  name=\"Status\" [(ngModel)]=\"model.Status\"   > \n                                                    <span class=\"checkmark\" ></span> <h6 class=\"text-primary\"> ยังไม่ระบุ</h6>  \n                                        </label>\n                                </div>\n\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                            </div>\n                        </div>\n\n                        <!-- <label for=\"file-upload\" class=\"custom-file-upload\">\n                              อัพโหลดภาพ\n                            </label> -->\n                        <input type=\"file\" accept=\"image/*\" (change)=\"changeListener($event)\" style=\"width: 100%;padding:7px;\">\n                        <br>\n                        <br>\n                        <!-- \n                        <div class=\" clearfix \">\n                            <button onclick=\"return confirm( 'ต้องการสร้างรายการใช่หรือไม่'); \" type=\"submit \" class=\"btn btn-default blue \">สร้างรายการ</button>\n                        </div> -->\n                        <button onclick=\"return confirm( 'ต้องการสร้างรายการใช่หรือไม่'); \" type=\"submit \" class=\"button \" style=\"vertical-align:middle \"><span>สร้างรายการ </span></button>\n\n                    </div>\n                </form>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -342,14 +357,28 @@ var CreateUserComponent = /** @class */ (function () {
         myReader.readAsDataURL(file);
     };
     CreateUserComponent.prototype.onSubmit = function () {
-        var _this = this;
+        //old code
+        // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
+        // setTimeout(() => {
+        //   $.ajax({
+        //     type: "POST",
+        //     dataType: 'json',
+        //     url: 'https://toniva.azurewebsites.net/books',
+        //     data: this.model,
+        //     success: function(data) { alert('data: ' + data); }
+        //   });
+        // }, 2000);
+        var script_url = "https://script.google.com/macros/s/AKfycby_i3B6wRdFqETOtB9ifv1YfM9hB4dzvjJ6VWF55NVXGcSKLwU/exec";
+        var url = script_url + "?callback=ctrlq&name=" + this.model.Clinicname + "&id=" + this.model.Clinicname + "&action=insert";
         // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
         setTimeout(function () {
             jquery__WEBPACK_IMPORTED_MODULE_1__["ajax"]({
-                type: "POST",
-                dataType: 'json',
-                url: 'https://toniva.azurewebsites.net/books',
-                data: _this.model,
+                crossDomain: true,
+                mode: 'no-cors',
+                cache: 'no-cache',
+                url: url,
+                method: "GET",
+                dataType: "json",
                 success: function (data) { alert('data: ' + data); }
             });
         }, 2000);
@@ -645,7 +674,7 @@ module.exports = ".form-bg {\n    background: #e4e6e6;\n}\n\nform {\n    font-fa
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <app-survey [message]=\"message\"></app-survey> -->\n<div class=\"form-bg\">\n    <div class=\"\">\n        <div class=\"\">\n            <div class=\"col-md-offset-3\">\n                <form class=\"form-horizontal\" (ngSubmit)=\"f.form.valid && onSubmit()\" #f=\"ngForm\" novalidate>\n\n                    <nav class=\"navbar navbar-expand-lg navbar-dark grad\">\n                        <a class=\"navbar-brand w-50\" href=\"#\">\n                            <span class=\"\"><img class=\"w-25 circle\" src=\"http://164.115.41.179/d756/sites/default/files/styles/event_list/public/events/aopnoPvF.png?itok=l1MnCFC9\"/></span> CLINIC TRACKING\n                        </a>\n                    </nav>\n\n                    <div class=\"form-content\">\n                        <h4 class=\"heading font-weight-bold\">ค้นหาประวัติ</h4>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-6\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-user\"></i></label>\n\n                                <input placeholder=\"ชื่อคลินิก\" type=\"text\" class=\"form-control\" name=\"Clinicname\" [(ngModel)]=\"model.Clinicname\" #Clinicname=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Clinicname.invalid }\" />\n                                <div *ngIf=\"f.submitted && Clinicname.invalid\" class=\"invalid-feedback\">\n                                    <div *ngIf=\"Clinicname.errors.required\">Clinic Name is required</div>\n                                </div>\n                            </div>\n                            <div class=\"col-sm-6\">\n\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n\n                                <input placeholder=\"ชื่อผู้ประกอบการ\" type=\"text\" class=\"form-control\" name=\"Customername\" [(ngModel)]=\"model.Customername\" #Customername=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Customername.invalid }\" />\n                                <div *ngIf=\"f.submitted && Customername.invalid\" class=\"invalid-feedback\">\n                                    <div *ngIf=\"Customername.errors.required\">Customername is required</div>\n                                </div>\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n\n                                <input placeholder=\"ชื่อผู้ดำเนินการ\" type=\"text\" class=\"form-control\" name=\"Operatorname\" [(ngModel)]=\"model.Operatorname\" #Operatorname=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Operatorname.invalid }\" />\n                                <div *ngIf=\"f.submitted && Operatorname.invalid\" class=\"invalid-feedback\">\n                                    <div *ngIf=\"Operatorname.errors.required\">Operatorname is required</div>\n                                </div>\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n                                <input placeholder=\"สถานที่\" type=\"text\" class=\"form-control\" name=\"Address\" [(ngModel)]=\"model.Address\" #Address=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Address.invalid }\" />\n                                <div *ngIf=\"f.submitted && Address.invalid\" class=\"invalid-feedback\">\n                                    <div *ngIf=\"Address.errors.required\">Address is required</div>\n                                </div>\n                            </div>\n\n\n\n                            <div class=\"clearfix\">\n                                <button type=\"submit\" class=\"button\"> ค้นหา</button>\n                            </div>\n                        </div>\n                    </div>\n                </form>\n\n\n            </div>\n        </div>\n    </div>\n</div>\n<div>\n\n</div>\n<h2>{{Clinicnames}}</h2>\n<!-- <ul>\n    <li *ngFor=\"let item of searctServiceData\">{{item.title}}</li>\n</ul> -->\n\n<!-- <app-survey></app-survey>\n<br>\n<app-googlemap></app-googlemap>\n -->"
+module.exports = "<!-- <app-survey [message]=\"message\"></app-survey> -->\n<div class=\"form-bg\">\n    <div class=\"\">\n        <div class=\"\">\n            <div class=\"col-md-offset-3\">\n                <form class=\"form-horizontal\" (ngSubmit)=\"f.form.valid && onSubmit()\" #f=\"ngForm\" novalidate>\n\n                    <nav class=\"navbar navbar-expand-lg navbar-dark grad\">\n                        <a class=\"navbar-brand w-50\" href=\"#\">\n                            <span class=\"\">\n                                    <img class=\"mr-3\" src=\"../assets/icon/iconback.png\" />\n                                    <img class=\"w-25 circle\" src=\"../assets/icon/logo.png\" />\n                            </span> CLINIC TRACKING\n                        </a>\n                    </nav>\n\n                    <div class=\"form-content\">\n                        <h4 class=\"heading font-weight-bold\">ค้นหาประวัติ</h4>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-6\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-user\"></i></label>\n\n                                <input placeholder=\"ชื่อคลินิก\" type=\"text\" class=\"form-control\" name=\"Clinicname\" [(ngModel)]=\"model.Clinicname\" #Clinicname=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Clinicname.invalid }\" />\n                                <div *ngIf=\"f.submitted && Clinicname.invalid\" class=\"invalid-feedback\">\n                                    <div *ngIf=\"Clinicname.errors.required\">Clinic Name is required</div>\n                                </div>\n                            </div>\n                            <div class=\"col-sm-6\">\n\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n\n                                <input placeholder=\"ชื่อผู้ประกอบการ\" type=\"text\" class=\"form-control\" name=\"Customername\" [(ngModel)]=\"model.Customername\" #Customername=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Customername.invalid }\" />\n                                <div *ngIf=\"f.submitted && Customername.invalid\" class=\"invalid-feedback\">\n                                    <div *ngIf=\"Customername.errors.required\">Customername is required</div>\n                                </div>\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n\n                                <input placeholder=\"ชื่อผู้ดำเนินการ\" type=\"text\" class=\"form-control\" name=\"Operatorname\" [(ngModel)]=\"model.Operatorname\" #Operatorname=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Operatorname.invalid }\" />\n                                <div *ngIf=\"f.submitted && Operatorname.invalid\" class=\"invalid-feedback\">\n                                    <div *ngIf=\"Operatorname.errors.required\">Operatorname is required</div>\n                                </div>\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n\n                                <!-- <select placeholder=\"ประเภทคลินิก\" [value]='46' class=\"form-control\" name=\"Clinictype\" [(ngModel)]=\"model.Clinictype\" #Operatorname=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Clinictype.invalid }\">\n                                    <option value=\"volvo\">Volvo</option>\n                                    <option value=\"saab\">Saab</option>\n                                    <option value=\"fiat\">Fiat</option>\n                                    <option value=\"audi\">Audi</option>\n                                </select> -->\n                                <select class='form-control' (change)=\"selectClinicTypeChangeHandler($event)\">\n                                    <option value=\"\" disabled selected hidden>ประเภทคลินิก</option>\n                                    <option value='T1'>เวชกรรม</option>\n                                    <option value='T2'>เวชกรรมเฉพาะทาง</option>\n                                    <option value='T3'>ทัณตกรรม</option>\n                                    <option value='T4'>ทัณตกรรมเฉพาะทาง</option>\n                                    <option value='T5'>พยาบาลและการผดุงครรภ์</option>\n                                    <option value='T6'>กายภาพบำบัด</option>\n                                    <option value='T7'>เทคนิกการแพทย์</option>\n                                    <option value='T8'>แพทย์แผนไทย</option>\n                                    <option value='T9'>แพทย์แผนไทยประยุกต์</option>\n                                    <option value='T10'>แพทย์แผนจีน</option>\n                                    <option value='T11'>สหคลินิก</option> \n                                </select>\n\n                                <div *ngIf=\"f.submitted && Clinictype.invalid\" class=\"invalid-feedback\">\n                                    <div *ngIf=\"Clinictype.errors.required\">Clinictype is required</div>\n                                </div>\n                            </div>\n                        </div>\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n                                <select required class='form-control' (change)=\"selectDistrictChangeHandler($event)\">\n                                    <option value=\"\" disabled selected hidden>อำเภอ</option>\n                                    <option value='D1'>เมือง</option>\n                                    <option value='D2'>ไชโย</option>\n                                    <option value='D3'>ป่าโมก</option>\n                                    <option value='D4'>โพธิ์ทอง</option>\n                                    <option value='D5'>แสวงหา</option>\n                                    <option value='D6'>วิเศษชัยชาญ</option>\n                                    <option value='D7'>สามโก้</option> \n                                </select>\n                                <div *ngIf=\"f.submitted && Clinictype.invalid\" class=\"invalid-feedback\">\n                                    <div *ngIf=\"Clinictype.errors.required\">Clinictype is required</div>\n                                </div>\n                            </div>\n                        </div>\n\n                        <div class=\"form-group\">\n                            <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n                                <select required class='form-control' (change)=\"selectYearChangeHandler($event)\">\n                                        <option value=\"\" disabled selected hidden>ปีที่ได้รับอนุญาต</option>\n                                        <option value='2561'>2561</option>\n                                        <option value='2562'>2562</option>\n                                        <option value='2563'>2563</option>\n                                        <option value='2564'>2564</option> \n                                    </select>\n                            </div>\n                            <!-- <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n                                <input placeholder=\"ปีที่ได้รับอนุญาต\" type=\"text\" class=\"form-control\" name=\"Address\" [(ngModel)]=\"model.Address\" #Address=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Address.invalid }\" />\n                                <div *ngIf=\"f.submitted && Address.invalid\" class=\"invalid-feedback\">\n                                    <div *ngIf=\"Address.errors.required\">Address is required</div>\n                                </div>\n                            </div> -->\n\n                            <!-- <div class=\"col-sm-12\">\n                                <label class=\"control-label\" for=\"exampleInputName2\"><i class=\"fa fa-lock\"></i></label>\n                                <input placeholder=\"สถานที่\" type=\"text\" class=\"form-control\" name=\"Address\" [(ngModel)]=\"model.Address\" #Address=\"ngModel\" [ngClass]=\"{ 'is-invalid': f.submitted && Address.invalid }\" />\n                                <div *ngIf=\"f.submitted && Address.invalid\" class=\"invalid-feedback\">\n                                    <div *ngIf=\"Address.errors.required\">Address is required</div>\n                                </div>\n                            </div> -->\n                            <div class=\"clearfix\">\n                                <button type=\"submit\" class=\"button\"> ค้นหา</button>\n                            </div>\n                        </div>\n                    </div>\n                </form>\n\n\n            </div>\n        </div>\n    </div>\n</div>\n<div>\n\n</div>\n<h2>{{Clinicnames}}</h2>\n<!-- <ul>\n    <li *ngFor=\"let item of searctServiceData\">{{item.title}}</li>\n</ul> -->\n\n<!-- <app-survey></app-survey>\n<br>\n<app-googlemap></app-googlemap>\n -->"
 
 /***/ }),
 
@@ -686,6 +715,15 @@ var SearchComponent = /** @class */ (function () {
         this.DataService = DataService;
         this.message = "test";
         this.searchedItems = [];
+        // private searctServiceData:searctService[];
+        //select ประเภทคลินิก
+        this.ClinicType = '';
+        //select
+        //select เลือกอำเภอ
+        this.District = '';
+        //select
+        //select เลือกปี
+        this.Year = '';
         this.model = {};
         this.dataId = '1-sN8-XQ1tY6w-3BhaoC5G8fsMmcCq9vxGZpWINKBnxI';
         gDrive.load(this.dataId)
@@ -696,23 +734,28 @@ var SearchComponent = /** @class */ (function () {
             console.log(error);
         });
     }
+    SearchComponent.prototype.selectClinicTypeChangeHandler = function (event) {
+        //update the ui
+        this.ClinicType = event.target.value;
+    };
+    SearchComponent.prototype.selectDistrictChangeHandler = function (event) {
+        //update the ui
+        this.District = event.target.value;
+    };
+    SearchComponent.prototype.selectYearChangeHandler = function (event) {
+        //update the ui
+        this.Year = event.target.value;
+    };
     SearchComponent.prototype.ngOnInit = function () {
     };
     SearchComponent.prototype.onSubmit = function () {
         localStorage.setItem("Clinicname", this.model.Clinicname);
         localStorage.setItem("Customername", this.model.Customername);
         localStorage.setItem("Operatorname", this.model.Operatorname);
-        localStorage.setItem("Address", this.model.address);
-        // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
-        // this.ApiService.getSearch(this.model.Clinicname).subscribe((Response) => {
-        //   this.DataService.searchDetail = Response; 
-        //   setTimeout(() => {
-        //  localStorage.setItem("Latitude",this.DataService.searchDetail.Latitude);
-        //  localStorage.setItem("Longitude",this.DataService.searchDetail.Longitude);
-        // }, 1000);
-        // }) 
-        // this.searchRecursive(this.model.Clinicname);
-        this.router.navigate(['/Survey']);
+        localStorage.setItem("ClinicType", this.ClinicType);
+        localStorage.setItem("District", this.District);
+        localStorage.setItem("Year", this.Year);
+        this.router.navigate(['/SearchSummary']);
     };
     SearchComponent.prototype.searchRecursive = function (value) {
         for (var i = 0; i < this.persons.length; i++) {
@@ -744,7 +787,7 @@ var SearchComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* *{\n    font-family: 'Kanit', sans-serif !important;\n} */\n\n.main-timeline {\n    overflow: hidden;\n    position: relative;\n    font-family: 'Kanit', sans-serif !important;\n}\n\n.main-timeline:before {\n    content: \"\";\n    width: 3px;\n    height: 100%;\n    /* background: #fae1e4; */\n    position: absolute;\n    top: 0;\n    left: 50%;\n    -webkit-transform: translateX(-50%);\n            transform: translateX(-50%);\n}\n\n.main-timeline .timeline {\n    width: 50%;\n    float: right;\n    padding: 50px 50px 10px 50px;\n    margin-top: 50px;\n    position: relative;\n}\n\n.main-timeline .timeline:before {\n    content: attr(data-heading);\n    width: 70px;\n    height: 35px;\n    line-height: 35px;\n    border-radius: 20px;\n    background: #f1083e;\n    text-align: center;\n    font-size: 20px;\n    font-weight: 600;\n    color: #fff;\n    position: absolute;\n    top: 3px;\n    left: -32px;\n}\n\n.main-timeline .timeline:after {\n    content: \"\";\n    width: 16px;\n    height: 16px;\n    border-radius: 50%;\n    background: #fae1e4;\n    border: 2px solid #3c1525;\n    position: absolute;\n    bottom: 53px;\n    left: -8px;\n}\n\n.main-timeline .timeline-content {\n    display: block;\n    padding: 25px 0px 25px 25px;\n    border-radius: 0 70px 70px 0;\n    background: #3c1525;\n    color: #fff;\n    position: relative;\n}\n\n.main-timeline .timeline-content:hover {\n    text-decoration: none;\n}\n\n.main-timeline .timeline-content:before {\n    content: \"\";\n    border-bottom: 20px solid transparent;\n    border-right: 62px solid #3c1525;\n    position: absolute;\n    bottom: 14px;\n    left: -53px;\n    -webkit-transform: rotate(30deg);\n            transform: rotate(30deg);\n}\n\n.main-timeline .icon {\n    display: inline-block;\n    width: 100px;\n    height: 100px;\n    line-height: 100px;\n    border-radius: 50%;\n    /* background: #fff; */\n    text-align: center;\n    margin: auto;\n    font-size: 30px;\n    color: #581c22;\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    right: 25px;\n}\n\n.main-timeline .title {\n    font-size: 18px;\n    font-weight: 600;\n    text-transform: uppercase;\n    margin: 0 0 5px 0;\n}\n\n.main-timeline .description {\n    font-size: 14px;\n}\n\n.main-timeline .timeline:nth-child(2n) {\n    padding: 50px 50px 10px 50px;\n}\n\n.main-timeline .timeline:nth-child(2n):before {\n    left: auto;\n    right: -40px;\n}\n\n.main-timeline .timeline:nth-child(2n):after {\n    left: auto;\n    right: -10px;\n}\n\n.main-timeline .timeline:nth-child(2n) .timeline-content {\n    border-radius: 70px 0 0 70px;\n    padding: 25px 25px 25px 150px;\n}\n\n.main-timeline .timeline:nth-child(2n) .timeline-content:before {\n    border-right: 68px solid #3c1525;\n    bottom: 21px;\n    left: auto;\n    right: -50px;\n    -webkit-transform: rotate(-226deg);\n            transform: rotate(-226deg);\n}\n\n.main-timeline .timeline:nth-child(2n) .icon {\n    right: auto;\n    left: 25px;\n}\n\n.main-timeline .timeline:nth-child(2) {\n    margin-top: 210px;\n}\n\n.main-timeline .timeline:nth-child(odd) {\n    margin: -220px 0 50px 0;\n}\n\n.main-timeline .timeline:nth-child(even) {\n    margin-bottom: 210px;\n}\n\n.main-timeline .timeline:first-child,\n.main-timeline .timeline:last-child:nth-child(even) {\n    margin: 0 0 30px 0;\n}\n\n.main-timeline .timeline:last-child:nth-child(even) {\n    margin-bottom: 0;\n}\n\n@media only screen and (max-width: 1200px) {\n    .main-timeline .timeline {\n        padding: 50px 0 10px 50px;\n    }\n    .main-timeline .timeline:nth-child(2n) {\n        padding: 50px 50px 10px 0;\n    }\n    .main-timeline .timeline-content {\n        padding: 25px 0px 25px 25px\n    }\n    .main-timeline .timeline:nth-child(2n) .timeline-content {\n        padding: 25px 25px 25px 130px;\n    }\n}\n\n@media only screen and (max-width: 990px) {\n    .main-timeline .timeline,\n    .main-timeline .timeline:nth-child(2n) {\n        padding-top: 20px;\n    }\n    .main-timeline .icon {\n        right: 0px;\n    }\n    .main-timeline .timeline:nth-child(2n) .icon {\n        left: 15px;\n        /* margin-top: -241px; */\n    }\n}\n\n@media only screen and (max-width: 767px) {\n    .main-timeline:before,\n    .main-timeline .timeline:after,\n    .main-timeline .timeline .timeline-content:before {\n        display: none;\n    }\n    .main-timeline .timeline,\n    .main-timeline .timeline:nth-child(even),\n    .main-timeline .timeline:nth-child(odd) {\n        width: 100%;\n        float: none;\n        padding: 50px 0 0 0;\n        margin: 0 0 30px 0;\n    }\n    .main-timeline .timeline:before,\n    .main-timeline .timeline:nth-child(2n):before {\n        left: 0;\n        -webkit-transform: translateX(0);\n                transform: translateX(0);\n    }\n    .main-timeline .timeline:nth-child(2n) .timeline-content {\n        padding: 25px 120px 25px 25px;\n        border-radius: 0 70px 70px 0;\n    }\n    .main-timeline .timeline:nth-child(2n) .icon {\n        right: 20px;\n        left: auto;\n    }\n}\n\n.circle {\n    /* ชื่อคลาสต้องตรงกับ <img class=\"circle\"... */\n    height: auto;\n    /* ความสูงปรับให้เป็นออโต้ */\n    width: auto;\n    /* ความสูงปรับให้เป็นออโต้ */\n    border-radius: 50%;\n    /* ปรับเป็น 50% คือความโค้งของเส้นขอบ*/\n    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);\n    /* เงาของรูป */\n}\n\n.oneline {\n    white-space: nowrap;\n}\n\n/* nav bar */\n\n.circle {\n    /* ชื่อคลาสต้องตรงกับ <img class=\"circle\"... */\n    height: auto;\n    /* ความสูงปรับให้เป็นออโต้ */\n    width: auto;\n    /* ความสูงปรับให้เป็นออโต้ */\n    border-radius: 50%;\n    /* ปรับเป็น 50% คือความโค้งของเส้นขอบ*/\n    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);\n    /* เงาของรูป */\n}\n\n.grad {\n    background-image: linear-gradient(to bottom right, #217d96, #217d96);\n}"
+module.exports = "/* *{\n    font-family: 'Kanit', sans-serif !important;\n} */\n\n.main-timeline {\n    overflow: hidden;\n    position: relative;\n    font-family: 'Kanit', sans-serif !important;\n}\n\n.main-timeline:before {\n    content: \"\";\n    width: 3px;\n    height: 100%;\n    /* background: #fae1e4; */\n    position: absolute;\n    top: 0;\n    left: 50%;\n    -webkit-transform: translateX(-50%);\n            transform: translateX(-50%);\n}\n\n.main-timeline .timeline {\n    width: 50%;\n    float: right;\n    padding: 50px 50px 10px 50px;\n    margin-top: 50px;\n    position: relative;\n}\n\n.main-timeline .timeline:before {\n    content: attr(data-heading);\n    width: 70px;\n    height: 35px;\n    line-height: 35px;\n    border-radius: 20px;\n    background: #f1083e;\n    text-align: center;\n    font-size: 20px;\n    font-weight: 600;\n    color: #fff;\n    position: absolute;\n    top: 3px;\n    left: -32px;\n}\n\n.main-timeline .timeline:after {\n    content: \"\";\n    width: 16px;\n    height: 16px;\n    border-radius: 50%;\n    background: #fae1e4;\n    border: 2px solid #3c1525;\n    position: absolute;\n    bottom: 53px;\n    left: -8px;\n}\n\n.main-timeline .timeline-content {\n    display: block;\n    padding: 25px 0px 25px 25px;\n    border-radius: 0 70px 70px 0;\n    background: #3c1525;\n    color: #fff;\n    position: relative;\n}\n\n.main-timeline .timeline-content:hover {\n    text-decoration: none;\n}\n\n.main-timeline .timeline-content:before {\n    content: \"\";\n    border-bottom: 20px solid transparent;\n    border-right: 62px solid #3c1525;\n    position: absolute;\n    bottom: 14px;\n    left: -53px;\n    -webkit-transform: rotate(30deg);\n            transform: rotate(30deg);\n}\n\n.main-timeline .icon {\n    display: inline-block;\n    width: 100px;\n    height: 100px;\n    line-height: 100px;\n    border-radius: 50%;\n    /* background: #fff; */\n    text-align: center;\n    margin: auto;\n    font-size: 30px;\n    color: #581c22;\n    position: absolute;\n    top: 0;\n    bottom: 0;\n    right: 25px;\n}\n\n.main-timeline .title {\n    font-size: 18px;\n    font-weight: 600;\n    text-transform: uppercase;\n    margin: 0 0 5px 0;\n}\n\n.main-timeline .description {\n    font-size: 14px;\n}\n\n.main-timeline .timeline:nth-child(2n) {\n    padding: 50px 50px 10px 50px;\n}\n\n.main-timeline .timeline:nth-child(2n):before {\n    left: auto;\n    right: -40px;\n}\n\n.main-timeline .timeline:nth-child(2n):after {\n    left: auto;\n    right: -10px;\n}\n\n.main-timeline .timeline:nth-child(2n) .timeline-content {\n    border-radius: 70px 0 0 70px;\n    padding: 25px 25px 25px 150px;\n}\n\n.main-timeline .timeline:nth-child(2n) .timeline-content:before {\n    border-right: 68px solid #3c1525;\n    bottom: 21px;\n    left: auto;\n    right: -50px;\n    -webkit-transform: rotate(-226deg);\n            transform: rotate(-226deg);\n}\n\n.main-timeline .timeline:nth-child(2n) .icon {\n    right: auto;\n    left: 25px;\n}\n\n.main-timeline .timeline:nth-child(2) {\n    margin-top: 210px;\n}\n\n.main-timeline .timeline:nth-child(odd) {\n    margin: -220px 0 50px 0;\n}\n\n.main-timeline .timeline:nth-child(even) {\n    margin-bottom: 210px;\n}\n\n.main-timeline .timeline:first-child,\n.main-timeline .timeline:last-child:nth-child(even) {\n    margin: 0 0 30px 0;\n}\n\n.main-timeline .timeline:last-child:nth-child(even) {\n    margin-bottom: 0;\n}\n\n@media only screen and (max-width: 1200px) {\n    .main-timeline .timeline {\n        padding: 50px 0 10px 50px;\n    }\n    .main-timeline .timeline:nth-child(2n) {\n        padding: 50px 50px 10px 0;\n    }\n    .main-timeline .timeline-content {\n        padding: 25px 0px 25px 25px\n    }\n    .main-timeline .timeline:nth-child(2n) .timeline-content {\n        padding: 25px 25px 25px 130px;\n    }\n}\n\n@media only screen and (max-width: 990px) {\n    .main-timeline .timeline,\n    .main-timeline .timeline:nth-child(2n) {\n        padding-top: 20px;\n    }\n    .main-timeline .icon {\n        right: 0px;\n    }\n    .main-timeline .timeline:nth-child(2n) .icon {\n        left: 15px;\n        /* margin-top: -241px; */\n    }\n}\n\n@media only screen and (max-width: 767px) {\n    .main-timeline:before,\n    .main-timeline .timeline:after,\n    .main-timeline .timeline .timeline-content:before {\n        display: none;\n    }\n    .main-timeline .timeline,\n    .main-timeline .timeline:nth-child(even),\n    .main-timeline .timeline:nth-child(odd) {\n        width: 100%;\n        float: none;\n        padding: 50px 0 0 0;\n        margin: 0 0 30px 0;\n    }\n    .main-timeline .timeline:before,\n    .main-timeline .timeline:nth-child(2n):before {\n        left: 0;\n        -webkit-transform: translateX(0);\n                transform: translateX(0);\n    }\n    .main-timeline .timeline:nth-child(2n) .timeline-content {\n        padding: 25px 120px 25px 25px;\n        border-radius: 0 70px 70px 0;\n    }\n    .main-timeline .timeline:nth-child(2n) .icon {\n        right: 20px;\n        left: auto;\n    }\n}\n\n.circle {\n    /* ชื่อคลาสต้องตรงกับ <img class=\"circle\"... */\n    height: auto;\n    /* ความสูงปรับให้เป็นออโต้ */\n    width: auto;\n    /* ความสูงปรับให้เป็นออโต้ */\n    border-radius: 50%;\n    /* ปรับเป็น 50% คือความโค้งของเส้นขอบ*/\n    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);\n    /* เงาของรูป */\n}\n\n.oneline {\n    white-space: nowrap;\n}\n\n/* nav bar */\n\n.circle {\n    /* ชื่อคลาสต้องตรงกับ <img class=\"circle\"... */\n    height: auto;\n    /* ความสูงปรับให้เป็นออโต้ */\n    width: auto;\n    /* ความสูงปรับให้เป็นออโต้ */\n    border-radius: 50%;\n    /* ปรับเป็น 50% คือความโค้งของเส้นขอบ*/\n    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);\n    /* เงาของรูป */\n}\n\n.grad {\n    background-image: linear-gradient(to bottom right, #217d96, #217d96);\n}\n\n.year {\n    width: auto;\n    height: 35px;\n    line-height: 35px;\n    border-radius: 20px;\n    background: #066532;\n    text-align: center;\n    font-size: 20px;\n    font-weight: 600;\n    color: #fff;\n    margin-top: 15px;\n    margin-bottom: 15px;\n    top: 3px;\n    left: -32px;\n}\n\n.wrapper-ul {\n    margin-left: -35px;\n}\n\n.wrapper-ul li {\n    white-space: nowrap;\n}"
 
 /***/ }),
 
@@ -755,7 +798,7 @@ module.exports = "/* *{\n    font-family: 'Kanit', sans-serif !important;\n} */\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark grad\">\n    <a class=\"navbar-brand w-50\" href=\"#\">\n        <span class=\"\"><img class=\"w-25 circle\" src=\"http://164.115.41.179/d756/sites/default/files/styles/event_list/public/events/aopnoPvF.png?itok=l1MnCFC9\" /></span> CLINIC TRACKING\n    </a>\n\n\n</nav>\n\n<div class=\"container\">\n    <!-- <h2>Hi {{ResultSearch}}</h2> -->\n\n    <div class=\"row\">\n        <div class=\"col-md-12\">\n            <div class=\"main-timeline\">\n                <div class=\"timeline\" data-heading=\"2019\">\n                    <a class=\"timeline-content\">\n                        <div class=\"container\">\n                            <div class=\"row\">\n                                <div class=\"col-9\">\n                                    <div class=\"inner-content\">\n\n                                        <ul *ngFor=\"let item of searchedItems; let i = index\">\n                                            <li>\n                                                ติดต่อ :\n                                                <a href=\"tel:+0{{item.tel}}\" class=\"Blondie\">\n                                                    {{item.tel}}\n                                                </a>\n                                            </li>\n                                            <li>\n                                                คุณ : {{item.firstname}} {{item.lastname}}\n                                            </li>\n                                            <li>\n                                                สถานพยาบาล : {{item.clinicname}}\n                                            </li>\n                                            <li>\n                                                ที่อยู่ : {{item.address}}\n                                            </li>\n                                            <li>\n                                                สถานะ : {{item.status}}\n                                            </li>\n                                            <li>\n                                                ผู้ปฏิบัติงาน : {{item.operatorname}}\n                                            </li>\n                                            <li>\n                                                สถานที่ Link Map :\n                                                <a href=\"{{item.linkmap}}\">Click</a>\n                                            </li>\n\n\n                                        </ul>\n                                        <h1 class=\"title text font-weight-bold text-warning\">ประวัติการตรวจ</h1>\n                                        <div *ngFor=\"let item of ResultSearch | keyvalue\">\n\n                                            <ng-container *ngIf=\"item.key ==='ImageUrl';else second\">\n                                                <b><img class=\"w-100 border border-white\" src={{item.value}}/></b>\n                                            </ng-container>\n                                            <ng-template #second>\n                                                <div class=\"oneline\">\n                                                    <span *ngIf=\"item.key ==='Clinicname'\">ชื่อคลินิค  :</span>\n                                                    <span *ngIf=\"item.key ==='Customername'\">ชื่อผู้ประกอบการ  :</span>\n                                                    <span *ngIf=\"item.key ==='Address'\">ที่อยู่ :</span>\n                                                    <span *ngIf=\"item.key ==='Operatorname'\">ผู้ปฏิบัติงาน  :</span>\n                                                    <span *ngIf=\"item.key ==='Status'\">สถานะ  :</span>\n\n                                                    <!-- <b>{{item.key}}</b> : -->\n                                                    <b *ngIf=\"!(item.key === 'Id' || item.key === 'Latitude' || item.key === 'Longitude' || item.key ==='FileName'|| item.key ==='FileType' || item.key ==='Image')\">{{item.value}}</b></div>\n                                            </ng-template>\n                                        </div>\n                                    </div>\n                                </div>\n                                <div class=\"col-3\">\n                                    <span class=\"icon\"><img class=\"w-50 circle\" src=\"http://164.115.41.179/d756/sites/default/files/styles/event_list/public/events/aopnoPvF.png?itok=l1MnCFC9\"/></span>\n\n                                </div>\n                            </div>\n                        </div>\n                    </a>\n                </div>\n\n            </div>\n        </div>\n    </div>\n</div>\n<br>\n<!-- <app-googlemap></app-googlemap> -->"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark grad\">\n    <a class=\"navbar-brand w-50\" href=\"/SearchSummary\">\n        <span class=\"\">\n                    <img  class=\"mr-3\" src=\"../assets/icon/iconback.png\" />\n                    <img class=\"w-25 circle\" src=\"../assets/icon/logo.png\" />\n            </span> CLINIC TRACKING\n    </a>\n</nav>\n\n<div class=\"container\">\n    <!-- <h2>Hi {{ResultSearch}}</h2> -->\n\n    <div class=\"row\">\n        <div class=\"col-md-12\">\n            <div class=\"main-timeline\">\n                <div class=\"year\">รายละเอียดข้อมูลคลินิก</div>\n                <a class=\"timeline-content\">\n                    <div class=\"container\">\n                        <div class=\"row\">\n                            <div class=\"col-9\">\n                                <div class=\"inner-content\">\n                                    <!-- {{ResultSearch}} -->\n                                    <h1 class=\"title text font-weight-bold text-warning\">รายละเอียด</h1>\n                                    <ul *ngFor=\"let item of searchedItems; let i = index\" class=\"wrapper-ul\">\n                                        <li>\n                                            ชื่อคลินิค : <span class=\"text-warning\">{{item.clinicname}}</span>\n                                        </li>\n                                        <li>\n                                            เลขที่ใบอนุญาติ :<span class=\"text-warning\">{{item.licensenumber}}</span>\n                                        </li>\n                                        <li>\n                                            ประเภทคลินิก : <span class=\"text-warning\">{{item.clinictypename}}</span>\n                                        </li>\n                                        <li>\n                                            ผู้ประกอบกิจการ : <span class=\"text-warning\">{{item.firstname}} {{item.lastname}}</span>\n                                        </li>\n                                        <li>\n                                            ผู้ดำเนินการ : <span class=\"text-warning\">{{item.operatorname}}</span>\n                                        </li>\n                                        <li>\n                                            ที่อยู่ : <span class=\"text-warning\">{{item.address}}</span>\n                                        </li>\n                                        <li>\n                                            อำเภอ : <span class=\"text-warning\">{{item.districtname}}</span>\n                                        </li>\n                                        <li>\n                                            เบอร์โทรติดต่อ :\n                                            <a href=\"tel:+0{{item.tel}}\" class=\"Blondie\">\n                                                    {{item.tel}}\n                                                </a>\n                                        </li>\n                                        <li>\n                                            เลขที่ใบประกอบวิชาชีพ : <span class=\"text-warning\">{{item.professionallicensenumber}}</span>\n                                        </li>\n                                        <li>\n                                            ปีที่ได้รับใบอนุญาติ : <span class=\"text-warning\">{{item.year}}</span>\n                                        </li>\n                                        <li>\n                                            แผนที่ (Link Map) :\n                                            <a href=\"{{item.linkmap}}\">Click</a>\n                                        </li>\n\n                                    </ul>\n\n                                    <div *ngFor=\"let item of ResultSearch | keyvalue\">\n                                        <!-- <ng-container *ngIf=\"item.key ==='ImageUrl';else second\">\n                                            <b><img class=\"w-100 border border-white\" src={{item.value}}/></b>\n                                        </ng-container>\n                                        <ng-template #second>\n                                            <div class=\"oneline\">\n                                                <span *ngIf=\"item.key ==='Clinicname'\">ชื่อคลินิค  :</span>\n                                                <span *ngIf=\"item.key ==='Customername'\">ชื่อผู้ประกอบการ  :</span>\n                                                <span *ngIf=\"item.key ==='Address'\">ที่อยู่ :</span>\n                                                <span *ngIf=\"item.key ==='Operatorname'\">ผู้ปฏิบัติงาน  :</span>\n                                                <span *ngIf=\"item.key ==='Status'\">สถานะ  :</span>\n \n                                                <b *ngIf=\"!(item.key === 'Id' || item.key === 'Latitude' || item.key === 'Longitude' || item.key ==='FileName'|| item.key ==='FileType' || item.key ==='Image')\">{{item.value}}</b></div>\n                                        </ng-template>   -->\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"col-3\">\n                                <span class=\"icon\"><img class=\"w-50 circle\" src=\"../assets/icon/logo.png\"/></span>\n\n                            </div>\n                        </div>\n                    </div>\n                </a>\n\n            </div>\n        </div>\n    </div>\n</div>\n<br>\n<!-- <app-googlemap></app-googlemap> -->"
 
 /***/ }),
 
@@ -772,6 +815,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_DataService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/DataService */ "./src/app/services/DataService.ts");
 /* harmony import */ var _services_api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/api.service */ "./src/app/services/api.service.ts");
+/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/ngx-cookie-service.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -784,17 +828,25 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var SurveyComponent = /** @class */ (function () {
-    function SurveyComponent(DataService, gDrive) {
+    function SurveyComponent(DataService, gDrive, cookieService) {
         var _this = this;
         this.DataService = DataService;
+        this.cookieService = cookieService;
         this.searchedItems = [];
+        this.searcheDetail = [];
         this.Clinicname = localStorage.getItem("Clinicname");
         this.Customername = localStorage.getItem("Customername");
         this.Operatorname = localStorage.getItem("Operatorname");
         this.Address = localStorage.getItem("Address");
+        this.ClinicType = localStorage.getItem("ClinicType");
+        this.District = localStorage.getItem("District");
+        this.Year = localStorage.getItem("Year");
         // knowledge http://leifwells.com/2016/06/09/ionic-2--angular-2-using-a-google-spreadsheet-as-a-data-source/
         // https://medium.com/@scottcents/how-to-convert-google-sheets-to-json-in-just-3-steps-228fe2c24e6
+        // ภาษาไทย https://sysadmin.psu.ac.th/2014/10/10/googleappsscript-googlesheets-database/
+        //insert delete update html to sheet //https://www.youtube.com/watch?v=OqDo2L-aSGw
         this.dataId = '1-sN8-XQ1tY6w-3BhaoC5G8fsMmcCq9vxGZpWINKBnxI';
         gDrive.load(this.dataId)
             .then(function (data) {
@@ -857,14 +909,20 @@ var SurveyComponent = /** @class */ (function () {
     };
     SurveyComponent.prototype.ngOnInit = function () {
         var _this = this;
+        if (this.DataService.searchDetail) {
+            console.log("111111");
+            this.searchedItems.push(this.DataService.searchDetail);
+        }
+        else {
+            var survey_store_cookie = this.cookieService.get('storedata_survey');
+            this.DataService.searchDetail = JSON.parse(survey_store_cookie);
+            ;
+            this.searchedItems.push(this.DataService.searchDetail);
+        }
         var goodResponse = [];
         //   $(document).ready(function(){
         // });
         setTimeout(function () {
-            console.log("this.Clinicname =" + _this.Clinicname);
-            console.log("this.Customername =" + _this.Customername);
-            console.log("this.Operatorname =" + _this.Operatorname);
-            console.log("this.Address =" + _this.Address);
             if (_this.Clinicname != 'undefined') {
                 _this.fsearchRecursive(_this.Clinicname);
             }
@@ -890,9 +948,9 @@ var SurveyComponent = /** @class */ (function () {
             selector: 'app-survey',
             template: __webpack_require__(/*! ./survey.component.html */ "./src/app/components/survey/survey.component.html"),
             styles: [__webpack_require__(/*! ./survey.component.css */ "./src/app/components/survey/survey.component.css")],
-            providers: [_services_api_service__WEBPACK_IMPORTED_MODULE_2__["GoogleDriveProvider"]]
+            providers: [_services_api_service__WEBPACK_IMPORTED_MODULE_2__["GoogleDriveProvider"], ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__["CookieService"]]
         }),
-        __metadata("design:paramtypes", [_services_DataService__WEBPACK_IMPORTED_MODULE_1__["DataService"], _services_api_service__WEBPACK_IMPORTED_MODULE_2__["GoogleDriveProvider"]])
+        __metadata("design:paramtypes", [_services_DataService__WEBPACK_IMPORTED_MODULE_1__["DataService"], _services_api_service__WEBPACK_IMPORTED_MODULE_2__["GoogleDriveProvider"], ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__["CookieService"]])
     ], SurveyComponent);
     return SurveyComponent;
 }());
@@ -1007,6 +1065,176 @@ var UserComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], UserComponent);
     return UserComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/search-summay/search-summay.component.css":
+/*!***********************************************************!*\
+  !*** ./src/app/search-summay/search-summay.component.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/* *{\r\n    font-family: 'Kanit', sans-serif !important;\r\n} */\r\n\r\n.main-timeline {\r\n    overflow: hidden;\r\n    position: relative;\r\n    font-family: 'Kanit', sans-serif !important;\r\n}\r\n\r\n.main-timeline:before {\r\n    content: \"\";\r\n    width: 3px;\r\n    height: 100%;\r\n    /* background: #fae1e4; */\r\n    position: absolute;\r\n    top: 0;\r\n    left: 50%;\r\n    -webkit-transform: translateX(-50%);\r\n            transform: translateX(-50%);\r\n}\r\n\r\n.main-timeline .timeline {\r\n    width: 50%;\r\n    float: right;\r\n    padding: 50px 50px 10px 50px;\r\n    margin-top: 50px;\r\n    position: relative;\r\n}\r\n\r\n.main-timeline .timeline:before {\r\n    content: attr(data-heading);\r\n    width: 70px;\r\n    height: 35px;\r\n    line-height: 35px;\r\n    border-radius: 20px;\r\n    background: #f1083e;\r\n    text-align: center;\r\n    font-size: 20px;\r\n    font-weight: 600;\r\n    color: #fff;\r\n    position: absolute;\r\n    top: 3px;\r\n    left: -32px;\r\n}\r\n\r\n.main-timeline .timeline:after {\r\n    content: \"\";\r\n    width: 16px;\r\n    height: 16px;\r\n    border-radius: 50%;\r\n    background: #fae1e4;\r\n    border: 2px solid #3c1525;\r\n    position: absolute;\r\n    bottom: 53px;\r\n    left: -8px;\r\n}\r\n\r\n.main-timeline .timeline-content {\r\n    display: block;\r\n    padding: 25px 0px 25px 25px;\r\n    border-radius: 0 70px 70px 0;\r\n    background: #3c1525;\r\n    color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.main-timeline .timeline-content:hover {\r\n    text-decoration: none;\r\n}\r\n\r\n.main-timeline .timeline-content:before {\r\n    content: \"\";\r\n    border-bottom: 20px solid transparent;\r\n    border-right: 62px solid #3c1525;\r\n    position: absolute;\r\n    bottom: 14px;\r\n    left: -53px;\r\n    -webkit-transform: rotate(30deg);\r\n            transform: rotate(30deg);\r\n}\r\n\r\n.main-timeline .icon {\r\n    display: inline-block;\r\n    width: 100px;\r\n    height: 100px;\r\n    line-height: 100px;\r\n    border-radius: 50%;\r\n    /* background: #fff; */\r\n    text-align: center;\r\n    margin: auto;\r\n    font-size: 30px;\r\n    color: #581c22;\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    right: 25px;\r\n}\r\n\r\n.main-timeline .title {\r\n    font-size: 18px;\r\n    font-weight: 600;\r\n    text-transform: uppercase;\r\n    margin: 0 0 5px 0;\r\n}\r\n\r\n.main-timeline .description {\r\n    font-size: 14px;\r\n}\r\n\r\n.main-timeline .timeline:nth-child(2n) {\r\n    padding: 50px 50px 10px 50px;\r\n}\r\n\r\n.main-timeline .timeline:nth-child(2n):before {\r\n    left: auto;\r\n    right: -40px;\r\n}\r\n\r\n.main-timeline .timeline:nth-child(2n):after {\r\n    left: auto;\r\n    right: -10px;\r\n}\r\n\r\n.main-timeline .timeline:nth-child(2n) .timeline-content {\r\n    border-radius: 70px 0 0 70px;\r\n    padding: 25px 25px 25px 150px;\r\n}\r\n\r\n.main-timeline .timeline:nth-child(2n) .timeline-content:before {\r\n    border-right: 68px solid #3c1525;\r\n    bottom: 21px;\r\n    left: auto;\r\n    right: -50px;\r\n    -webkit-transform: rotate(-226deg);\r\n            transform: rotate(-226deg);\r\n}\r\n\r\n.main-timeline .timeline:nth-child(2n) .icon {\r\n    right: auto;\r\n    left: 25px;\r\n}\r\n\r\n.main-timeline .timeline:nth-child(2) {\r\n    margin-top: 210px;\r\n}\r\n\r\n.main-timeline .timeline:nth-child(odd) {\r\n    margin: -220px 0 50px 0;\r\n}\r\n\r\n.main-timeline .timeline:nth-child(even) {\r\n    margin-bottom: 210px;\r\n}\r\n\r\n.main-timeline .timeline:first-child,\r\n.main-timeline .timeline:last-child:nth-child(even) {\r\n    margin: 0 0 30px 0;\r\n}\r\n\r\n.main-timeline .timeline:last-child:nth-child(even) {\r\n    margin-bottom: 0;\r\n}\r\n\r\n@media only screen and (max-width: 1200px) {\r\n    .main-timeline .timeline {\r\n        padding: 50px 0 10px 50px;\r\n    }\r\n    .main-timeline .timeline:nth-child(2n) {\r\n        padding: 50px 50px 10px 0;\r\n    }\r\n    .main-timeline .timeline-content {\r\n        padding: 25px 0px 25px 25px\r\n    }\r\n    .main-timeline .timeline:nth-child(2n) .timeline-content {\r\n        padding: 25px 25px 25px 130px;\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 990px) {\r\n    .main-timeline .timeline,\r\n    .main-timeline .timeline:nth-child(2n) {\r\n        padding-top: 20px;\r\n    }\r\n    .main-timeline .icon {\r\n        right: 0px;\r\n    }\r\n    .main-timeline .timeline:nth-child(2n) .icon {\r\n        left: 15px;\r\n        /* margin-top: -241px; */\r\n    }\r\n}\r\n\r\n@media only screen and (max-width: 767px) {\r\n    .main-timeline:before,\r\n    .main-timeline .timeline:after,\r\n    .main-timeline .timeline .timeline-content:before {\r\n        display: none;\r\n    }\r\n    .main-timeline .timeline,\r\n    .main-timeline .timeline:nth-child(even),\r\n    .main-timeline .timeline:nth-child(odd) {\r\n        width: 100%;\r\n        float: none;\r\n        padding: 50px 0 0 0;\r\n        margin: 0 0 30px 0;\r\n    }\r\n    .main-timeline .timeline:before,\r\n    .main-timeline .timeline:nth-child(2n):before {\r\n        left: 0;\r\n        -webkit-transform: translateX(0);\r\n                transform: translateX(0);\r\n    }\r\n    .main-timeline .timeline:nth-child(2n) .timeline-content {\r\n        padding: 25px 120px 25px 25px;\r\n        border-radius: 0 70px 70px 0;\r\n    }\r\n    .main-timeline .timeline:nth-child(2n) .icon {\r\n        right: 20px;\r\n        left: auto;\r\n    }\r\n}\r\n\r\n.circle {\r\n    /* ชื่อคลาสต้องตรงกับ <img class=\"circle\"... */\r\n    height: auto;\r\n    /* ความสูงปรับให้เป็นออโต้ */\r\n    width: auto;\r\n    /* ความสูงปรับให้เป็นออโต้ */\r\n    border-radius: 50%;\r\n    /* ปรับเป็น 50% คือความโค้งของเส้นขอบ*/\r\n    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);\r\n    /* เงาของรูป */\r\n}\r\n\r\n.oneline {\r\n    white-space: nowrap;\r\n}\r\n\r\n/* nav bar */\r\n\r\n.circle {\r\n    /* ชื่อคลาสต้องตรงกับ <img class=\"circle\"... */\r\n    height: auto;\r\n    /* ความสูงปรับให้เป็นออโต้ */\r\n    width: auto;\r\n    /* ความสูงปรับให้เป็นออโต้ */\r\n    border-radius: 50%;\r\n    /* ปรับเป็น 50% คือความโค้งของเส้นขอบ*/\r\n    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);\r\n    /* เงาของรูป */\r\n}\r\n\r\n.grad {\r\n    background-image: linear-gradient(to bottom right, #217d96, #217d96);\r\n}\r\n\r\n.year {\r\n    width: auto;\r\n    height: 35px;\r\n    line-height: 35px;\r\n    border-radius: 20px;\r\n    background: #066532;\r\n    text-align: center;\r\n    font-size: 20px;\r\n    font-weight: 600;\r\n    color: #fff;\r\n    margin-top: 15px;\r\n    margin-bottom: 15px;\r\n    top: 3px;\r\n    left: -32px;\r\n}\r\n\r\n.wrapper-item {\r\n    margin-bottom: 15px;\r\n}"
+
+/***/ }),
+
+/***/ "./src/app/search-summay/search-summay.component.html":
+/*!************************************************************!*\
+  !*** ./src/app/search-summay/search-summay.component.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark grad\">\n    <a class=\"navbar-brand w-50\" href=\"/Search\">\n        <span class=\"\">\n            <img class=\"mr-3\" src=\"../assets/icon/iconback.png\" />\n            <img class=\"w-25 circle\" src=\"../assets/icon/logo.png\" />\n        </span> CLINIC TRACKING\n    </a>\n\n\n</nav>\n\n<div class=\"container\">\n    <!-- <h2>Hi {{ResultSearch}}</h2> -->\n\n    <div class=\"row\">\n        <div class=\"col-md-12\">\n            <div class=\"main-timeline\">\n                <div class=\"year\">รวมทั้งหมด {{searchedItems.length}} แห่ง</div>\n                <a class=\"timeline-content wrapper-item\" (click)=\"goto(item)\" *ngFor=\"let item of searchedItems; index as i\">\n                    <div class=\"container\">\n                        <div class=\"row\">\n                            <div class=\"col-9\">\n                                <div class=\"inner-content\">\n                                    <h1 class=\"title text font-weight-bold\">{{i+1}} . ชื่อสถานพยาบาล</h1>\n\n                                    <div>\n                                        <div>\n                                            <span class=\"text-warning\">{{item.clinicname}}</span>\n                                        </div>\n                                    </div>\n                                </div>\n                            </div>\n                            <div class=\"col-3\">\n                                <span class=\"icon\"><img class=\"w-50 circle\" src=\"../assets/icon/logo.png\"/></span>\n\n                            </div>\n                        </div>\n                    </div>\n                </a>\n\n            </div>\n        </div>\n    </div>\n</div>\n<br>\n<!-- <app-googlemap></app-googlemap> -->"
+
+/***/ }),
+
+/***/ "./src/app/search-summay/search-summay.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/search-summay/search-summay.component.ts ***!
+  \**********************************************************/
+/*! exports provided: SearchSummayComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchSummayComponent", function() { return SearchSummayComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_DataService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/DataService */ "./src/app/services/DataService.ts");
+/* harmony import */ var _services_api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/api.service */ "./src/app/services/api.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/ngx-cookie-service.es5.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var SearchSummayComponent = /** @class */ (function () {
+    function SearchSummayComponent(DataService, gDrive, router, cookieService) {
+        // knowledge http://leifwells.com/2016/06/09/ionic-2--angular-2-using-a-google-spreadsheet-as-a-data-source/
+        // https://medium.com/@scottcents/how-to-convert-google-sheets-to-json-in-just-3-steps-228fe2c24e6
+        // ภาษาไทย https://sysadmin.psu.ac.th/2014/10/10/googleappsscript-googlesheets-database/
+        //insert delete update html to sheet //https://www.youtube.com/watch?v=OqDo2L-aSGw
+        var _this = this;
+        this.DataService = DataService;
+        this.router = router;
+        this.cookieService = cookieService;
+        this.Clinicname = localStorage.getItem("Clinicname");
+        this.Customername = localStorage.getItem("Customername");
+        this.Operatorname = localStorage.getItem("Operatorname");
+        this.ClinicType = localStorage.getItem("ClinicType");
+        this.District = localStorage.getItem("District");
+        this.Year = localStorage.getItem("Year");
+        this.searchedItems = [];
+        this.dataId = '1-sN8-XQ1tY6w-3BhaoC5G8fsMmcCq9vxGZpWINKBnxI';
+        gDrive.load(this.dataId)
+            .then(function (data) {
+            console.log(data);
+            _this.persons = data;
+        }, function (error) {
+            console.log(error);
+        });
+    }
+    SearchSummayComponent.prototype.fsearchRecursive = function (value) {
+        for (var i = 0; i < this.persons.length; i++) {
+            var re = value;
+            var str = this.persons[i].clinicname;
+            if (str.search(re) == -1) {
+                console.log("Does not contain clinicname " + re);
+            }
+            else {
+                this.searchedItems.push(this.persons[i]);
+            }
+        }
+    };
+    SearchSummayComponent.prototype.fCustomername = function (value) {
+        console.log(value);
+        for (var i = 0; i < this.persons.length; i++) {
+            var re = value;
+            var str = this.persons[i].customername;
+            if (str.search(re) == -1) {
+                console.log("Does not contain customername " + re);
+            }
+            else {
+                this.searchedItems.push(this.persons[i]);
+            }
+        }
+    };
+    SearchSummayComponent.prototype.fsearchSummay = function () {
+        console.log(this.persons);
+        for (var i = 0; i < this.persons.length; i++) {
+            var str_clinictype = this.persons[i].clinictype;
+            var str_district = this.persons[i].district;
+            var str_year = this.persons[i].year;
+            if (str_clinictype.search(this.ClinicType) == 0 && str_district.search(this.District) == 0 && str_year.search(this.Year) == 0) {
+                this.searchedItems.push(this.persons[i]);
+            }
+            else {
+                console.log("Does not contain ClinicType &&  District && Year");
+            }
+        }
+    };
+    SearchSummayComponent.prototype.fOperatorname = function (value) {
+        console.log(value);
+        for (var i = 0; i < this.persons.length; i++) {
+            var re = value;
+            var str = this.persons[i].operatorname;
+            if (str.search(re) == -1) {
+                console.log("Does not contain operatorname " + re);
+            }
+            else {
+                this.searchedItems.push(this.persons[i]);
+            }
+        }
+    };
+    SearchSummayComponent.prototype.goto = function (item) {
+        this.cookieService.set('storedata_survey', JSON.stringify(item));
+        this.router.navigate(['/Survey']);
+        this.DataService.searchDetail = item;
+    };
+    SearchSummayComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        setTimeout(function () {
+            if (_this.Clinicname != 'undefined') {
+                _this.fsearchRecursive(_this.Clinicname);
+            }
+            if (_this.Customername != 'undefined') {
+                _this.fCustomername(_this.Customername);
+            }
+            if (_this.Operatorname != 'undefined') {
+                _this.fOperatorname(_this.Operatorname);
+            }
+            if (_this.Clinicname == 'undefined' && _this.Customername == 'undefined' && _this.Operatorname == 'undefined')
+                _this.fsearchSummay();
+        }, 1000);
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], SearchSummayComponent.prototype, "message", void 0);
+    SearchSummayComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-search-summay',
+            template: __webpack_require__(/*! ./search-summay.component.html */ "./src/app/search-summay/search-summay.component.html"),
+            styles: [__webpack_require__(/*! ./search-summay.component.css */ "./src/app/search-summay/search-summay.component.css")],
+            providers: [_services_api_service__WEBPACK_IMPORTED_MODULE_2__["GoogleDriveProvider"], ngx_cookie_service__WEBPACK_IMPORTED_MODULE_4__["CookieService"]]
+        }),
+        __metadata("design:paramtypes", [_services_DataService__WEBPACK_IMPORTED_MODULE_1__["DataService"], _services_api_service__WEBPACK_IMPORTED_MODULE_2__["GoogleDriveProvider"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], ngx_cookie_service__WEBPACK_IMPORTED_MODULE_4__["CookieService"]])
+    ], SearchSummayComponent);
+    return SearchSummayComponent;
 }());
 
 

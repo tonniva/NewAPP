@@ -7,7 +7,10 @@
 
                     <nav class="navbar navbar-expand-lg navbar-dark grad">
                         <a class="navbar-brand w-50" href="#">
-                            <span class=""><img class="w-25 circle" src="http://164.115.41.179/d756/sites/default/files/styles/event_list/public/events/aopnoPvF.png?itok=l1MnCFC9"/></span> CLINIC TRACKING
+                            <span class="">
+                                    <img class="mr-3" src="../assets/icon/iconback.png" />
+                                    <img class="w-25 circle" src="../assets/icon/logo.png" />
+                            </span> CLINIC TRACKING
                         </a>
                     </nav>
 
@@ -45,14 +48,78 @@
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <label class="control-label" for="exampleInputName2"><i class="fa fa-lock"></i></label>
+
+                                <!-- <select placeholder="ประเภทคลินิก" [value]='46' class="form-control" name="Clinictype" [(ngModel)]="model.Clinictype" #Operatorname="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Clinictype.invalid }">
+                                    <option value="volvo">Volvo</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="fiat">Fiat</option>
+                                    <option value="audi">Audi</option>
+                                </select> -->
+                                <select class='form-control' (change)="selectClinicTypeChangeHandler($event)">
+                                    <option value="" disabled selected hidden>ประเภทคลินิก</option>
+                                    <option value='T1'>เวชกรรม</option>
+                                    <option value='T2'>เวชกรรมเฉพาะทาง</option>
+                                    <option value='T3'>ทัณตกรรม</option>
+                                    <option value='T4'>ทัณตกรรมเฉพาะทาง</option>
+                                    <option value='T5'>พยาบาลและการผดุงครรภ์</option>
+                                    <option value='T6'>กายภาพบำบัด</option>
+                                    <option value='T7'>เทคนิกการแพทย์</option>
+                                    <option value='T8'>แพทย์แผนไทย</option>
+                                    <option value='T9'>แพทย์แผนไทยประยุกต์</option>
+                                    <option value='T10'>แพทย์แผนจีน</option>
+                                    <option value='T11'>สหคลินิก</option> 
+                                </select>
+
+                                <div *ngIf="f.submitted && Clinictype.invalid" class="invalid-feedback">
+                                    <div *ngIf="Clinictype.errors.required">Clinictype is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="control-label" for="exampleInputName2"><i class="fa fa-lock"></i></label>
+                                <select required class='form-control' (change)="selectDistrictChangeHandler($event)">
+                                    <option value="" disabled selected hidden>อำเภอ</option>
+                                    <option value='D1'>เมือง</option>
+                                    <option value='D2'>ไชโย</option>
+                                    <option value='D3'>ป่าโมก</option>
+                                    <option value='D4'>โพธิ์ทอง</option>
+                                    <option value='D5'>แสวงหา</option>
+                                    <option value='D6'>วิเศษชัยชาญ</option>
+                                    <option value='D7'>สามโก้</option> 
+                                </select>
+                                <div *ngIf="f.submitted && Clinictype.invalid" class="invalid-feedback">
+                                    <div *ngIf="Clinictype.errors.required">Clinictype is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label class="control-label" for="exampleInputName2"><i class="fa fa-lock"></i></label>
+                                <select required class='form-control' (change)="selectYearChangeHandler($event)">
+                                        <option value="" disabled selected hiddsen>ปีที่ได้รับอนุญาต</option>
+                                        <option value='2561'>2561</option>
+                                        <option value='2562'>2562</option>
+                                        <option value='2563'>2563</option>
+                                        <option value='2564'>2564</option> 
+                                    </select>
+                            </div>
+                            <!-- <div class="col-sm-12">
+                                <label class="control-label" for="exampleInputName2"><i class="fa fa-lock"></i></label>
+                                <input placeholder="ปีที่ได้รับอนุญาต" type="text" class="form-control" name="Address" [(ngModel)]="model.Address" #Address="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Address.invalid }" />
+                                <div *ngIf="f.submitted && Address.invalid" class="invalid-feedback">
+                                    <div *ngIf="Address.errors.required">Address is required</div>
+                                </div>
+                            </div> -->
+
+                            <!-- <div class="col-sm-12">
+                                <label class="control-label" for="exampleInputName2"><i class="fa fa-lock"></i></label>
                                 <input placeholder="สถานที่" type="text" class="form-control" name="Address" [(ngModel)]="model.Address" #Address="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Address.invalid }" />
                                 <div *ngIf="f.submitted && Address.invalid" class="invalid-feedback">
                                     <div *ngIf="Address.errors.required">Address is required</div>
                                 </div>
-                            </div>
-
-
-
+                            </div> -->
                             <div class="clearfix">
                                 <button type="submit" class="button"> ค้นหา</button>
                             </div>

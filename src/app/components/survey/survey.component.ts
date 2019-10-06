@@ -1,30 +1,43 @@
 import { Component, OnInit,Input, } from '@angular/core';
 import {DataService} from '../../services/DataService';
-import {ApiService,GoogleDriveProvider} from '../../services/api.service';
+import {ApiService,GoogleDriveProvider} from '../../services/api.service';  
+import { CookieService } from 'ngx-cookie-service';
 import * as $ from 'jquery';
 @Component({
   selector: 'app-survey',
   templateUrl: './survey.component.html',
   styleUrls: ['./survey.component.css'],
-  providers: [ GoogleDriveProvider ]
+ 
+
+  providers: [ GoogleDriveProvider, CookieService ]
 })
 export class SurveyComponent implements OnInit {
 @Input() message : string ;
 private searchedItems: Array<any> = [];
+private searcheDetail: Array<any> = [];
 
 private Clinicname = localStorage.getItem("Clinicname");
 private Customername = localStorage.getItem("Customername");
 private Operatorname = localStorage.getItem("Operatorname");
 private Address = localStorage.getItem("Address"); 
 
+private ClinicType = localStorage.getItem("ClinicType");
+private District = localStorage.getItem("District");
+private Year = localStorage.getItem("Year"); 
+ 
+
+
+
 public ResultSearch:ClsResponseAPI;
  
 persons: Array<any>;
 dataId: string;
-  constructor(private DataService:DataService,gDrive:GoogleDriveProvider) { 
+  constructor(private DataService:DataService,gDrive:GoogleDriveProvider,private cookieService: CookieService) { 
 
     // knowledge http://leifwells.com/2016/06/09/ionic-2--angular-2-using-a-google-spreadsheet-as-a-data-source/
     // https://medium.com/@scottcents/how-to-convert-google-sheets-to-json-in-just-3-steps-228fe2c24e6
+    // ภาษาไทย https://sysadmin.psu.ac.th/2014/10/10/googleappsscript-googlesheets-database/
+    //insert delete update html to sheet //https://www.youtube.com/watch?v=OqDo2L-aSGw
     this.dataId = '1-sN8-XQ1tY6w-3BhaoC5G8fsMmcCq9vxGZpWINKBnxI';
     gDrive.load( this.dataId )
       .then( ( data ) => {
@@ -94,7 +107,21 @@ dataId: string;
    
   
   ngOnInit() {
-    
+ 
+    if(this.DataService.searchDetail)
+    { 
+      console.log("111111");
+      
+      this.searchedItems.push(this.DataService.searchDetail); 
+    }
+    else {
+      var survey_store_cookie =  this.cookieService.get('storedata_survey');
+      this.DataService.searchDetail =  JSON.parse(survey_store_cookie);;
+       
+      this.searchedItems.push(this.DataService.searchDetail); 
+  
+    }
+
     let goodResponse = [];
   //   $(document).ready(function(){
 
@@ -103,10 +130,7 @@ dataId: string;
 
 
     setTimeout(() => { 
-      console.log("this.Clinicname ="+this.Clinicname);
-      console.log("this.Customername ="+this.Customername);
-      console.log("this.Operatorname ="+this.Operatorname);
-      console.log("this.Address ="+this.Address);
+     
       if(this.Clinicname != 'undefined')  
       {
         this.fsearchRecursive(this.Clinicname)   

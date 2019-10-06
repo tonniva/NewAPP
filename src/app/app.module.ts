@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
 import  {FormsModule} from '@angular/forms'
-
+import { CookieService } from 'ngx-cookie-service';
 
 import { CommonModule } from '@angular/common';
 
@@ -17,11 +17,12 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { RouterModule,Routes } from '@angular/router';
 import { SurveyComponent } from './components/survey/survey.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { SearchComponent } from './components/search/search.component';
+import { SearchComponent } from './components/search/search.component'; 
 import {ApiService,GoogleDriveProvider} from './services/api.service'; 
 
 import {HttpModule} from '@angular/http';
 import { LoginComponent } from './components/login/login.component';
+import { SearchSummayComponent } from './search-summay/search-summay.component';
 
  
 // import {Injectable} from '@angular/core';
@@ -31,15 +32,15 @@ import { LoginComponent } from './components/login/login.component';
  const appRoutes:Routes  =[
    {path:"",component:PageMenuComponent},
    {path:"Login",component:LoginComponent},
-   {path:"createuser",component:CreateUserComponent},
+   {path:"createuser",component:CreateUserComponent}, 
    {path:"Survey",component:SurveyComponent},
    {path:"Contact",component:ContactComponent},
    {path:"user",component:UserComponent},
+   {path:"SearchSummary",component:SearchSummayComponent},
    {path:"Search",component:SearchComponent,
    
   children:[
-    {path:"googlemap",component:GooglemapComponent},
-  
+    {path:"googlemap",component:GooglemapComponent}, 
   ]
 },
   
@@ -56,7 +57,8 @@ import { LoginComponent } from './components/login/login.component';
     SurveyComponent,
     ContactComponent,
     SearchComponent,
-    LoginComponent
+    LoginComponent,
+    SearchSummayComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,7 @@ import { LoginComponent } from './components/login/login.component';
       apiKey: 'AIzaSyC6OQeA3GhBE-juQnaLUYepQ-ZTbALTFfM'
     })
   ],
-  providers: [ApiService,GoogleDriveProvider],
+  providers: [ApiService,GoogleDriveProvider,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
