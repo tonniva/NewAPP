@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, } from '@angular/core';
+import {Compiler, Component, OnInit,Input, } from '@angular/core';
 import {DataService} from '../services/DataService';
 import {ApiService,GoogleDriveProvider} from '../services/api.service';
 import { Router } from "@angular/router";
@@ -21,8 +21,8 @@ export class SearchSummayComponent implements OnInit {
 
   persons: Array<any>;
   dataId: string;
-  private searchedItems: Array<any> = [];
-    constructor(private DataService:DataService,gDrive:GoogleDriveProvider,private router: Router,private cookieService: CookieService) { 
+  public searchedItems: Array<any> = [];
+    constructor(private _compiler: Compiler,private DataService:DataService,gDrive:GoogleDriveProvider,private router: Router,private cookieService: CookieService) { 
   
       // knowledge http://leifwells.com/2016/06/09/ionic-2--angular-2-using-a-google-spreadsheet-as-a-data-source/
       // https://medium.com/@scottcents/how-to-convert-google-sheets-to-json-in-just-3-steps-228fe2c24e6
@@ -56,7 +56,7 @@ export class SearchSummayComponent implements OnInit {
       console.log(value)
       for(var i = 0; i < this.persons.length; i++) {
         var re = value; 
-        var str = this.persons[i].customername;
+        var str = this.persons[i].firstname+this.persons[i].firstnamelastname;
             if (str.search(re) == -1 ) { 
               console.log("Does not contain customername "+re ); 
             } else { 
@@ -106,10 +106,8 @@ export class SearchSummayComponent implements OnInit {
     }
 
   ngOnInit() {
-
-    setTimeout(() => {  
-
-      
+    this._compiler.clearCache();
+    setTimeout(() => {   
   
       if(this.Clinicname != 'undefined')  
       {

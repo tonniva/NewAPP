@@ -183,6 +183,10 @@ form {
     transition: 0.5s;
 }
 
+.text-white {
+    color: white;
+}
+
 .button span:after {
     content: '\00bb';
     position: absolute;

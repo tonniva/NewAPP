@@ -1,8 +1,9 @@
-import { Component, OnInit,Input, } from '@angular/core';
+import { Compiler,Component, OnInit,Input, } from '@angular/core';
 import {DataService} from '../../services/DataService';
 import {ApiService,GoogleDriveProvider} from '../../services/api.service';  
 import { CookieService } from 'ngx-cookie-service';
 import * as $ from 'jquery';
+import { empty } from 'rxjs';
 @Component({
   selector: 'app-survey',
   templateUrl: './survey.component.html',
@@ -13,7 +14,7 @@ import * as $ from 'jquery';
 })
 export class SurveyComponent implements OnInit {
 @Input() message : string ;
-private searchedItems: Array<any> = [];
+public searchedItems: Array<any> = [];
 private searcheDetail: Array<any> = [];
 
 private Clinicname = localStorage.getItem("Clinicname");
@@ -32,7 +33,7 @@ public ResultSearch:ClsResponseAPI;
  
 persons: Array<any>;
 dataId: string;
-  constructor(private DataService:DataService,gDrive:GoogleDriveProvider,private cookieService: CookieService) { 
+  constructor(private _compiler: Compiler,private DataService:DataService,gDrive:GoogleDriveProvider,private cookieService: CookieService) { 
 
     // knowledge http://leifwells.com/2016/06/09/ionic-2--angular-2-using-a-google-spreadsheet-as-a-data-source/
     // https://medium.com/@scottcents/how-to-convert-google-sheets-to-json-in-just-3-steps-228fe2c24e6
@@ -49,8 +50,7 @@ dataId: string;
   }
 
   
-  fsearchRecursive(value) { 
- 
+  fsearchRecursive(value) {  
     for(var i = 0; i < this.persons.length; i++) { 
     var re = value; 
     var str = this.persons[i].clinicname;
@@ -107,11 +107,10 @@ dataId: string;
    
   
   ngOnInit() {
- 
+    this._compiler.clearCache();
     if(this.DataService.searchDetail)
     { 
-      console.log("111111");
-      
+  
       this.searchedItems.push(this.DataService.searchDetail); 
     }
     else {
@@ -129,31 +128,30 @@ dataId: string;
   // });
 
 
-    setTimeout(() => { 
+    // setTimeout(() => {  
      
-      if(this.Clinicname != 'undefined')  
-      {
-        this.fsearchRecursive(this.Clinicname)   
-      }   
+    //   if(this.Clinicname != 'undefined' )  
+    //   {
+    //     this.fsearchRecursive(this.Clinicname)   
+    //   }   
       
-      if(this.Customername != 'undefined')  
-      {
-        this.fCustomername(this.Customername) 
-      }   
-      if(this.Operatorname != 'undefined')  
-      { 
-      this.fOperatorname(this.Operatorname) 
-      }
+    //   if(this.Customername != 'undefined')  
+    //   {
+    //     this.fCustomername(this.Customername) 
+    //   }   
+    //   if(this.Operatorname != 'undefined')  
+    //   { 
+    //   this.fOperatorname(this.Operatorname) 
+    //   }
 
-      if(this.Address != 'undefined')  
-      {
-      this.fAddress(this.Address) 
-      }
+    //   if(this.Address != 'undefined')  
+    //  {
+    //   this.fAddress(this.Address) 
+    //  }
 
-      // this.ResultSearch =  this.DataService.searchDetail;
-      //  console.log(goodResponse);
+   
 
-    }, 1000);
+    // }, 1000);
     
   }
 

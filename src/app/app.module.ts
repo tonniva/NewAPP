@@ -30,7 +30,8 @@ import { SearchSummayComponent } from './search-summay/search-summay.component';
 // import 'rxjs/add/operator/map';
 
  const appRoutes:Routes  =[
-   {path:"",component:PageMenuComponent},
+  //  {path:"",component:PageMenuComponent},
+   {path:"",component:SearchComponent},
    {path:"Login",component:LoginComponent},
    {path:"createuser",component:CreateUserComponent}, 
    {path:"Survey",component:SurveyComponent},

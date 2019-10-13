@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Compiler ,Component, OnInit } from '@angular/core';
 import {ApiService,GoogleDriveProvider} from '../../services/api.service';
 import {DataService} from '../../services/DataService';
 import { SearchDetail } from './Search-Detail';
@@ -27,14 +27,14 @@ export class SearchComponent implements OnInit {
   // private searctServiceData:searctService[];
 
   //select ประเภทคลินิก
-  ClinicType: string = '';
+  public ClinicType: string = '';
   selectClinicTypeChangeHandler (event: any) {
     //update the ui
     this.ClinicType = event.target.value;
   }
   //select
 //select เลือกอำเภอ
-District: string = ''; 
+public District: string = ''; 
 selectDistrictChangeHandler (event: any) {
     //update the ui
     this.District = event.target.value;
@@ -42,7 +42,7 @@ selectDistrictChangeHandler (event: any) {
    //select
 
 //select เลือกปี
-Year: string = ''; 
+public Year: string = ''; 
 selectYearChangeHandler (event: any) {
     //update the ui
     this.Year = event.target.value;
@@ -59,7 +59,7 @@ public Clinicnames:string;
 private ResponseResult:ClsResponseAPI;
 
 
-  constructor(private ApiService:ApiService,private gDrive:GoogleDriveProvider,private router: Router,private DataService:DataService) { 
+  constructor(private _compiler: Compiler,private ApiService:ApiService,private gDrive:GoogleDriveProvider,private router: Router,private DataService:DataService) { 
 
     this.dataId = '1-sN8-XQ1tY6w-3BhaoC5G8fsMmcCq9vxGZpWINKBnxI';
     gDrive.load( this.dataId )
@@ -73,7 +73,7 @@ private ResponseResult:ClsResponseAPI;
 
   ngOnInit() {
     
-
+    this._compiler.clearCache();
     
   }
   
@@ -90,7 +90,7 @@ private ResponseResult:ClsResponseAPI;
     localStorage.setItem("Year",this.Year);  
     
 
-    
+
     this.router.navigate(['/SearchSummary']);
 
   }
