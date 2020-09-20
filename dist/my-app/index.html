@@ -12,13 +12,198 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-
-
-</head>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script> 
+  
+<link rel="stylesheet" href="styles.9ebe9e192a69ffdbac58.css"></head>
 
 <body class="wrapper-body">
     <app-root></app-root>
-<script type="text/javascript" src="runtime.js"></script><script type="text/javascript" src="polyfills.js"></script><script type="text/javascript" src="styles.js"></script><script type="text/javascript" src="vendor.js"></script><script type="text/javascript" src="main.js"></script></body>
+
+    
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script> 
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+     
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAfHEHd4-5nuQMdbb40q2A_6htp04Bg63M",
+    authDomain: "buildapp-b2779.firebaseapp.com",
+    databaseURL: "https://buildapp-b2779.firebaseio.com",
+    projectId: "buildapp-b2779",
+    storageBucket: "buildapp-b2779.appspot.com",
+    messagingSenderId: "58815865544",
+    appId: "1:58815865544:web:87b2ff06989f50a5d1bbfd"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+   
+ 
+
+ function myfunction(){
+       
+  var x = document.getElementById("myFile");
+  uploadfile();
+  x.disabled = true;
+ }
+
+ 
+var file_url ="";
+ function uploadfile(fileuploaddata){
+
+      const file =  fileuploaddata
+      // this.url = URL.createObjectURL(file);
+      // var storageRef = firebase.storage().ref();
+      // var mountainImagesRef = storageRef.child('images/');
+
+      var storage = firebase.storage();
+      var storage = firebase
+        .app()
+        .storage("gs://buildapp-b2779.appspot.com");
+      var storageRef = storage.ref();
+
+      // var uploadTask = storageRef.child('images').put(file);
+      var filename =document.getElementById("licensenumber").innerHTML;
+      var uploadTask = storageRef.child("images/" + filename).put(file);
+
+      // Register three observers:
+      // 1. 'state_changed' observer, called any time the state changes
+      // 2. Error observer, called on failure
+      // 3. Completion observer, called on successful completion
+      uploadTask.on(
+        "state_changed",
+        function (snapshot) {
+          // Observe state change events such as progress, pause, and resume
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          var progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done"); 
+          
+          document.getElementById("progressbar").classList.remove("disable-load");
+          document.getElementById("loadbar").style.width = progress+"%";
+          switch (snapshot.state) {
+            case firebase.storage.TaskState.PAUSED: // or 'paused'
+              console.log("Upload is paused");
+              break;
+            case firebase.storage.TaskState.RUNNING: // or 'running'
+              console.log("Upload is running");
+              break;
+          }
+
+ 
+
+        },
+        function (error) {
+          // Handle unsuccessful uploads
+        },
+        function () {
+          // Handle successful uploads on complete
+          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+          uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+            file_url = downloadURL;
+           
+            insert();
+            setTimeout(function(){    
+                  document.getElementById("progressbar").classList.add("disable-load"); 
+                  document.getElementById("saveimage").innerHTML="สำเร็จ !";
+                }, 2000);
+       
+            console.log("File available at", downloadURL);
+          });
+        }
+      );
+ 
+ }
+
+ function deletefilestorage()
+ {
+   var imagename = document.getElementById("licensenumber").innerHTML;
+    var desertRef = storageRef.child('images/'+imagename);
+
+// Delete the file
+desertRef.delete().then(function() {
+  // File deleted successfully
+}).catch(function(error) {
+  // Uh-oh, an error occurred!
+});
+ }
+
+
+
+var fileuploaddata=null;
+ function fileupload(e){
+   
+
+     document.getElementById("saveimage").disabled = false;
+    //  เซตรูปโปรไฟล์ หลังจากอัพโหลด
+     document.getElementById("img_profile").src =   URL.createObjectURL(e.files[0]);
+    //  เซตรูปโปรไฟล์ หลังจากอัพโหลด
+
+    fileuploaddata=  e.files[0];
+ }
+ function confirmupload(){ 
+    uploadfile(fileuploaddata); 
+ }
+
+
+ const database = firebase.database();
+const messageRef = database.ref("message");
+
+function insert(){
+
+    
+    deletedate();
+    messageRef.push({
+        licensenumber: document.getElementById("licensenumber").innerHTML,
+        image_profile :file_url
+      });
+
+}
+var messages = [];
+var image_from_firebse = [];
+var messages = [];
+var message_id="";
+function getprofilefirebase(){ 
+messageRef.on("child_added", (snapshot) => {
+      //เอาข้อมูลจาก message มาเก็บใน array
+      this.messages.push({ ...snapshot.val(), id: snapshot.key });
+     
+
+      this.messages.map(function(c,i,a){
+          var licensenumber  = document.getElementById("licensenumber").innerHTML;
+        if(c.licensenumber == licensenumber)
+        {
+            document.getElementById("img_profile").src = c.image_profile;
+            message_id = c.id;
+        }
+      
+        return ; 
+
+      }) 
+    }); 
+}
+
+function deletedate(){
+
+    if(message_id){
+
+        messageRef.child(message_id).remove();
+    }
+
+
+}
+
+
+
+
+</script>
+
+
+<button id="initprofile" onclick="getprofilefirebase()" style="display: none;"></button>
+<script type="text/javascript" src="runtime.ec2944dd8b20ec099bf3.js"></script><script type="text/javascript" src="polyfills.ced9cf38d9900bd496ac.js"></script><script type="text/javascript" src="main.7682e12e508df89c869d.js"></script></body>
 
 </html>
 <style>
@@ -30,4 +215,8 @@
         background-attachment: fixed;
         background-position-y: 30vh;
     }
+
+    .disable-load{ 
+        display:none;
+    } 
 </style>

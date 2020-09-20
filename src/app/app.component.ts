@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  public firebases=null;
   title = 'my-app';
   constructor( private location: Location ) { 
   }

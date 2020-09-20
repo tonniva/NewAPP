@@ -99,6 +99,7 @@ export class SearchSummayComponent implements OnInit {
      
 
     goto(item){
+      window.scrollTo(0, 0);
       this.cookieService.set('storedata_survey',JSON.stringify(item));  
       this.router.navigate(['/Survey']);
       this.DataService.searchDetail = item; 

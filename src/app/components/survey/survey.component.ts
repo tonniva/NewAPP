@@ -26,8 +26,9 @@ private ClinicType = localStorage.getItem("ClinicType");
 private District = localStorage.getItem("District");
 private Year = localStorage.getItem("Year"); 
  
+fileToUpload: File = null;
 
-
+public firebase=null;
 
 public ResultSearch:ClsResponseAPI;
  
@@ -107,6 +108,9 @@ dataId: string;
    
   
   ngOnInit() {
+    document.getElementById("initprofile").click();
+
+     window.scrollTo(0, 0);
     this._compiler.clearCache();
     if(this.DataService.searchDetail)
     { 
@@ -155,10 +159,19 @@ dataId: string;
     
   }
 
+  handleFileInput(files: FileList) {
 
+    debugger
+    this.fileToUpload = files.item(0);
+ 
+  }
+
+
+  
 }
 
 
+ 
 interface ClsResponseAPI {
   Id: string;
   Clinicname: string;
