@@ -72,7 +72,7 @@ private ResponseResult:ClsResponseAPI;
   }
 
   ngOnInit() {
-    
+    localStorage.clear();
     this._compiler.clearCache();
     
   }
