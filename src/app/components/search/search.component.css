@@ -218,3 +218,9 @@ form {
     opacity: 1;
     right: 0;
 }
+
+.wrapper-pin{
+    position: relative;
+    top: -3px;
+    left: 5px;
+}

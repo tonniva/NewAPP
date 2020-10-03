@@ -180,7 +180,7 @@
         padding-top: 20px;
     }
     .main-timeline .icon {
-        top: -38rem;
+        top: -45rem;
     }
     .main-timeline .timeline:nth-child(2n) .icon {
         left: 15px;
@@ -275,4 +275,20 @@
 .wrapper-ul li {
     white-space: pre-line;
     word-break: break-word;
+}
+
+.wrapperimage{
+    width: 100px;
+    height: 100px;
+}
+
+li {
+    list-style-type: none;
+    text-indent: -30px;
+    line-height: 2;
+}
+
+
+.icon-li{
+    margin-right: 10px;
 }

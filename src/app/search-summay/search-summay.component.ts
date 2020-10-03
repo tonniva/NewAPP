@@ -77,7 +77,7 @@ export class SearchSummayComponent implements OnInit {
         var str_district = !_.isEmpty(this.persons[i].district)?this.persons[i].district:"no data";
         var str_year = !_.isEmpty(this.persons[i].year)?this.persons[i].year:"no data";
 
-            if (str_clinictype.search(this.ClinicType) == 0  && str_district.search(this.District) == 0 && str_year.search(this.Year) == 0) { 
+            if (str_clinictype.search(this.ClinicType) == 0  || str_district.search(this.District) == 0 || str_year.search(this.Year) == 0) { 
               
               this.searchedItems.push(this.persons[i]);
             } else { 
@@ -126,21 +126,29 @@ export class SearchSummayComponent implements OnInit {
   ngOnInit() {
     this._compiler.clearCache();
     setTimeout(() => {   
- 
-   
+  
       if(this.Clinicname != 'undefined')  
       {
-        this.fsearchRecursive(this.Clinicname)   
+        this.fsearchRecursive(this.Clinicname) 
+        return  
       }    
       if(this.Customername != 'undefined')  
       {
         this.fCustomername(this.Customername) 
+        return  
       }   
       if(this.Operatorname != 'undefined')  
       { 
       this.fOperatorname(this.Operatorname) 
+      return  
       }
 
+      if(this.District != 'nodata')  
+      { 
+      this.fsearchSummay();
+      return  
+      }
+      
 
       if( this.ClinicType != 'nodata' && 
       this.Clinicname == 'undefined' &&
@@ -149,10 +157,12 @@ export class SearchSummayComponent implements OnInit {
         )  
       { 
       this.fsearchClinicType() 
+      return  
       }
       else
       {
         this.searchedItems = this.persons;
+        return  
 
       }
 
@@ -160,8 +170,8 @@ export class SearchSummayComponent implements OnInit {
 
 
 
-      if(this.Clinicname == 'undefined' && this.Customername == 'undefined' && this.Operatorname == 'undefined')  
-        this.fsearchSummay()     
+      // if(this.Clinicname == 'undefined' && this.Customername == 'undefined' && this.Operatorname == 'undefined')  
+      //   this.fsearchSummay()     
       
     }, 2000);
   }

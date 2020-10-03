@@ -271,3 +271,10 @@
 .wrapper-item {
     margin-bottom: 15px;
 }
+
+
+.icon-build{
+    position: relative;
+    top: -4px;
+    left: 5px;
+}
