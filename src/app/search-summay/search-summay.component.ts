@@ -4,6 +4,7 @@ import {ApiService,GoogleDriveProvider} from '../services/api.service';
 import { Router } from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
 import * as $ from 'jquery';
+import * as _ from "lodash";
 @Component({
   selector: 'app-search-summay',
   templateUrl: './search-summay.component.html',
@@ -12,12 +13,13 @@ import * as $ from 'jquery';
 })
 export class SearchSummayComponent implements OnInit {
   @Input() message : string ;
-  private Clinicname = localStorage.getItem("Clinicname");
-  private Customername = localStorage.getItem("Customername");
-  private Operatorname = localStorage.getItem("Operatorname");
-  private ClinicType = localStorage.getItem("ClinicType");
-  private District = localStorage.getItem("District");
-  private Year = localStorage.getItem("Year"); 
+  private Clinicname = localStorage.getItem("Clinicname")||"nodata";
+  private Customername = localStorage.getItem("Customername")||"nodata";
+  private Operatorname = localStorage.getItem("Operatorname")||"nodata";
+  private ClinicType = localStorage.getItem("ClinicType")||"nodata";
+  private District = localStorage.getItem("District")||"nodata";
+  private Year = localStorage.getItem("Year")||"nodata"; 
+  
 
   persons: Array<any>;
   dataId: string;
@@ -32,6 +34,7 @@ export class SearchSummayComponent implements OnInit {
       this.dataId = '1-sN8-XQ1tY6w-3BhaoC5G8fsMmcCq9vxGZpWINKBnxI';
       gDrive.load( this.dataId )
         .then( ( data ) => {
+        
           console.log( data );
           this.persons = data;
         }, (error) => {
@@ -44,7 +47,7 @@ export class SearchSummayComponent implements OnInit {
       for(var i = 0; i < this.persons.length; i++) { 
       var re = value; 
       var str = this.persons[i].clinicname;
-          if (str.search(re) == -1 ) { 
+          if (!_.isEmpty(str) && str.search(re) == -1 ) { 
             console.log("Does not contain clinicname "+re ); 
           } else { 
             this.searchedItems.push(this.persons[i]);
@@ -56,8 +59,8 @@ export class SearchSummayComponent implements OnInit {
       console.log(value)
       for(var i = 0; i < this.persons.length; i++) {
         var re = value; 
-        var str = this.persons[i].firstname+this.persons[i].firstnamelastname;
-            if (str.search(re) == -1 ) { 
+        var str = this.persons[i].firstname+this.persons[i].lastname;
+            if (!_.isEmpty(str) && str.search(re) == -1 ) { 
               console.log("Does not contain customername "+re ); 
             } else { 
               this.searchedItems.push(this.persons[i]);
@@ -70,12 +73,26 @@ export class SearchSummayComponent implements OnInit {
       console.log(this.persons)
       for(var i = 0; i < this.persons.length; i++) {
          
-        var str_clinictype = this.persons[i].clinictype;
-        var str_district = this.persons[i].district;
-        var str_year = this.persons[i].year;
+        var str_clinictype = !_.isEmpty(this.persons[i].clinictype)?this.persons[i].clinictype:"no data";
+        var str_district = !_.isEmpty(this.persons[i].district)?this.persons[i].district:"no data";
+        var str_year = !_.isEmpty(this.persons[i].year)?this.persons[i].year:"no data";
 
             if (str_clinictype.search(this.ClinicType) == 0  && str_district.search(this.District) == 0 && str_year.search(this.Year) == 0) { 
               
+              this.searchedItems.push(this.persons[i]);
+            } else { 
+              console.log("Does not contain ClinicType &&  District && Year" ); 
+            }   
+      } 
+    } 
+
+    fsearchClinicType() {
+      console.log(this.persons)
+      for(var i = 0; i < this.persons.length; i++) {
+         
+        var str_clinictype =  !_.isEmpty(this.persons[i].clinictype)?this.persons[i].clinictype:"no data"; 
+  
+            if (str_clinictype.search(this.ClinicType) == 0 ) {  
               this.searchedItems.push(this.persons[i]);
             } else { 
               console.log("Does not contain ClinicType &&  District && Year" ); 
@@ -87,7 +104,7 @@ export class SearchSummayComponent implements OnInit {
       for(var i = 0; i < this.persons.length; i++) {
   
         var re = value; 
-        var str = this.persons[i].operatorname;
+        var str = !_.isEmpty(this.persons[i].operatorname)?this.persons[i].operatorname:"no data";
             if (str.search(re) == -1 ) { 
               console.log("Does not contain operatorname "+re ); 
             } else { 
@@ -109,7 +126,8 @@ export class SearchSummayComponent implements OnInit {
   ngOnInit() {
     this._compiler.clearCache();
     setTimeout(() => {   
-  
+ 
+   
       if(this.Clinicname != 'undefined')  
       {
         this.fsearchRecursive(this.Clinicname)   
@@ -124,10 +142,28 @@ export class SearchSummayComponent implements OnInit {
       }
 
 
+      if( this.ClinicType != 'nodata' && 
+      this.Clinicname == 'undefined' &&
+      this.Customername == 'undefined' &&
+      this.Operatorname == 'undefined'
+        )  
+      { 
+      this.fsearchClinicType() 
+      }
+      else
+      {
+        this.searchedItems = this.persons;
+
+      }
+
+ 
+
+
+
       if(this.Clinicname == 'undefined' && this.Customername == 'undefined' && this.Operatorname == 'undefined')  
         this.fsearchSummay()     
       
-    }, 1000);
+    }, 2000);
   }
 
     

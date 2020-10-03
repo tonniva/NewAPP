@@ -160,8 +160,7 @@ dataId: string;
   }
 
   handleFileInput(files: FileList) {
-
-    debugger
+ 
     this.fileToUpload = files.item(0);
  
   }
