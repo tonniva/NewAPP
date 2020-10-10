@@ -24,7 +24,8 @@ import {HttpModule} from '@angular/http';
 import { LoginComponent } from './components/login/login.component';
 import { SearchSummayComponent } from './search-summay/search-summay.component';
 
- 
+import { ChartModule } from 'angular2-chartjs';
+
 // import {Injectable} from '@angular/core';
 // import {Http} from '@angular/http';
 // import 'rxjs/add/operator/map';
@@ -49,7 +50,7 @@ import { SearchSummayComponent } from './search-summay/search-summay.component';
 
  ]
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
     UserComponent,
     GooglemapComponent,
@@ -69,6 +70,7 @@ import { SearchSummayComponent } from './search-summay/search-summay.component';
     HttpModule,
     // Injectable,
     // Http,
+    ChartModule,
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC6OQeA3GhBE-juQnaLUYepQ-ZTbALTFfM'

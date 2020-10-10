@@ -4,6 +4,10 @@ import {ApiService,GoogleDriveProvider} from '../../services/api.service';
 import { CookieService } from 'ngx-cookie-service';
 import * as $ from 'jquery';
 import { empty } from 'rxjs';
+
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js'; 
+import { Label } from 'ng2-charts';
+
 @Component({
   selector: 'app-survey',
   templateUrl: './survey.component.html',
@@ -124,39 +128,7 @@ dataId: string;
       this.searchedItems.push(this.DataService.searchDetail); 
   
     }
-
-    let goodResponse = [];
-  //   $(document).ready(function(){
-
-      
-  // });
-
-
-    // setTimeout(() => {  
-     
-    //   if(this.Clinicname != 'undefined' )  
-    //   {
-    //     this.fsearchRecursive(this.Clinicname)   
-    //   }   
-      
-    //   if(this.Customername != 'undefined')  
-    //   {
-    //     this.fCustomername(this.Customername) 
-    //   }   
-    //   if(this.Operatorname != 'undefined')  
-    //   { 
-    //   this.fOperatorname(this.Operatorname) 
-    //   }
-
-    //   if(this.Address != 'undefined')  
-    //  {
-    //   this.fAddress(this.Address) 
-    //  }
-
-   
-
-    // }, 1000);
-    
+ 
   }
 
   handleFileInput(files: FileList) {
@@ -165,7 +137,7 @@ dataId: string;
  
   }
 
-
+ 
   
 }
 
