@@ -61,7 +61,12 @@ private ResponseResult:ClsResponseAPI;
 
 public type:any;
 public data:any;
-public options:any; 
+public options:any;
+
+
+public typeyear:any;
+public datayear:any;
+public optionsyear:any;
 
 
   constructor(private _compiler: Compiler,private ApiService:ApiService,private gDrive:GoogleDriveProvider,private router: Router,private DataService:DataService) { 
@@ -73,6 +78,7 @@ public options:any;
         this.persons = data;
 
         this.initgraph(this.persons)
+        this.initgraphyear(this.persons)
       }, (error) => {
         console.log( error );
       });
@@ -109,8 +115,7 @@ var count=[];
     labels: district,
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
     datasets: [
-      {
-        label: "จำนวนคลินิกแต่ละอำเภอ",
+      { 
         data: count,
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
@@ -145,8 +150,95 @@ var count=[];
     ]
   };
   this.options = {
+    legend: {
+      display: false
+  },
+    title: {
+      display: true,
+      text: 'จำนวนคลินิกแต่ละอำเภอ',
+      fontSize: 15
+  },
     responsive: true,
     maintainAspectRatio: false
+  }; 
+}
+
+
+initgraphyear(datagraph){
+ 
+  var group  =  _.chain(datagraph) 
+  .groupBy("year") 
+  .map((value, key) => ({ year: key, users: value }))
+  .value()
+
+var year=[];
+var count=[];
+  group.forEach(item => { 
+      
+    year.push(item.year); 
+    count.push(item.users.length); 
+  });
+
+   
+  this.typeyear = 'line';
+  this.datayear = {
+    labels: year,
+    backgroundColor:  'rgba(75, 192, 192, 0.2)',
+    datasets: [
+      { 
+        data: count,
+        backgroundColor: [
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+      ],
+      borderColor: [
+        'rgba(75, 192, 192, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+    ],
+    borderWidth: 1
+      }
+    ]
+  };
+  this.optionsyear = {
+    fullWidth:true,
+    legend: {
+      display: false
+  },
+    title: {
+      display: true,
+      text: 'จำนวนคลินิกแต่ละปีที่ได้รับอนุญาต',
+      fontSize: 18
+  },
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      yAxes: [{
+          ticks: {
+              fontSize: 8
+          }
+      }]
+  }
   }; 
 }
   onSubmit() {
