@@ -32,7 +32,7 @@ import { ChartModule } from 'angular2-chartjs';
 
  const appRoutes:Routes  =[
   //  {path:"",component:PageMenuComponent},
-   {path:"",component:SearchComponent},
+   {path:"",component:LoginComponent},
    {path:"Login",component:LoginComponent},
    {path:"createuser",component:CreateUserComponent}, 
    {path:"Survey",component:SurveyComponent},

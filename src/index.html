@@ -17,6 +17,7 @@
 </head>
 
 <body class="wrapper-body">
+ 
     <app-root></app-root>
 
     
@@ -40,8 +41,32 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-   
  
+  
+function authen(){
+  
+// Turn off phone auth app verification.
+firebase.auth().settings.appVerificationDisabledForTesting = true;
+
+var phoneNumber = "+66"+ document.getElementById("usernamelogin").value.substring(1); 
+var testVerificationCode = document.getElementById("passwordlogin").value;
+
+// This will render a fake reCAPTCHA as appVerificationDisabledForTesting is true.
+// This will resolve after rendering without app verification.
+var appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+// signInWithPhoneNumber will call appVerifier.verify() which will resolve with a fake
+// reCAPTCHA response.
+firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+    .then(function (confirmationResult) { 
+      window.location = "/Search";
+      // confirmationResult can resolve with the fictional testVerificationCode above.
+      return confirmationResult.confirm(testVerificationCode)
+    }).catch(function (error) {
+      window.location = "/"; 
+    });
+
+
+}
 
  function myfunction(){
        
