@@ -39,7 +39,7 @@ public ResultSearch:ClsResponseAPI;
 public qr:any=window.location.search;
 persons: Array<any>;
 dataId: string;
-  constructor(private activatedRoute: ActivatedRoute,private _compiler: Compiler,private DataService:DataService,gDrive:GoogleDriveProvider,private cookieService: CookieService) {
+  constructor(private activatedRoute: ActivatedRoute,private _compiler: Compiler,private DataService:DataService,gDrive:GoogleDriveProvider,private cookieService: CookieService, private router: Router) {
 
     // knowledge http://leifwells.com/2016/06/09/ionic-2--angular-2-using-a-google-spreadsheet-as-a-data-source/
     // https://medium.com/@scottcents/how-to-convert-google-sheets-to-json-in-just-3-steps-228fe2c24e6
@@ -58,6 +58,9 @@ dataId: string;
     this.activatedRoute.queryParams.subscribe(params => {
       this.keysheet = params['key'];
       this.provincekey = params['p'];
+      if(this.provincekey == undefined) {
+        return this.router.navigate(['']);
+      }
       console.log(this.keysheet,this.provincekey)
 
 

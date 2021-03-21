@@ -98,6 +98,8 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+
+
     localStorage.clear();
     this._compiler.clearCache();
 
@@ -105,6 +107,10 @@ export class SearchComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       this.keysheet = params['key'];
       this.provincekey = params['p'];
+      if(this.provincekey == undefined) {
+        return this.router.navigate(['']);
+      }
+
       console.log(this.keysheet,this.provincekey)
 
       this.gDrive.load(this.keysheet)
