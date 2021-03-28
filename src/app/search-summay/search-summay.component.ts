@@ -86,7 +86,6 @@ export class SearchSummayComponent implements OnInit {
 
 
     fsearchSummay() {
-      debugger
       console.log(this.persons)
       for(var i = 0; i < this.persons.length; i++) {
 

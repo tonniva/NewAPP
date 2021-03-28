@@ -63,7 +63,6 @@ dataId: string;
       }
       console.log(this.keysheet,this.provincekey)
 
-
     gDrive.load(this.dataId )
       .then( ( data ) => {
         console.log( data );
@@ -75,7 +74,7 @@ dataId: string;
     });
   }
 
- 
+
   fsearchRecursive(value) {
     for(var i = 0; i < this.persons.length; i++) {
     var re = value;
@@ -132,7 +131,7 @@ dataId: string;
 
 
 
-  ngOnInit() {
+  ngOnInit() { 
     this.loadingScreenService.startLoading();
 
     document.getElementById("initprofile").click();

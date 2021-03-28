@@ -76,7 +76,6 @@ export class MassageAndSpaComponent implements OnInit {
   }
 
   ngOnInit() {
-    debugger
      this.loadingScreenService.startLoading();
 
     localStorage.clear();
@@ -128,8 +127,7 @@ export class MassageAndSpaComponent implements OnInit {
       .value()
     var district = [];
     var district_graph = [];
-    var count = [];
-    debugger
+    var count = []; 
     group.forEach(item => {
       var temp ={
         "district":item.district,

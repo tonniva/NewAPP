@@ -66,6 +66,7 @@ export class SearchComponent implements OnInit {
   public type: any;
   public data: any;
   public options: any;
+  public menukey: any;
 
 
   public typeyear: any;
@@ -79,26 +80,13 @@ export class SearchComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private _compiler: Compiler, private ApiService: ApiService, private gDrive: GoogleDriveProvider, private router: Router, private DataService: DataService,private loadingScreenService: LoadingScreenService) {
 
-    // this.dataId = '1-sN8-XQ1tY6w-3BhaoC5G8fsMmcCq9vxGZpWINKBnxI';//อ่างทอง
-    // this.dataId = '1FSEN7UKfwO2xjK8nYNXFsnvCvKzASQhD3inJGGs1L0g';//นครนายก
-
-    // this.dataId= this.keysheet;
-
-    // gDrive.load(this.dataId)
-    //   .then((data) => {
-
-
-    //     console.log(data);
-    //     this.persons = data;
-
-    //     this.initgraph(this.persons)
-    //     this.initgraphyear(this.persons)
-    //   }, (error) => {
-
-    //     console.log(error);
-    //   });
   }
-
+  getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+};
   ngOnInit() {
      this.loadingScreenService.startLoading();
 
@@ -302,11 +290,10 @@ export class SearchComponent implements OnInit {
     localStorage.setItem("District", this.District);
     localStorage.setItem("Year", this.Year);
 
-
-
+ 
 // console.log(window.location.search);
-    const q ="?p="+this.provincekey+'&key='+this.keysheet;
-    this.router.navigateByUrl('/SearchSummary'+window.location.search);
+    const q ="?p="+this.provincekey+'&key='+this.keysheet+'&t=ชื่อสถานพยาบาล';
+    this.router.navigateByUrl('/SearchSummary'+q);
 
   }
 

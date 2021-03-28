@@ -74,7 +74,8 @@ export class MenuComponent implements OnInit {
 
     goto(item){
       window.scrollTo(0, 0);
-      window.location.href=item.url;
+      // var backurl = '&menukey='+this.dataId;
+      window.location.href =item.url;
 
     }
 

@@ -30,6 +30,7 @@ import { ChartModule } from 'angular2-chartjs';
 import { LoadingComponent } from './loading/loading.component';
 import { WrapperLoadingComponent } from './wrapper-loading/wrapper-loading.component';
 
+
 // import {Injectable} from '@angular/core';
 // import {Http} from '@angular/http';
 // import 'rxjs/add/operator/map';
@@ -70,7 +71,7 @@ import { WrapperLoadingComponent } from './wrapper-loading/wrapper-loading.compo
     MassageAndSpaComponent,
     MenuComponent,
     LoadingComponent,
-    WrapperLoadingComponent
+    WrapperLoadingComponent,
   ],
   imports: [
     BrowserModule,
