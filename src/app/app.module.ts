@@ -17,14 +17,16 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { RouterModule,Routes } from '@angular/router';
 import { SurveyComponent } from './components/survey/survey.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { SearchComponent } from './components/search/search.component'; 
-import {ApiService,GoogleDriveProvider} from './services/api.service'; 
+import { SearchComponent } from './components/search/search.component';
+import {ApiService,GoogleDriveProvider} from './services/api.service';
 
 import {HttpModule} from '@angular/http';
 import { LoginComponent } from './components/login/login.component';
 import { SearchSummayComponent } from './search-summay/search-summay.component';
 
 import { ChartModule } from 'angular2-chartjs';
+import { LoadingComponent } from './loading/loading.component';
+import { WrapperLoadingComponent } from './wrapper-loading/wrapper-loading.component';
 
 // import {Injectable} from '@angular/core';
 // import {Http} from '@angular/http';
@@ -34,23 +36,23 @@ import { ChartModule } from 'angular2-chartjs';
   //  {path:"",component:PageMenuComponent},
    {path:"",component:LoginComponent},
    {path:"Login",component:LoginComponent},
-   {path:"createuser",component:CreateUserComponent}, 
+   {path:"createuser",component:CreateUserComponent},
    {path:"Survey",component:SurveyComponent},
    {path:"Contact",component:ContactComponent},
    {path:"user",component:UserComponent},
    {path:"SearchSummary",component:SearchSummayComponent},
    {path:"Search",component:SearchComponent,
-   
+
   children:[
-    {path:"googlemap",component:GooglemapComponent}, 
+    {path:"googlemap",component:GooglemapComponent},
   ]
 },
-  
+
 
 
  ]
 @NgModule({
-  declarations: [ 
+  declarations: [
     AppComponent,
     UserComponent,
     GooglemapComponent,
@@ -60,7 +62,9 @@ import { ChartModule } from 'angular2-chartjs';
     ContactComponent,
     SearchComponent,
     LoginComponent,
-    SearchSummayComponent
+    SearchSummayComponent,
+    LoadingComponent,
+    WrapperLoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -79,4 +83,7 @@ import { ChartModule } from 'angular2-chartjs';
   providers: [ApiService,GoogleDriveProvider,CookieService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  
+}

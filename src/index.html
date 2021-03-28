@@ -6,29 +6,31 @@
     <title>สถานพยาบาล</title>
     <base href="/">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scSendUpalable=no, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>  
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
 
 </head>
 
 <body class="wrapper-body">
- 
+
     <app-root></app-root>
 
-    
+
 <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script> 
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
 <script>
-     
+
   // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyAfHEHd4-5nuQMdbb40q2A_6htp04Bg63M",
@@ -41,14 +43,14 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
- 
-  
+
+
 function authen(){
-  
+
 // Turn off phone auth app verification.
 firebase.auth().settings.appVerificationDisabledForTesting = true;
 
-var phoneNumber = "+66"+ document.getElementById("usernamelogin").value.substring(1); 
+var phoneNumber = "+66"+ document.getElementById("usernamelogin").value.substring(1);
 var testVerificationCode = document.getElementById("passwordlogin").value;
 
 // This will render a fake reCAPTCHA as appVerificationDisabledForTesting is true.
@@ -57,25 +59,25 @@ var appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
 // signInWithPhoneNumber will call appVerifier.verify() which will resolve with a fake
 // reCAPTCHA response.
 firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-    .then(function (confirmationResult) { 
+    .then(function (confirmationResult) {
       window.location = "/Search";
       // confirmationResult can resolve with the fictional testVerificationCode above.
       return confirmationResult.confirm(testVerificationCode)
     }).catch(function (error) {
-      window.location = "/"; 
+      window.location = "/";
     });
 
 
 }
 
  function myfunction(){
-       
+
   var x = document.getElementById("myFile");
   uploadfile();
   x.disabled = true;
  }
 
- 
+
 var file_url ="";
  function uploadfile(fileuploaddata){
 
@@ -105,8 +107,8 @@ var file_url ="";
           // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
           var progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done"); 
-          
+          console.log("Upload is " + progress + "% done");
+
           document.getElementById("progressbar").classList.remove("disable-load");
           document.getElementById("loadbar").style.width = progress+"%";
           switch (snapshot.state) {
@@ -118,7 +120,7 @@ var file_url ="";
               break;
           }
 
- 
+
 
         },
         function (error) {
@@ -129,18 +131,18 @@ var file_url ="";
           // For instance, get the download URL: https://firebasestorage.googleapis.com/...
           uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
             file_url = downloadURL;
-           
+
             insert();
-            setTimeout(function(){    
-                  document.getElementById("progressbar").classList.add("disable-load"); 
+            setTimeout(function(){
+                  document.getElementById("progressbar").classList.add("disable-load");
                   document.getElementById("saveimage").innerHTML="สำเร็จ !";
                 }, 2000);
-       
+
             console.log("File available at", downloadURL);
           });
         }
       );
- 
+
  }
 
  function deletefilestorage()
@@ -160,7 +162,7 @@ desertRef.delete().then(function() {
 
 var fileuploaddata=null;
  function fileupload(e){
-   
+
 
      document.getElementById("saveimage").disabled = false;
     //  เซตรูปโปรไฟล์ หลังจากอัพโหลด
@@ -169,8 +171,8 @@ var fileuploaddata=null;
 
     fileuploaddata=  e.files[0];
  }
- function confirmupload(){ 
-    uploadfile(fileuploaddata); 
+ function confirmupload(){
+    uploadfile(fileuploaddata);
  }
 
 
@@ -179,7 +181,7 @@ const messageRef = database.ref("message");
 
 function insert(){
 
-    
+
     deletedate();
     messageRef.push({
         licensenumber: document.getElementById("licensenumber").innerHTML,
@@ -191,11 +193,11 @@ var messages = [];
 var image_from_firebse = [];
 var messages = [];
 var message_id="";
-function getprofilefirebase(){ 
+function getprofilefirebase(){
 messageRef.on("child_added", (snapshot) => {
       //เอาข้อมูลจาก message มาเก็บใน array
       this.messages.push({ ...snapshot.val(), id: snapshot.key });
-     
+
 
       this.messages.map(function(c,i,a){
           var licensenumber  = document.getElementById("licensenumber").innerHTML;
@@ -204,11 +206,11 @@ messageRef.on("child_added", (snapshot) => {
             document.getElementById("img_profile").src = c.image_profile;
             message_id = c.id;
         }
-      
-        return ; 
 
-      }) 
-    }); 
+        return ;
+
+      })
+    });
 }
 
 function deletedate(){
@@ -233,6 +235,8 @@ function deletedate(){
 </html>
 <style>
     .wrapper-body {
+      max-width: 489px;
+      margin: auto;
         background-image: url(../assets/icon/logo-opa.png);
         background-repeat: no-repeat;
         position: inherit;
@@ -241,7 +245,7 @@ function deletedate(){
         background-position-y: 30vh;
     }
 
-    .disable-load{ 
+    .disable-load{
         display:none;
-    } 
+    }
 </style>

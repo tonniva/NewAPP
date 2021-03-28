@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
 import * as $ from 'jquery';
 import * as _ from "lodash";
+import { LoadingScreenService } from "../services/loading-screen/loading-screen.service";
 @Component({
   selector: 'app-search-summay',
   templateUrl: './search-summay.component.html',
@@ -24,7 +25,7 @@ export class SearchSummayComponent implements OnInit {
   persons: Array<any>;
   dataId: string;
   public searchedItems: Array<any> = [];
-    constructor(private _compiler: Compiler,private DataService:DataService,gDrive:GoogleDriveProvider,private router: Router,private cookieService: CookieService) {
+    constructor(private _compiler: Compiler,private DataService:DataService,gDrive:GoogleDriveProvider,private router: Router,private cookieService: CookieService,private loadingScreenService:LoadingScreenService) {
 
       // knowledge http://leifwells.com/2016/06/09/ionic-2--angular-2-using-a-google-spreadsheet-as-a-data-source/
       // https://medium.com/@scottcents/how-to-convert-google-sheets-to-json-in-just-3-steps-228fe2c24e6
@@ -37,6 +38,11 @@ export class SearchSummayComponent implements OnInit {
         .then( ( data ) => {
           console.log( data );
           this.persons = data;
+          setTimeout(()=>{
+
+            this.loadingScreenService.stopLoading();
+
+          }, 2000);
         }, (error) => {
 
           console.log( error );
@@ -53,7 +59,7 @@ export class SearchSummayComponent implements OnInit {
     fsearchRecursive(value) {
 
       for(var i = 0; i < this.persons.length; i++) {
-      var re = value;
+      var re = value.trim();
       var str = this.persons[i].clinicname;
           if (!_.isEmpty(str) && str.search(re) == -1 ) {
             console.log("Does not contain clinicname "+re );
@@ -66,8 +72,8 @@ export class SearchSummayComponent implements OnInit {
     fCustomername(value) {
       console.log(value)
       for(var i = 0; i < this.persons.length; i++) {
-        var re = value;
-        var str = this.persons[i].firstname+this.persons[i].lastname;
+        var re = value.trim();
+        var str = this.persons[i].firstname+" "+this.persons[i].lastname;
             if (!_.isEmpty(str) && str.search(re) == -1 ) {
               console.log("Does not contain customername "+re );
             } else {
@@ -78,6 +84,7 @@ export class SearchSummayComponent implements OnInit {
 
 
     fsearchSummay() {
+      debugger
       console.log(this.persons)
       for(var i = 0; i < this.persons.length; i++) {
 
@@ -85,10 +92,76 @@ export class SearchSummayComponent implements OnInit {
         var str_district = !_.isEmpty(this.persons[i].district)?this.persons[i].district:"";
         var str_year = !_.isEmpty(this.persons[i].year)?this.persons[i].year:"";
 
-            if (str_clinictype.search(this.ClinicType) == 0  && str_district.search(this.District) == 0 && str_year.search(this.Year) == 0) {
+if(this.Year != ""){
 
+
+
+            if ((this.ClinicType != "" && this.District == "" && str_year == this.Year)) {
+              if ((str_clinictype == this.ClinicType) ) {
+
+                this.searchedItems.push(this.persons[i]);
+              }
+            }
+            else if ((this.ClinicType == "" && this.District != "" && str_year == this.Year)) {
+              if (str_district == this.District) {
+
+                this.searchedItems.push(this.persons[i]);
+              }
+            }
+            else if ((this.ClinicType == "" && this.District == "" && str_year == this.Year)) {
+
+                this.searchedItems.push(this.persons[i]);
+
+            }
+            else if ((this.ClinicType != "" && this.District != "" && str_year == this.Year)) {
+              if ( str_clinictype == this.ClinicType && str_district == this.District){
+                this.searchedItems.push(this.persons[i]);
+              }
+             }
+          }
+          else{
+
+            if ((this.ClinicType != "" && this.District == "")) {
+              if ((str_clinictype == this.ClinicType) ) {
+
+                this.searchedItems.push(this.persons[i]);
+              }
+            }
+            else if ((this.ClinicType == "" && this.District != "")) {
+              if (str_district == this.District) {
+
+                this.searchedItems.push(this.persons[i]);
+              }
+            }
+            else{
               this.searchedItems.push(this.persons[i]);
             }
+          }
+            // }
+            // else if ((this.ClinicType != "" && this.District != "" && this.Year != "")) {
+            //   if ((str_clinictype == this.ClinicType) && this.District.search(this.District) == 0 && str_year.search(this.Year) == 0) {
+
+            //     this.searchedItems.push(this.persons[i]);
+            //   }
+            // }
+            // else if ((this.ClinicType == "" && this.District != "" && this.Year != "")) {
+            //   if (str_district.search(this.District) == 0 && str_year.search(this.Year) == 0) {
+
+            //     this.searchedItems.push(this.persons[i]);
+            //   }
+            // }
+            // else if ((this.ClinicType == "" && this.District != "" && this.Year == "")) {
+            //   if (str_district == this.District) {
+
+            //     this.searchedItems.push(this.persons[i]);
+            //   }
+            // }
+            // else if ((this.ClinicType == "" && this.District == "" && str_year != "")) {
+            //   if (str_year.search(this.Year) == 0) {
+
+            //     this.searchedItems.push(this.persons[i]);
+            //   }
+            // }
       }
     }
 
@@ -109,7 +182,7 @@ export class SearchSummayComponent implements OnInit {
       console.log(value)
       for(var i = 0; i < this.persons.length; i++) {
 
-        var re = value;
+        var re = value.trim();
         var str = !_.isEmpty(this.persons[i].operatorname)?this.persons[i].operatorname:"no data";
             if (str.search(re) == -1 ) {
               console.log("Does not contain operatorname "+re );
@@ -130,6 +203,7 @@ export class SearchSummayComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.loadingScreenService.startLoading();
     this._compiler.clearCache();
     setTimeout(() => {
       if(this.Clinicname != 'undefined')

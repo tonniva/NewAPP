@@ -5,24 +5,26 @@ import { Observable } from 'rxjs/Observable';
 
 
 
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  
+
   constructor(private http:Http) { }
 
-  getSearch(Clinicname){ 
-    return this.http.get("https://toniva.azurewebsites.net/books/"+Clinicname).map((res)=>res.json().user[0]); 
- 
-  } 
- 
+  getSearch(Clinicname){
+    return this.http.get("https://toniva.azurewebsites.net/books/"+Clinicname).map((res)=>res.json().user[0]);
+
+  }
+
 }
 
 @Injectable()
 
 export class GoogleDriveProvider {
- 
+
   data: any = null;
 
   constructor(public http: Http) {}
@@ -33,7 +35,7 @@ export class GoogleDriveProvider {
       return Promise.resolve(this.data);
     }
 
-    var url = 'https://spreadsheets.google.com/feeds/list/' + id + '/od6/public/values?alt=json'; 
+    var url = 'https://spreadsheets.google.com/feeds/list/' + id + '/od6/public/values?alt=json';
     // don't have the data yet
     return new Promise(resolve => {
       // We're using Angular Http provider to request the data,
@@ -44,7 +46,7 @@ export class GoogleDriveProvider {
         .subscribe( data => {
           console.log( 'Raw Data', data );
           this.data = data.feed.entry;
-          
+
           let returnArray: Array<any> = [];
           if( this.data && this.data.length > 0 ) {
             this.data.forEach( ( entry, index ) => {
@@ -61,10 +63,7 @@ export class GoogleDriveProvider {
           resolve(returnArray);
         });
     });
-  } 
+  }
 }
 
-
-
- 
 

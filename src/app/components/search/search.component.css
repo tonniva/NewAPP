@@ -5,6 +5,16 @@
 form {
     font-family: 'Kanit', sans-serif !important;
 }
+.i-c-s {
+  padding-left: 12px !important;
+}
+select{
+  text-indent: 40px;
+  /* text-align-last: center; */
+}
+.clearfix{
+  margin-top: 15px;
+}
 .year{
     width: auto;
     height: 35px;

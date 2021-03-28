@@ -4,7 +4,7 @@ import {ApiService,GoogleDriveProvider} from '../../services/api.service';
 import { CookieService } from 'ngx-cookie-service';
 import * as $ from 'jquery';
 import { empty } from 'rxjs';
-
+import { LoadingScreenService } from "../../services/loading-screen/loading-screen.service";
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { Router, ActivatedRoute, Params } from "@angular/router";
@@ -39,7 +39,7 @@ public ResultSearch:ClsResponseAPI;
 public qr:any=window.location.search;
 persons: Array<any>;
 dataId: string;
-  constructor(private activatedRoute: ActivatedRoute,private _compiler: Compiler,private DataService:DataService,gDrive:GoogleDriveProvider,private cookieService: CookieService, private router: Router) {
+  constructor(private activatedRoute: ActivatedRoute,private _compiler: Compiler,private DataService:DataService,gDrive:GoogleDriveProvider,private cookieService: CookieService, private router: Router,private loadingScreenService:LoadingScreenService) {
 
     // knowledge http://leifwells.com/2016/06/09/ionic-2--angular-2-using-a-google-spreadsheet-as-a-data-source/
     // https://medium.com/@scottcents/how-to-convert-google-sheets-to-json-in-just-3-steps-228fe2c24e6
@@ -75,7 +75,7 @@ dataId: string;
     });
   }
 
-
+ 
   fsearchRecursive(value) {
     for(var i = 0; i < this.persons.length; i++) {
     var re = value;
@@ -133,6 +133,8 @@ dataId: string;
 
 
   ngOnInit() {
+    this.loadingScreenService.startLoading();
+
     document.getElementById("initprofile").click();
 
      window.scrollTo(0, 0);
@@ -150,7 +152,11 @@ dataId: string;
 
     }
 
+    setTimeout(()=>{
 
+      this.loadingScreenService.stopLoading();
+
+    }, 1000);
 
   }
 

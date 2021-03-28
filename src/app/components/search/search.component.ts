@@ -2,9 +2,11 @@ import { Compiler, Component, OnInit } from '@angular/core';
 
 import { ApiService, GoogleDriveProvider } from '../../services/api.service';
 import { DataService } from '../../services/DataService';
+
 import { SearchDetail } from './Search-Detail';
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import * as _ from 'lodash';
+import { LoadingScreenService } from "../../services/loading-screen/loading-screen.service";
 // import {AppChildSurvey} from '';
 
 @Component({
@@ -75,7 +77,7 @@ export class SearchComponent implements OnInit {
 
   public qr:any=window.location.search;
 
-  constructor(private activatedRoute: ActivatedRoute, private _compiler: Compiler, private ApiService: ApiService, private gDrive: GoogleDriveProvider, private router: Router, private DataService: DataService) {
+  constructor(private activatedRoute: ActivatedRoute, private _compiler: Compiler, private ApiService: ApiService, private gDrive: GoogleDriveProvider, private router: Router, private DataService: DataService,private loadingScreenService: LoadingScreenService) {
 
     // this.dataId = '1-sN8-XQ1tY6w-3BhaoC5G8fsMmcCq9vxGZpWINKBnxI';//อ่างทอง
     // this.dataId = '1FSEN7UKfwO2xjK8nYNXFsnvCvKzASQhD3inJGGs1L0g';//นครนายก
@@ -98,7 +100,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-
+     this.loadingScreenService.startLoading();
 
     localStorage.clear();
     this._compiler.clearCache();
@@ -122,6 +124,12 @@ export class SearchComponent implements OnInit {
 
         this.initgraph(this.persons)
         this.initgraphyear(this.persons)
+        setTimeout(()=>{
+
+          this.loadingScreenService.stopLoading();
+
+        }, 1000);
+
       }, (error) => {
 
         console.log(error);
@@ -136,21 +144,28 @@ export class SearchComponent implements OnInit {
   initgraph(datagraph) {
 
     var group = _.chain(datagraph)
-      .groupBy("districtname")
-      .map((value, key) => ({ district: key, users: value }))
+      .groupBy("district")
+      .map((value, key) => ({
+        district: key, districtname: value[0].districtname, users: value
+      }))
       .value()
     var district = [];
+    var district_graph = [];
     var count = [];
     group.forEach(item => {
-
-      district.push(item.district);
+      var temp ={
+        "district":item.district,
+        "districtname":item.districtname,
+      }
+      district.push(temp);
+      district_graph.push(item.districtname);
       count.push(item.users.length);
     });
 
     this.districtGroup = district;
     this.type = 'bar';
     this.data = {
-      labels: district,
+      labels: district_graph,
       backgroundColor: 'rgba(0, 0, 0, 0.1)',
       datasets: [
         {
@@ -304,6 +319,10 @@ export class SearchComponent implements OnInit {
 
   }
 
+
+  districtname(districtname){
+  return districtname;
+}
 
 
 

@@ -90,9 +90,9 @@
     font-size: 30px;
     color: #581c22;
     position: absolute;
-    top: 0;
+    top: -50px;
     bottom: 0;
-    right: 25px;
+    right: -4px;
 }
 
 .main-timeline .title {
@@ -180,7 +180,7 @@
         padding-top: 20px;
     }
     .main-timeline .icon {
-        top: -47rem;
+        /* top: -47rem; */
     }
     .main-timeline .timeline:nth-child(2n) .icon {
         left: 15px;
