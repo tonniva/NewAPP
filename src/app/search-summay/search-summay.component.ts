@@ -24,6 +24,7 @@ export class SearchSummayComponent implements OnInit {
 
   persons: Array<any>;
   dataId: string;
+  datatype: string;
   public searchedItems: Array<any> = [];
     constructor(private _compiler: Compiler,private DataService:DataService,gDrive:GoogleDriveProvider,private router: Router,private cookieService: CookieService,private loadingScreenService:LoadingScreenService) {
 
@@ -32,7 +33,8 @@ export class SearchSummayComponent implements OnInit {
       // ภาษาไทย https://sysadmin.psu.ac.th/2014/10/10/googleappsscript-googlesheets-database/
       //insert delete update html to sheet //https://www.youtube.com/watch?v=OqDo2L-aSGw
 
-      this.dataId = this.getParameterByName("key")//นครนายก
+      this.dataId = this.getParameterByName("key")//
+      this.datatype = this.getParameterByName("t")//
       //this.dataId = '1-sN8-XQ1tY6w-3BhaoC5G8fsMmcCq9vxGZpWINKBnxI';//อ่างทอง
       gDrive.load(this.dataId)
         .then( ( data ) => {

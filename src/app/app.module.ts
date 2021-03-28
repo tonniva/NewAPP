@@ -18,11 +18,13 @@ import { RouterModule,Routes } from '@angular/router';
 import { SurveyComponent } from './components/survey/survey.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { SearchComponent } from './components/search/search.component';
+import { MassageAndSpaComponent } from './components/search/massage_and_spa/massage-and-spa/massage-and-spa.component';
 import {ApiService,GoogleDriveProvider} from './services/api.service';
 
 import {HttpModule} from '@angular/http';
 import { LoginComponent } from './components/login/login.component';
 import { SearchSummayComponent } from './search-summay/search-summay.component';
+import { MenuComponent } from './menu/menu.component';
 
 import { ChartModule } from 'angular2-chartjs';
 import { LoadingComponent } from './loading/loading.component';
@@ -41,6 +43,8 @@ import { WrapperLoadingComponent } from './wrapper-loading/wrapper-loading.compo
    {path:"Contact",component:ContactComponent},
    {path:"user",component:UserComponent},
    {path:"SearchSummary",component:SearchSummayComponent},
+   {path:"menu",component:MenuComponent},
+   {path:"messageandspa",component:MassageAndSpaComponent},
    {path:"Search",component:SearchComponent,
 
   children:[
@@ -63,6 +67,8 @@ import { WrapperLoadingComponent } from './wrapper-loading/wrapper-loading.compo
     SearchComponent,
     LoginComponent,
     SearchSummayComponent,
+    MassageAndSpaComponent,
+    MenuComponent,
     LoadingComponent,
     WrapperLoadingComponent
   ],
@@ -85,5 +91,5 @@ import { WrapperLoadingComponent } from './wrapper-loading/wrapper-loading.compo
 })
 export class AppModule {
 
-  
+
 }
