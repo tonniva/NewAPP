@@ -26,10 +26,10 @@ export class MassageAndSpaComponent implements OnInit {
   // private searctServiceData:searctService[];
 
   //select ประเภทคลินิก
-  public ClinicType: string = '';
+  public Type: string = '';
   selectClinicTypeChangeHandler(event: any) {
     //update the ui
-    this.ClinicType = event.target.value;
+    this.Type = event.target.value;
   }
   //select
   //select เลือกอำเภอ
@@ -50,10 +50,10 @@ export class MassageAndSpaComponent implements OnInit {
 
 
 
-  private ClinicName: string;  // เราป้อนค่า id = 5 ที่ตัวแปรนี้
+  private Name: string;  // เราป้อนค่า id = 5 ที่ตัวแปรนี้
   private hostelDetail: any;
 
-  public Clinicnames: string;
+  public names: string;
 
 
   public type: any;
@@ -76,6 +76,7 @@ export class MassageAndSpaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.persons =[];
      this.loadingScreenService.startLoading();
 
     localStorage.clear();
@@ -98,11 +99,12 @@ export class MassageAndSpaComponent implements OnInit {
         console.log(data);
         this.persons = data;
 
-        this.initgraph(this.persons)
-        this.initgraphyear(this.persons)
-        setTimeout(()=>{
 
-          this.loadingScreenService.stopLoading();
+        setTimeout(()=>{
+          debugger
+          this.initgraph(this.persons)
+          this.initgraphyear(this.persons)
+
 
         }, 1000);
 
@@ -118,16 +120,23 @@ export class MassageAndSpaComponent implements OnInit {
   model: any = {};
 
   initgraph(datagraph) {
-
+    debugger
     var group = _.chain(datagraph)
       .groupBy("district")
       .map((value, key) => ({
         district: key, districtname: value[0].districtname, users: value
       }))
       .value()
+
+      if(group[0].district =='undefined'){
+        location.reload();
+      }
+      else{
+        this.loadingScreenService.stopLoading();
+      }
     var district = [];
     var district_graph = [];
-    var count = []; 
+    var count = [];
     group.forEach(item => {
       var temp ={
         "district":item.district,
@@ -190,11 +199,11 @@ export class MassageAndSpaComponent implements OnInit {
       responsive: true,
       maintainAspectRatio: false
     };
+
   }
 
 
   initgraphyear(datagraph) {
-
     var group = _.chain(datagraph)
       .groupBy("year")
       .map((value, key) => ({ year: key, users: value }))
@@ -271,25 +280,27 @@ export class MassageAndSpaComponent implements OnInit {
     };
   }
   onSubmit() {
-    localStorage.setItem("Clinicname", this.model.Clinicname);
+    debugger
+    localStorage.setItem("name", this.model.name);
     localStorage.setItem("Customername", this.model.Customername);
     localStorage.setItem("Operatorname", this.model.Operatorname);
     localStorage.setItem("Licensenumber", this.model.Licensenumber);
-    localStorage.setItem("ClinicType", this.ClinicType);
+    localStorage.setItem("Type", this.Type);
     localStorage.setItem("District", this.District);
     localStorage.setItem("Year", this.Year);
 
 
 
 // console.log(window.location.search);
-    const q ="?p="+this.provincekey+'&key='+this.keysheet+'&t=ชื่อสถานประกอบการเพื่อสุขภาพ (ร้านนวด/สปา)';
+const name = encodeURIComponent("สถานประกอบการเพื่อสุขภาพ<br/>(ร้านนวด/สปา)");
+    const q ="?p="+this.provincekey+'&key='+this.keysheet+'&t='+name;
     this.router.navigateByUrl('/SearchSummary'+q);
 
   }
 
   searchRecursive(value) {
     for (var i = 0; i < this.persons.length; i++) {
-      if (value == this.persons[i].clinicname) {
+      if (value == this.persons[i].massagename) {
         this.searchedItems.push(this.persons[i]);
       }
     }

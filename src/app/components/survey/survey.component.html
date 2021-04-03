@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark grad">
-    <a class="navbar-brand w-50" href="/SearchSummary{{qr}}">
+    <a class="navbar-brand w-50 text-white">
         <span class="">
-                    <img  class="mr-3" src="../assets/icon/iconback.png" />
+                    <!-- <img  class="mr-3" src="../assets/icon/iconback.png" /> -->
                     <img class="w-25 circle" src="../assets/icon/logo.png" />
             </span> CLINIC TRACKING
     </a>
@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="main-timeline">
-                <div class="year animated slideInRight">รายละเอียดข้อมูลคลินิก</div>
+                <div class="year animated slideInRight">รายละเอียดข้อมูล<span [innerHTML]="t"></span></div>
                 <a class="timeline-content animated slideInUp">
                     <div class="container animated slideInUp">
                         <div class="row">
@@ -32,29 +32,29 @@
                                                 <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694L1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"/>
                                                 <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
                                               </svg>
-                                            ชื่อคลินิค <br> <span class="text-warning" >{{item.clinicname}}</span>
+                                            ชื่อ<span [innerHTML]="t"></span> <br> <span class="text-warning" >{{item.name}}</span>
                                         </li>
-                                        <li>
+                                        <li *ngIf="item.licensenumber">
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-spellcheck icon-li" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M8.217 11.068c1.216 0 1.948-.869 1.948-2.31v-.702c0-1.44-.727-2.305-1.929-2.305-.742 0-1.328.347-1.499.889h-.063V3.983h-1.29V11h1.27v-.791h.064c.21.532.776.86 1.499.86zm-.43-1.025c-.66 0-1.113-.518-1.113-1.28V8.12c0-.825.42-1.343 1.098-1.343.684 0 1.075.518 1.075 1.416v.45c0 .888-.386 1.401-1.06 1.401zm-5.583 1.035c.767 0 1.201-.356 1.406-.737h.059V11h1.216V7.519c0-1.314-.947-1.783-2.11-1.783C1.355 5.736.75 6.42.69 7.27h1.216c.064-.323.313-.552.84-.552.527 0 .864.249.864.771v.464H2.346C1.145 7.953.5 8.568.5 9.496c0 .977.693 1.582 1.704 1.582zm.42-.947c-.44 0-.845-.235-.845-.718 0-.395.269-.684.84-.684h.991v.538c0 .503-.444.864-.986.864zm8.897.567c-.577-.4-.9-1.088-.9-1.983v-.65c0-1.42.894-2.338 2.305-2.338 1.352 0 2.119.82 2.139 1.806h-1.187c-.04-.351-.283-.776-.918-.776-.674 0-1.045.517-1.045 1.328v.625c0 .468.121.834.343 1.067l-.737.92z"/>
                                                 <path fill-rule="evenodd" d="M14.469 9.414a.75.75 0 0 1 .117 1.055l-4 5a.75.75 0 0 1-1.116.061l-2.5-2.5a.75.75 0 1 1 1.06-1.06l1.908 1.907 3.476-4.346a.75.75 0 0 1 1.055-.117z"/>
                                               </svg>
                                             เลขที่ใบอนุญาต <br><span class="text-warning" id="licensenumber">{{item.licensenumber}}</span>
                                         </li>
-                                        <li>
+                                        <li *ngIf="item.typename">
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-ui-radios icon-li" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zM0 12a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm7-1.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
                                                 <path fill-rule="evenodd" d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zM3 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0 4.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
                                               </svg>
-                                            ประเภทคลินิก <br><span class="text-warning" >{{item.clinictypename}}</span>
+                                            ประเภท <br><span class="text-warning" >{{item.typename}}</span>
                                         </li>
-                                        <li>
+                                        <li >
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-person-fill icon-li" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755S12 12 8 12s-5 1.755-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
                                               </svg>
                                             ผู้ประกอบกิจการ <br> <span class="text-warning">{{item.firstname}} {{item.lastname}}</span>
                                         </li>
-                                        <li>
+                                        <li *ngIf="item.operatorname">
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-person icon-li" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
                                                 <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
@@ -63,7 +63,7 @@
                                               </svg>
                                             ผู้ดำเนินการ <br> <span class="text-warning">{{item.operatorname}}</span>
                                         </li>
-                                        <li>
+                                        <li *ngIf="item.address">
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-signpost icon-li" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M7 1.414V4h2V1.414a1 1 0 0 0-2 0z"/>
                                                 <path fill-rule="evenodd" d="M12.532 5H2v4h10.532l1.666-2-1.666-2zM2 4a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h10.532a1 1 0 0 0 .768-.36l1.933-2.32a.5.5 0 0 0 0-.64L13.3 4.36a1 1 0 0 0-.768-.36H2z"/>
@@ -71,14 +71,14 @@
                                               </svg>
                                             ที่อยู่  <br><span class="text-warning">{{item.address}}</span>
                                         </li>
-                                        <li>
+                                        <li *ngIf="item.districtname">
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-signpost-split icon-li" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M7 16h2V6H8V2h1v-.586a1 1 0 0 0-2 0V7h1v4H7v5z"/>
                                                 <path fill-rule="evenodd" d="M14 3H8v2h6l.75-1L14 3zM8 2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H8zM2 8h6v2H2l-.75-1L2 8zm6-1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-.8-.4L.225 9.3a.5.5 0 0 1 0-.6L1.2 7.4A1 1 0 0 1 2 7h6z"/>
                                               </svg>
                                             อำเภอ  <br><span class="text-warning">{{item.districtname}}</span>
                                         </li>
-                                        <li>
+                                        <li  *ngIf="item.tel">
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-telephone-outbound-fill icon-li" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5z"/>
                                               </svg>
@@ -87,27 +87,27 @@
                                                     {{item.tel}}
                                                 </a>
                                         </li>
-                                        <li>
+                                        <li *ngIf="item.professionallicensenumber">
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-upc icon-li" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7z"/>
                                               </svg>
                                             เลขที่ใบประกอบวิชาชีพ  <br><span class="text-warning">{{item.professionallicensenumber}}</span>
                                         </li>
-                                        <li>
+                                        <li *ngIf="item.year">
 
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-calendar-month-fill icon-li" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM2.56 12.332l.54-1.602h1.984l.54 1.602h.718L4.444 7h-.696L1.85 12.332h.71zm1.544-4.527L4.9 10.18H3.284l.8-2.375h.02zm5.746.422h-.676v2.543c0 .652-.414 1.023-1.004 1.023-.539 0-.98-.246-.98-1.012V8.227h-.676v2.746c0 .941.606 1.425 1.453 1.425.656 0 1.043-.28 1.188-.605h.027v.539h.668V8.227zm1.273 4.41c.075.332.422.636.985.636.648 0 1.07-.378 1.07-1.023v-.605h-.02c-.163.355-.613.648-1.171.648-.957 0-1.64-.672-1.64-1.902v-.34c0-1.207.675-1.887 1.64-1.887.558 0 1.004.293 1.195.64h.02v-.577h.648v4.03c0 1.052-.816 1.579-1.746 1.579-1.043 0-1.574-.516-1.668-1.2h.687zm2.055-2.535c0-.832-.414-1.36-1.062-1.36-.692 0-1.098.492-1.098 1.36v.253c0 .852.406 1.364 1.098 1.364.671 0 1.062-.516 1.062-1.364v-.253z"/>
                                               </svg>
                                             ปีที่ได้รับใบอนุญาต  <br><span class="text-warning">{{item.year}}</span>
                                         </li>
-                                        <li>
+                                        <li *ngIf="item.linkmap">
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-map-fill icon-li" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.598-.49L10.5.99 5.598.01a.5.5 0 0 0-.196 0l-5 1A.5.5 0 0 0 0 1.5v14a.5.5 0 0 0 .598.49l4.902-.98 4.902.98a.502.502 0 0 0 .196 0l5-1A.5.5 0 0 0 16 14.5V.5zM5 14.09V1.11l.5-.1.5.1v12.98l-.402-.08a.498.498 0 0 0-.196 0L5 14.09zm5 .8V1.91l.402.08a.5.5 0 0 0 .196 0L11 1.91v12.98l-.5.1-.5-.1z"/>
                                               </svg>
                                             แผนที่ (Link Map) <br>
                                             <a href="{{item.linkmap}}">กดเปิดในแอฟ google map</a>
                                         </li>
-                                        <li>
+                                        <li *ngIf="item.timeopeningandclosing">
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-alarm icon-li" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z"/>
                                               </svg>

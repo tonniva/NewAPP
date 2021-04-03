@@ -31,6 +31,7 @@ private District = localStorage.getItem("District");
 private Year = localStorage.getItem("Year");
 public provincekey: any;
 public keysheet: any;
+public t: any;
 fileToUpload: File = null;
 
 public firebase=null;
@@ -58,6 +59,7 @@ dataId: string;
     this.activatedRoute.queryParams.subscribe(params => {
       this.keysheet = params['key'];
       this.provincekey = params['p'];
+      this.t = params['t'];
       if(this.provincekey == undefined) {
         return this.router.navigate(['']);
       }
@@ -65,7 +67,7 @@ dataId: string;
 
     gDrive.load(this.dataId )
       .then( ( data ) => {
-        console.log( data );
+        console.log( data ); 
         this.persons = data;
       }, (error) => {
         console.log( error );
@@ -131,7 +133,7 @@ dataId: string;
 
 
 
-  ngOnInit() { 
+  ngOnInit() {
     this.loadingScreenService.startLoading();
 
     document.getElementById("initprofile").click();

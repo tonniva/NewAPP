@@ -8,14 +8,14 @@ import { Observable } from 'rxjs/Observable';
   providedIn: 'root'
 })
 export class DataService {
-  
 
-  
+
+
   constructor() { }
 
   public searchDetail: ClsResponseAPI ;
 
- 
+
 }
 
 
@@ -29,11 +29,11 @@ interface ClsResponseAPI {
   Operatorname: string;
   Address: string;
   Status: string;
-  ClinicType: string;
-  ClinicTypeName: string;
+  Type: string;
+  TypeName: string;
   Distric: string;
   DistrictName: string;
-  Year: string; 
+  Year: string;
   Image: string;
   ImageUrl: string;
   Latitude: string;

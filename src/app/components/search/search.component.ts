@@ -32,10 +32,10 @@ export class SearchComponent implements OnInit {
   // private searctServiceData:searctService[];
 
   //select ประเภทคลินิก
-  public ClinicType: string = '';
+  public Type: string = '';
   selectClinicTypeChangeHandler(event: any) {
     //update the ui
-    this.ClinicType = event.target.value;
+    this.Type = event.target.value;
   }
   //select
   //select เลือกอำเภอ
@@ -56,10 +56,10 @@ export class SearchComponent implements OnInit {
 
 
 
-  private ClinicName: string;  // เราป้อนค่า id = 5 ที่ตัวแปรนี้
+  private Name: string;  // เราป้อนค่า id = 5 ที่ตัวแปรนี้
   private hostelDetail: any;
 
-  public Clinicnames: string;
+  public names: string;
 
   private ResponseResult: ClsResponseAPI;
 
@@ -283,23 +283,24 @@ export class SearchComponent implements OnInit {
     };
   }
   onSubmit() {
-    localStorage.setItem("Clinicname", this.model.Clinicname);
+    debugger
+    localStorage.setItem("name", this.model.name);
     localStorage.setItem("Customername", this.model.Customername);
     localStorage.setItem("Operatorname", this.model.Operatorname);
-    localStorage.setItem("ClinicType", this.ClinicType);
+    localStorage.setItem("Type", this.Type);
     localStorage.setItem("District", this.District);
     localStorage.setItem("Year", this.Year);
 
- 
+
 // console.log(window.location.search);
-    const q ="?p="+this.provincekey+'&key='+this.keysheet+'&t=ชื่อสถานพยาบาล';
+    const q ="?p="+this.provincekey+'&key='+this.keysheet+'&t=สถานพยาบาล';
     this.router.navigateByUrl('/SearchSummary'+q);
 
   }
 
   searchRecursive(value) {
     for (var i = 0; i < this.persons.length; i++) {
-      if (value == this.persons[i].clinicname) {
+      if (value == this.persons[i].name) {
         this.searchedItems.push(this.persons[i]);
       }
     }

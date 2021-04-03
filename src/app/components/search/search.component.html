@@ -11,7 +11,7 @@
                             <span class="">
                                     <!-- <img class="mr-3" src="../assets/icon/iconback.png" /> -->
                                     <img class="w-25 circle" src="../assets/icon/logo.png" />
-                            </span> CLINIC TRACKING
+                            </span> KBS TRACKING
                         </a>
                     </nav>
                     <div class="form-content">
@@ -35,9 +35,9 @@
                                     <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
                                   </svg></label>
 
-                                <input placeholder="ชื่อคลินิก" type="text" class="form-control" name="Clinicname" [(ngModel)]="model.Clinicname" #Clinicname="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Clinicname.invalid }" />
-                                <div *ngIf="f.submitted && Clinicname.invalid" class="invalid-feedback">
-                                    <div *ngIf="Clinicname.errors.required">Clinic Name is required</div>
+                                <input placeholder="ชื่อคลินิก" type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" />
+                                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                                    <div *ngIf="name.errors.required">Clinic Name is required</div>
                                 </div>
                             </div>
                             <div class="col-12">

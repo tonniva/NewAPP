@@ -19,9 +19,7 @@ export class WrapperLoadingComponent implements OnInit {
 
 
 
-      )
-    // this.showSpinner = this.loadingScreenService.getloading();
-    // console.log(this.showSpinner);
+      ) 
 
   }
 

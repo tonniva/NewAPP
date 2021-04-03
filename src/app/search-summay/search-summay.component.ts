@@ -14,12 +14,14 @@ import { LoadingScreenService } from "../services/loading-screen/loading-screen.
 })
 export class SearchSummayComponent implements OnInit {
   @Input() message : string ;
-  private Clinicname = localStorage.getItem("Clinicname")||"";
+  private name = localStorage.getItem("name")||"";
   private Customername = localStorage.getItem("Customername")||"";
   private Operatorname = localStorage.getItem("Operatorname")||"";
-  private ClinicType = localStorage.getItem("ClinicType")||"";
+  private Type = localStorage.getItem("Type")||"";
   private District = localStorage.getItem("District")||"";
   private Year = localStorage.getItem("Year")||"";
+  private Licensenumber = localStorage.getItem("Licensenumber")||"";
+
   public qr:any=window.location.search;
 
   persons: Array<any>;
@@ -62,7 +64,7 @@ export class SearchSummayComponent implements OnInit {
 
       for(var i = 0; i < this.persons.length; i++) {
       var re = value.trim();
-      var str = this.persons[i].clinicname;
+      var str = this.persons[i].name;
           if (!_.isEmpty(str) && str.search(re) == -1 ) {
             console.log("Does not contain clinicname "+re );
           } else {
@@ -89,7 +91,7 @@ export class SearchSummayComponent implements OnInit {
       console.log(this.persons)
       for(var i = 0; i < this.persons.length; i++) {
 
-        var str_clinictype = !_.isEmpty(this.persons[i].clinictype)?this.persons[i].clinictype:"";
+        var str_clinictype = !_.isEmpty(this.persons[i].type)?this.persons[i].type:"";
         var str_district = !_.isEmpty(this.persons[i].district)?this.persons[i].district:"";
         var str_year = !_.isEmpty(this.persons[i].year)?this.persons[i].year:"";
 
@@ -97,39 +99,45 @@ if(this.Year != ""){
 
 
 
-            if ((this.ClinicType != "" && this.District == "" && str_year == this.Year)) {
-              if ((str_clinictype == this.ClinicType) ) {
+            if ((this.Type != "" && this.District == "" && str_year == this.Year)) {
+              if ((str_clinictype == this.Type) ) {
 
                 this.searchedItems.push(this.persons[i]);
               }
             }
-            else if ((this.ClinicType == "" && this.District != "" && str_year == this.Year)) {
+            else if ((this.Type == "" && this.District != "" && str_year == this.Year)) {
               if (str_district == this.District) {
 
                 this.searchedItems.push(this.persons[i]);
               }
             }
-            else if ((this.ClinicType == "" && this.District == "" && str_year == this.Year)) {
+            else if ((this.Type == "" && this.District == "" && str_year == this.Year)) {
 
                 this.searchedItems.push(this.persons[i]);
 
             }
-            else if ((this.ClinicType != "" && this.District != "" && str_year == this.Year)) {
-              if ( str_clinictype == this.ClinicType && str_district == this.District){
+            else if ((this.Type != "" && this.District != "" && str_year == this.Year)) {
+              if ( str_clinictype == this.Type && str_district == this.District){
                 this.searchedItems.push(this.persons[i]);
               }
              }
           }
           else{
 
-            if ((this.ClinicType != "" && this.District == "")) {
-              if ((str_clinictype == this.ClinicType) ) {
+            if ((this.Type != "" && this.District == "")) {
+              if ((str_clinictype == this.Type) ) {
 
                 this.searchedItems.push(this.persons[i]);
               }
             }
-            else if ((this.ClinicType == "" && this.District != "")) {
+            else if ((this.Type == "" && this.District != "")) {
               if (str_district == this.District) {
+
+                this.searchedItems.push(this.persons[i]);
+              }
+            }
+            else if ((this.Type != "" && this.District != "")) {
+              if ((str_clinictype == this.Type) && (str_district == this.District)) {
 
                 this.searchedItems.push(this.persons[i]);
               }
@@ -138,31 +146,7 @@ if(this.Year != ""){
               this.searchedItems.push(this.persons[i]);
             }
           }
-            // }
-            // else if ((this.ClinicType != "" && this.District != "" && this.Year != "")) {
-            //   if ((str_clinictype == this.ClinicType) && this.District.search(this.District) == 0 && str_year.search(this.Year) == 0) {
 
-            //     this.searchedItems.push(this.persons[i]);
-            //   }
-            // }
-            // else if ((this.ClinicType == "" && this.District != "" && this.Year != "")) {
-            //   if (str_district.search(this.District) == 0 && str_year.search(this.Year) == 0) {
-
-            //     this.searchedItems.push(this.persons[i]);
-            //   }
-            // }
-            // else if ((this.ClinicType == "" && this.District != "" && this.Year == "")) {
-            //   if (str_district == this.District) {
-
-            //     this.searchedItems.push(this.persons[i]);
-            //   }
-            // }
-            // else if ((this.ClinicType == "" && this.District == "" && str_year != "")) {
-            //   if (str_year.search(this.Year) == 0) {
-
-            //     this.searchedItems.push(this.persons[i]);
-            //   }
-            // }
       }
     }
 
@@ -170,9 +154,9 @@ if(this.Year != ""){
       console.log(this.persons)
       for(var i = 0; i < this.persons.length; i++) {
 
-        var str_clinictype =  !_.isEmpty(this.persons[i].clinictype)?this.persons[i].clinictype:"no data";
+        var str_clinictype =  !_.isEmpty(this.persons[i].type)?this.persons[i].type:"no data";
 
-            if (str_clinictype.search(this.ClinicType) == 0 ) {
+            if (str_clinictype.search(this.Type) == 0 ) {
               this.searchedItems.push(this.persons[i]);
             } else {
               console.log("Does not contain ClinicType &&  District && Year" );
@@ -194,6 +178,23 @@ if(this.Year != ""){
       }
     }
 
+    fOperatorLicensenumber(value) {
+      debugger
+      console.log(value)
+      for(var i = 0; i < this.persons.length; i++) {
+
+        var re = value.trim();
+        var str = !_.isEmpty(this.persons[i].licensenumber)?this.persons[i].licensenumber:"no data";
+            if (str.search(re) == -1 ) {
+              console.log("Does not contain operatorname "+re );
+            } else {
+              this.searchedItems.push(this.persons[i]);
+            }
+
+      }
+    }
+
+
 
     goto(item){
       window.scrollTo(0, 0);
@@ -204,24 +205,31 @@ if(this.Year != ""){
     }
 
   ngOnInit() {
+    debugger
     this.loadingScreenService.startLoading();
     this._compiler.clearCache();
     setTimeout(() => {
-      if(this.Clinicname != 'undefined')
+      if(this.name  != 'undefined'&& this.name  != '')
       {
-        this.fsearchRecursive(this.Clinicname)
+        this.fsearchRecursive(this.name)
         return
       }
-      if(this.Customername != 'undefined')
+      if(this.Customername != 'undefined' && this.Customername  != '')
       {
         this.fCustomername(this.Customername)
         return
       }
-      if(this.Operatorname != 'undefined')
+      if(this.Operatorname != 'undefined' && this.Operatorname  != '')
       {
       this.fOperatorname(this.Operatorname)
       return
       }
+      if(this.Licensenumber != 'undefined' && this.Licensenumber  != '')
+      {
+      this.fOperatorLicensenumber(this.Licensenumber)
+      return
+      }
+
 
       // if(this.District != 'nodata')
       // {
@@ -250,7 +258,7 @@ if(this.Year != ""){
 
 
 
-      if(this.Clinicname == 'undefined' && this.Customername == 'undefined' && this.Operatorname == 'undefined')
+      if(this.name == 'undefined' && this.Customername == 'undefined' && this.Operatorname == 'undefined')
         this.fsearchSummay()
 
     }, 2000);
