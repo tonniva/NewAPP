@@ -21,6 +21,8 @@ export class SearchSummayComponent implements OnInit {
   private District = localStorage.getItem("District")||"";
   private Year = localStorage.getItem("Year")||"";
   private Licensenumber = localStorage.getItem("Licensenumber")||"";
+  private Pharmacyname = localStorage.getItem("Pharmacyname")||"";
+  private TypeLicensenumber = localStorage.getItem("TypeLicensenumber")||"";
 
   public qr:any=window.location.search;
 
@@ -179,7 +181,6 @@ if(this.Year != ""){
     }
 
     fOperatorLicensenumber(value) {
-      debugger
       console.log(value)
       for(var i = 0; i < this.persons.length; i++) {
 
@@ -194,6 +195,36 @@ if(this.Year != ""){
       }
     }
 
+    fOperatorPharmacyname(value) {
+      console.log(value)
+      for(var i = 0; i < this.persons.length; i++) {
+
+        var re = value.trim();
+        var str = !_.isEmpty(this.persons[i].pharmacyname)?this.persons[i].pharmacyname:"no data";
+            if (str.search(re) == -1 ) {
+              console.log("Does not contain operatorname "+re );
+            } else {
+              this.searchedItems.push(this.persons[i]);
+            }
+
+      }
+    }
+    fOperatorTypeLicensenumber(value) {
+      console.log(value)
+      for(var i = 0; i < this.persons.length; i++) {
+
+        var re = value.trim();
+        var str = !_.isEmpty(this.persons[i].typelicensenumber)?this.persons[i].typelicensenumber:"no data";
+            if (str.search(re) == -1 ) {
+              console.log("Does not contain operatorname "+re );
+            } else {
+              this.searchedItems.push(this.persons[i]);
+            }
+
+      }
+    }
+
+
 
 
     goto(item){
@@ -205,7 +236,6 @@ if(this.Year != ""){
     }
 
   ngOnInit() {
-    debugger
     this.loadingScreenService.startLoading();
     this._compiler.clearCache();
     setTimeout(() => {
@@ -229,6 +259,19 @@ if(this.Year != ""){
       this.fOperatorLicensenumber(this.Licensenumber)
       return
       }
+      if(this.Pharmacyname != 'undefined' && this.Pharmacyname  != '')
+      {
+      this.fOperatorPharmacyname(this.Pharmacyname)
+      return
+      }
+      debugger
+      if(this.TypeLicensenumber != 'undefined' && this.TypeLicensenumber  != '')
+      {
+      this.fOperatorTypeLicensenumber(this.TypeLicensenumber)
+      return
+      }
+
+
 
 
       // if(this.District != 'nodata')

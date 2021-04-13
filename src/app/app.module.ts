@@ -29,6 +29,9 @@ import { MenuComponent } from './menu/menu.component';
 import { ChartModule } from 'angular2-chartjs';
 import { LoadingComponent } from './loading/loading.component';
 import { WrapperLoadingComponent } from './wrapper-loading/wrapper-loading.component';
+import { DrugstoreComponent } from './components/search/drugstore/drugstore/drugstore.component';
+import { CannabisComponent } from './components/search/cannabis/cannabis/cannabis.component';
+
 
 
 // import {Injectable} from '@angular/core';
@@ -46,6 +49,9 @@ import { WrapperLoadingComponent } from './wrapper-loading/wrapper-loading.compo
    {path:"SearchSummary",component:SearchSummayComponent},
    {path:"menu",component:MenuComponent},
    {path:"messageandspa",component:MassageAndSpaComponent},
+   {path:"drugstore",component:DrugstoreComponent},
+   {path:"cannabis",component:CannabisComponent},
+
    {path:"Search",component:SearchComponent,
 
   children:[
@@ -72,6 +78,8 @@ import { WrapperLoadingComponent } from './wrapper-loading/wrapper-loading.compo
     MenuComponent,
     LoadingComponent,
     WrapperLoadingComponent,
+    DrugstoreComponent,
+    CannabisComponent,
   ],
   imports: [
     BrowserModule,

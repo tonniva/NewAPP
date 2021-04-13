@@ -68,7 +68,7 @@ export class MassageAndSpaComponent implements OnInit {
 
   public provincekey: any;
   public keysheet: any;
-
+  public selectyear=[];
   public qr:any=window.location.search;
 
   constructor(private activatedRoute: ActivatedRoute, private _compiler: Compiler, private ApiService: ApiService, private gDrive: GoogleDriveProvider, private router: Router,private loadingScreenService: LoadingScreenService) {
@@ -76,6 +76,7 @@ export class MassageAndSpaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.inityear();
     this.persons =[];
      this.loadingScreenService.startLoading();
 
@@ -101,7 +102,6 @@ export class MassageAndSpaComponent implements OnInit {
 
 
         setTimeout(()=>{
-          debugger
           this.initgraph(this.persons)
           this.initgraphyear(this.persons)
 
@@ -118,9 +118,14 @@ export class MassageAndSpaComponent implements OnInit {
   }
 
   model: any = {};
-
+  inityear(){
+    var yearindex= new Date().getFullYear()+543;
+    while (this.selectyear.length < 35) {
+      this.selectyear.push(yearindex);
+      yearindex = yearindex - 1;
+    }
+  }
   initgraph(datagraph) {
-    debugger
     var group = _.chain(datagraph)
       .groupBy("district")
       .map((value, key) => ({
@@ -280,7 +285,6 @@ export class MassageAndSpaComponent implements OnInit {
     };
   }
   onSubmit() {
-    debugger
     localStorage.setItem("name", this.model.name);
     localStorage.setItem("Customername", this.model.Customername);
     localStorage.setItem("Operatorname", this.model.Operatorname);

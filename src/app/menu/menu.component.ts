@@ -4,6 +4,8 @@ import {DataService} from '../services/DataService';
 import {ApiService,GoogleDriveProvider} from '../services/api.service';
 import { Router } from "@angular/router";
 import { CookieService } from 'ngx-cookie-service';
+import { PageMenuComponent } from './../components/page-menu/page-menu.component';
+
 import * as $ from 'jquery';
 import * as _ from "lodash";
 import { LoadingScreenService } from "../services/loading-screen/loading-screen.service";
@@ -14,8 +16,9 @@ import { LoadingScreenService } from "../services/loading-screen/loading-screen.
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-
+  @Input() PageMenuComponent?: PageMenuComponent;
   @Input() message : string ;
+
   private Clinicname = localStorage.getItem("Clinicname")||"";
   private Customername = localStorage.getItem("Customername")||"";
   private Operatorname = localStorage.getItem("Operatorname")||"";
