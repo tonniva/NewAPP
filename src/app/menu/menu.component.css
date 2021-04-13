@@ -10,7 +10,7 @@
 
 .title {
   text-align: left;
-  font-size:17px;
+  font-size:15px;
 }
 
 
@@ -281,8 +281,8 @@
   height: 50px;
   margin: 5px 5%;
   transform-style: preserve-3d;
-  -webkit-animation: rotate3d 5s linear infinite;
-          animation: rotate3d 5s linear infinite;
+  -webkit-animation: rotate3d 15s linear infinite;
+          animation: rotate3d 15s linear infinite;
   transition: all 0.3s;
 }
 
