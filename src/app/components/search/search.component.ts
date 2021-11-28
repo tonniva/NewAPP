@@ -108,7 +108,7 @@ export class SearchComponent implements OnInit {
       .then((data) => {
 
 
-        console.log(data);
+        console.log("gDrive:: ",data);
         this.persons = data;
 
         this.initgraph(this.persons)
@@ -137,24 +137,32 @@ export class SearchComponent implements OnInit {
   model: any = {};
 
   initgraph(datagraph) {
-
+console.log("datagraph :: ",datagraph)
     var group = _.chain(datagraph)
       .groupBy("district")
-      .map((value, key) => ({
-        district: key, districtname: value[0].districtname, users: value
-      }))
+      .map((value, key) =>
+      // {
+      //   console.log("value group ::",value)
+      // }
+       ({
+        district: key, districtname: value[0].districtName,users:value.length
+      })
+      )
       .value()
+
+    console.log("datagraph group :: ",group)
     var district = [];
     var district_graph = [];
     var count = [];
     group.forEach(item => {
-      var temp ={
-        "district":item.district,
-        "districtname":item.districtname,
-      }
-      district.push(temp);
-      district_graph.push(item.districtname);
-      count.push(item.users.length);
+      console.log("item",item)
+      // var temp ={
+      //   "district":item.district,
+      //   "districtname":item.districtname,
+      // }
+       district.push(item);
+       district_graph.push(item.districtname);
+       count.push(item.users);
     });
 
     this.districtGroup = district;
