@@ -263,8 +263,7 @@ if(this.Year != ""){
       {
       this.fOperatorPharmacyname(this.Pharmacyname)
       return
-      }
-      debugger
+      } 
       if(this.TypeLicensenumber != 'undefined' && this.TypeLicensenumber  != '')
       {
       this.fOperatorTypeLicensenumber(this.TypeLicensenumber)
